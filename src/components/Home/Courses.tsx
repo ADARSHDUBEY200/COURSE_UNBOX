@@ -55,18 +55,18 @@ const Courses = ({ courses }: Props) => {
                 </div>
 
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {filteredCourses.map((course) => (
                         <div
                             key={course.id}
-                            className="min-h-[50vh] w-[19vw] border border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            className="min-h-[55vh] w-[23vw] border-2 border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                         >
                             <Image
                                 src={course.image}
                                 alt={course.title}
                                 width={400}
                                 height={400}
-                                className="rounded-tr-2xl rounded-tl-2xl h-[30vh]"
+                                className="rounded-tr-xl rounded-tl-xl h-[30vh]"
                             />
                             <p className="mt-4 text-lg font-bold text-[#213c98]">
                                 {course.title}

@@ -26,7 +26,7 @@ const Enquiry = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
 
 
-            <div className="w-full flex gap-3">
+            <div className="flex gap-3">
 
               <div className="flex flex-col">
                 <label className="text-sm font-medium text-black">First Name</label>
@@ -102,7 +102,7 @@ const Enquiry = () => {
               >
                 Login
               </button>
-              
+
             </div>
           </form>
 

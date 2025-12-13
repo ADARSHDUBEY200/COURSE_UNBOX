@@ -12,17 +12,16 @@ const Navbar = () => {
 
 
                 <div className="hidden md:flex items-center space-x-15 font-medium text-gray-700">
-                    <span className="cursor-pointer hover:text-blue-600 font-bold">Jobs</span>
-                    <span className="cursor-pointer hover:text-blue-600 font-bold">Internships</span>
+                    <span className="cursor-pointer hover:text-blue-600 font-bold">Home</span>
                     <span className="cursor-pointer hover:text-blue-600 font-bold">Courses</span>
+                    <span className="cursor-pointer hover:text-blue-600 font-bold">About Us</span>
                     <span className="cursor-pointer hover:text-blue-600 font-bold">Blogs</span>
                 </div>
             </div>
 
 
-
             <div className="flex items-center space-x-4">
-                <button className="px-6 py-3 text-sm rounded-3xl border bg-[#1C336E] font-bold cursor-pointer">Login</button>
+                <button className="px-6 py-3 text-sm rounded-3xl border bg-[#1C336E] font-bold cursor-pointer text-white">Login</button>
                 <button className="px-6 py-3 text-sm bg-blue-600 text-white rounded-3xl font-bold cursor-pointer">
                     Register
                 </button>

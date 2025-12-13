@@ -6,7 +6,8 @@ import Navbar from "@/components/Home/Navbar";
 import TopCourses from "@/components/Home/TopCourses";
 import Footer from "@/components/Home/Footer"
 import Enquiry from "@/components/Home/Enquiry";
-import Image from "next/image";
+import Mentors from "@/components/Home/Mentors";
+import Testimonials from "@/components/Home/Testimonials";
 
 export default function Home() {
 
@@ -32,9 +33,12 @@ export default function Home() {
       <Hero />
       <Banner />
       <Courses courses={courses} />
-      <Enquiry/>
+      <Enquiry />
       <TopCourses />
-      <Footer/>
+      <Mentors />
+      <Testimonials />
+      <Footer />
+
     </main>
 
   );
