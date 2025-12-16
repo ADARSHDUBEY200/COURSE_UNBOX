@@ -48,6 +48,7 @@ const Banner = ({ collapsed }: { collapsed: boolean }) => {
 
 
     return (
+
         <div className={`${collapsed ? "w-[85vw]" : "w-[75vw]"} mx-auto mt-10 px-4`}>
 
             <div className="rounded-2xl border border-blue-200 bg-white shadow-xl overflow-hidden">
@@ -102,6 +103,25 @@ const Banner = ({ collapsed }: { collapsed: boolean }) => {
                     </button>
 
                 </div>
+
+                <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
+                            <p className="text-xs font-medium text-gray-500 mb-3">LIVE PREVIEW</p>
+
+
+                            <div className="space-y-4">
+                                <h1 className="text-3xl font-bold text-gray-900">
+                                    {formData.HeroTitle || "Hero heading goes here"}
+                                </h1>
+                                <h2 className="text-lg font-medium text-blue-600">
+                                    {formData.HeroSubtitle1 || "Sub heading goes here"}
+                                </h2>
+                                <p className="text-gray-600 max-w-md">
+                                    {formData.HeroSubtitle2 || "Hero description goes here"}
+                                </p>
+                            </div>
+
+                            
+                        </div>
             </div>
         </div>
     )
