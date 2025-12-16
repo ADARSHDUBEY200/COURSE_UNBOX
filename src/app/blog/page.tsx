@@ -7,14 +7,7 @@ import Content from '@/components/blog/Content';
 import LetsConnect from "@/components/blog/LetsConnect";
 
 
-
-
-
 const page = () => {
-
-    
-
-
 
     return (
 

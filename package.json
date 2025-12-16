@@ -9,12 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.87.1",
     "lucide": "^0.560.0",
     "lucide-react": "^0.560.0",
     "next": "16.0.8",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "react-slick": "^0.31.0",
+    "react-toastify": "^11.0.5",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

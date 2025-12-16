@@ -21,8 +21,8 @@ const Navbar = () => {
 
 
             <div className="flex items-center space-x-4">
-                <button className="px-6 py-3 text-sm rounded-3xl border bg-[#1C336E] font-bold cursor-pointer text-white">Login</button>
-                <button className="px-6 py-3 text-sm bg-blue-600 text-white rounded-3xl font-bold cursor-pointer">
+                <button className="px-6 py-3 text-sm rounded-3xl border bg-[#1C336E] font-bold cursor-pointer text-white hover:bg-blue-600 transition">Login</button>
+                <button className="px-6 py-3 text-sm bg-blue-600 text-white rounded-3xl font-bold cursor-pointer hover:bg-[#1C336E] transition">
                     Register
                 </button>
             </div>

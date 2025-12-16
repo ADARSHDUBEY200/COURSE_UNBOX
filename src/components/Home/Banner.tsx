@@ -4,9 +4,9 @@ import {NotepadText,Brain, GraduationCap,} from "lucide-react"
 
 const Banner = () => {
     return (
-        <section className="w-full py-8 bg-[#cdf1f8] px-8 md:px-20 border-2 border-blue-300">
+        <section className="w-full py-4 bg-[#ffffff] px-8 md:px-20 border-2 border-[#08086d]">
             <div className='flex items-center justify-around'>
-                <div className='w-[20vw] flex gap-4 items-center justify-center border border-blue-900 border-l-0 border-r-4 border-t-0 border-b-0 p-3'>
+                <div className='w-[20vw] flex gap-4 items-center justify-center border border-blue-900 border-l-0 border-r-3 border-t-0 border-b-0 p-3'>
                     <div className='text-2xl text-blue-950'>
                         <NotepadText size={52}/>
                     </div>
@@ -21,7 +21,7 @@ const Banner = () => {
                 </div>
 
 
-                <div className='w-[20vw] flex gap-4 items-center justify-center  border border-blue-900 border-l-0 border-r-4 border-t-0 border-b-0 p-3'>
+                <div className='w-[20vw] flex gap-4 items-center justify-center  border border-blue-900 border-l-0 border-r-3 border-t-0 border-b-0 p-3'>
                     <div className='text-2xl text-blue-950'>
                         <GraduationCap size={52}/>
                     </div>
@@ -35,7 +35,7 @@ const Banner = () => {
                     </div>
                 </div>
 
-                <div className=' w-[20vw] flex gap-4  items-center justify-center  border border-blue-900 border-l-0 border-r-4 border-t-0 border-b-0 p-3'>
+                <div className=' w-[20vw] flex gap-4  items-center justify-center  border border-blue-900 border-l-0 border-r-3 border-t-0 border-b-0 p-3'>
                     <div className='text-2xl text-blue-950 font-bold'>
                         <Brain size={52}/>
                     </div>
@@ -49,7 +49,7 @@ const Banner = () => {
                     </div>
                 </div>
 
-                <div className=' w-[20vw] flex gap-4 items-center justify-center  border border-blue-900 border-l-0 border-r-4 border-t-0 border-b-0 p-3'>
+                <div className=' w-[20vw] flex gap-4 items-center justify-center  border border-blue-900 border-l-0 border-r-0 border-t-0 border-b-0 p-3'>
                     <div className='text-2xl text-blue-950 font-bold'>
                         <Brain size={52}/>
                     </div>

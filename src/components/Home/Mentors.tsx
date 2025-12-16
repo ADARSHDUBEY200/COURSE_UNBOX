@@ -20,7 +20,7 @@ const Mentors = () => {
 
     return (
 
-        <div className="bg-gradient-to-r from-[#000052] to-[#4ba3f5] w-full h-[85vh] mx-auto px-4 py-12 slider-container content-center">
+        <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 w-full h-[85vh] mx-auto px-4 py-12 slider-container content-center">
             <div className="text-4xl font-bold text-[white] w-full mb-10 pl-20">
                 Our Mentors
             </div>

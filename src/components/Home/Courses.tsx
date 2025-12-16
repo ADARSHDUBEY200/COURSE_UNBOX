@@ -27,19 +27,18 @@ const Courses = ({ courses }: Props) => {
             : courses.filter((c) => c.category === activeCategory);
 
     return (
-        <section className="w-full py-16 bg-gray-50">
-            <div className="w-7xl mx-auto px-6 text-center">
-
-               
-                <h2 className="font-extrabold text-3xl text-[#1C336E]">
+        <section className="w-full pt-20 py-16 bg-[#e9f5ff]">
+            <h2 className="text-center font-extrabold text-5xl text-[#14399f]">
                      Our Courses
                 </h2>
-                <p className="text-gray-500 mt-2 mb-8">
+            <div className="w-7xl mx-auto px-6 text-center">
+
+                <p className="text-gray-500 mt-2 mb-8 text-2xl">
                     Explore a wide range of courses where learning is fun, easy, and absolutely free!
                 </p>
 
                
-                <div className="flex flex-wrap justify-center gap-6 mb-10">
+                <div className="flex flex-wrap justify-center gap-4 mb-10">
                     {categories.map((cat) => (
                         <button
                             key={cat}
@@ -55,11 +54,11 @@ const Courses = ({ courses }: Props) => {
                 </div>
 
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="flex flex-wrap justify-center gap-8">
                     {filteredCourses.map((course) => (
                         <div
                             key={course.id}
-                            className="min-h-[55vh] w-[23vw] border-2 border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            className="h-[50vh] w-[20vw] border-2 border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                         >
                             <Image
                                 src={course.image}
