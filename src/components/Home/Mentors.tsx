@@ -74,13 +74,8 @@ const Mentors = () => {
                                 <div className="w-[90%] h-[60vh] bg-white rounded-2xl flex transition">
                                     <div className="">
                                         <Image src="/images/Home/TopCourse.jpg" height={30} width={410} alt="Mentor Image" className="rounded-tr-2xl rounded-tl-xl" />
-                                        <div>
-                                            {mentor.id}
+                                        <div className="font-bold">
                                             {mentor.name}
-                                            {mentor.description}
-                                            {mentor.profession}
-                                            {mentor.teaching_experience}
-                                            {mentor.work_experience}
                                         </div>
                                     </div>
 

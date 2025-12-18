@@ -14,7 +14,7 @@ type Props = {
     courses: Course[];
 };
 
-const categories = ["All Courses", "Design", "Development", "IT & Software", "Business"];
+const categories = ["All Courses", "Digital Marketing", "Development", "IT & Software", "Data Science"];
 
 const Courses = ({ courses }: Props) => {
 
