@@ -2,24 +2,24 @@
 
 import { supabase } from "@/lib/supabse/supabaseConfig";
 import Image from "next/image";
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Course = {
-  id: string;
-  title: string;
-  description: string;
-  startDate: string;
-  Duration: number;
-  language: string;
-  domain: string;
-  Delivery_Mode: string;
-
-  content: {
+    id: string;
     title: string;
-    subtitle: string;
-  }[];
+    description: string;
+    startDate: string;
+    Duration: number;
+    language: string;
+    domain: string;
+    Delivery_Mode: string;
 
-  image : string;
+    content: {
+        title: string;
+        subtitle: string;
+    }[];
+
+    image: string;
 }
 
 
@@ -29,17 +29,17 @@ const categories = ["All Courses", "Digital Marketing", "Development", "IT & Sof
 const Courses = () => {
 
     const [activeCategory, setActiveCategory] = useState("All Courses");
-    const [courses , setCourses] = useState<Course[]>([]);
+    const [courses, setCourses] = useState<Course[]>([]);
 
     console.log("THE COURSES DATA IS : ");
     console.log(courses);
 
-    useEffect(()=>{
-        const handleFetchCourseData = async ()=>{
-            const {data , error} = await supabase.from("Courses").select("*");
+    useEffect(() => {
+        const handleFetchCourseData = async () => {
+            const { data, error } = await supabase.from("Courses").select("*");
 
 
-            if(error){
+            if (error) {
 
                 console.log("THE ERROR IS : ");
                 console.log(error);
@@ -51,8 +51,8 @@ const Courses = () => {
         };
 
         handleFetchCourseData();
-        
-    },[]);
+
+    }, []);
 
     const filteredCourses =
 
@@ -61,25 +61,26 @@ const Courses = () => {
             : courses.filter((c) => c.domain === activeCategory);
 
     return (
-        <section className="w-full pt-20 py-16 bg-[#e9f5ff]">
+
+        <section className="w-full pt-20 py-16 bg-[#fbfdff]">
             <h2 className="text-center font-extrabold text-5xl text-[#14399f]">
-                     Our Courses
-                </h2>
+                Our Courses
+            </h2>
             <div className="w-7xl mx-auto px-6 text-center">
 
                 <p className="text-gray-500 mt-2 mb-8 text-2xl">
                     Explore a wide range of courses where learning is fun, easy, and absolutely free!
                 </p>
 
-               
+
                 <div className="flex flex-wrap justify-center gap-4 mb-10">
                     {categories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
                             className={`px-15 py-6 rounded-full border transition-all duration-300 cursor-pointer ${activeCategory === cat
-                                    ? "bg-[#1C336E] text-white font-bold border-[#1C336E]"
-                                    : "border-[#1C336E] text-[#1C336E] font-bold hover:bg-[#cac2f7]"
+                                ? "bg-[#1C336E] text-white font-bold border-[#1C336E]"
+                                : "border-[#1C336E] text-[#1C336E] font-bold bg-white hover:bg-[#cac2f7]"
                                 }`}
                         >
                             {cat}
@@ -92,7 +93,7 @@ const Courses = () => {
                     {filteredCourses.map((course) => (
                         <div
                             key={course.id}
-                            className="h-[50vh] w-[20vw] border-2 border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            className="h-[50vh] w-[20vw] border-2 bg-white border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                         >
                             <Image
                                 src={course.image}
@@ -101,14 +102,18 @@ const Courses = () => {
                                 height={400}
                                 className="rounded-tr-xl rounded-tl-xl h-[30vh]"
                             />
-                            <p className="mt-4 text-lg font-bold text-[#213c98]">
-                                {course.title}
-                            </p>
+                            <div>
+                                <p className="mt-4 text-lg font-bold text-[#213c98]">
+                                    {course.title}
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>
             </div>
+
         </section>
+
     );
 }
 

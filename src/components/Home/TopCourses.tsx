@@ -5,10 +5,10 @@ const TopCourses = () => {
 
   return (
 
-    <section className="w-full bg-linear-to-r from-[#f8f8fd] to-[#c9e1f1] py-12 px-6 md:px-12 lg:px-20">
+    <section className="w-full bg-[#e3f0fd] py-12 px-6 md:px-12 lg:px-20">
       
       {/* Heading */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl text-center font-extrabold mb-10 text-[#020274]">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl text-center font-extrabold mb-13 text-[#020274]">
         Top Courses
       </h2>
 
@@ -19,7 +19,7 @@ const TopCourses = () => {
         {[1, 2, 3].map((_, idx) => (
           <div
             key={idx}
-            className="flex flex-col bg-white shadow-2xl rounded-3xl
+            className="flex flex-col w-[26vw] h-[65vh] bg-white shadow-2xl rounded-3xl
                        hover:scale-[1.03] transition cursor-pointer overflow-hidden"
           >
             {/* Image */}
@@ -38,11 +38,11 @@ const TopCourses = () => {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 p-4">
-              <button className="w-full sm:w-auto py-3 px-6 bg-blue-600 rounded-full text-white font-bold hover:bg-blue-700 transition">
+            <div className="flex justify-between sm:flex-row p-4">
+              <button className="w-full sm:w-auto py-3 px-6 bg-blue-600 rounded-full text-white font-bold hover:bg-[#020276] transition cursor-pointer">
                 Explore
               </button>
-              <button className="w-full sm:w-auto py-3 px-6 bg-[#060663] rounded-full text-white font-bold hover:bg-[#020274] transition">
+              <button className="w-full sm:w-auto py-3 px-6 bg-[#060663] rounded-full text-white font-bold hover:bg-[#0a0ad7] transition cursor-pointer">
                 Reach To Us
               </button>
             </div>
