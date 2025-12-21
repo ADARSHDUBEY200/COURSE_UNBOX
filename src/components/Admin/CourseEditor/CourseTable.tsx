@@ -5,7 +5,7 @@ import { Pencil, Trash2, BookOpen } from "lucide-react";
 import { supabase } from "@/lib/supabse/supabaseConfig";
 
 type course = {
-   
+    id : string;
     title: string;
     description: string;
     startDate : number;
@@ -23,6 +23,7 @@ const CourseTable = ({onEdit} : {onEdit : any}) => {
 
 
   const [courses, setCourses] = useState<course[]>([]);
+
   const fetchTableData = async () => {
     const { data, error } = await supabase.from("Courses").select("*");
 
@@ -41,6 +42,18 @@ const CourseTable = ({onEdit} : {onEdit : any}) => {
 
   };
 
+  const handleDelete = async (id : string) => {
+    const {data , error} = await supabase.from("Courses").delete().eq("id" , id);
+
+    if(error){
+      console.log("THE ERROR OCCUR IS : ");
+      console.log(error);
+    };
+
+    console.log(data);
+
+  }
+
 
   useEffect(() => {
 
@@ -49,8 +62,10 @@ const CourseTable = ({onEdit} : {onEdit : any}) => {
   },[])
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-10">
+
       {/* Glass Card */}
       <div className="relative overflow-hidden rounded-[32px] bg-white/80 backdrop-blur-xl shadow-[0_30px_80px_rgba(0,0,0,0.12)] border border-gray-100">
+
         {/* Decorative Gradient */}
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500" />
 
@@ -105,13 +120,13 @@ const CourseTable = ({onEdit} : {onEdit : any}) => {
                   </td>
 
                   <td className="px-8 py-6 text-center">
-                    <button onClick={(e)=>{onEdit()}} className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-100 to-emerald-200 px-5 py-2.5 text-sm font-semibold text-emerald-700 shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer">
+                    <button onClick={(e)=>{onEdit(course)}} className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-100 to-emerald-200 px-5 py-2.5 text-sm font-semibold text-emerald-700 shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer">
                       <Pencil size={16} /> Edit
                     </button>
                   </td>
 
                   <td className="px-8 py-6 text-center">
-                    <button className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-rose-100 to-rose-200 px-5 py-2.5 text-sm font-semibold text-rose-700 shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer">
+                    <button className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-rose-100 to-rose-200 px-5 py-2.5 text-sm font-semibold text-rose-700 shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer" onClick={(e)=>{handleDelete(course.id)}}>
                       <Trash2 size={16} /> 
                       Delete
                     </button>

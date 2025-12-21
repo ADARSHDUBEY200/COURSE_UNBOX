@@ -2,13 +2,18 @@ import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
 
+
+
+
 export type InternshipCard = {
+
     id: number;
     category: string;
     title: string;
     description: string;
     image: string;
     href: string;
+
 };
 
 const Content = () => {

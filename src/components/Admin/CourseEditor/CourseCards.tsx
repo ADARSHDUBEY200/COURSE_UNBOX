@@ -8,10 +8,13 @@ type course = {
     id : string;
     title: string;
     description: string;
-    startDate : number;
+    startDate : string;
     Duration : number;
     language: string;
-    content : string;
+    content : {
+        title : string;
+        subtitle : string
+    }[];
     created_at: number;
     domain : string;
     Delivery_Mode : string
@@ -36,7 +39,7 @@ export default function CourseCards({onEdit} : {onEdit : any}) {
         }else{
 
             console.log("THIS IS THE DATA OF THE TABLE : ");
-            console.log(data);
+            console.log(data[0]);
             setCourses(data);
 
         }
@@ -47,7 +50,22 @@ export default function CourseCards({onEdit} : {onEdit : any}) {
 
         fetchTableData();
 
+
     },[]);
+
+
+    const handleDelete = async(id : string)=>{
+        const {data , error} = await supabase.from("Courses").delete().eq("id", id);
+
+        if(error){
+
+            console.log("This is the error : ");
+            console.log(error);
+            return
+        }
+
+        console.log(data);
+    }
 
 
 
@@ -114,7 +132,7 @@ export default function CourseCards({onEdit} : {onEdit : any}) {
 
                             
                             <div className="flex items-center gap-4">
-                                <button onClick={(e)=>{onEdit()}} className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-200 px-4 py-3 text-sm font-semibold text-emerald-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer">
+                                <button onClick={(e)=>{onEdit(course)}} className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-200 px-4 py-3 text-sm font-semibold text-emerald-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer">
 
                                     <Pencil size={16} /> 
 
@@ -122,7 +140,7 @@ export default function CourseCards({onEdit} : {onEdit : any}) {
 
                                 </button>
 
-                                <button className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-rose-100 to-rose-200 px-4 py-3 text-sm font-semibold text-rose-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer">
+                                <button className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-rose-100 to-rose-200 px-4 py-3 text-sm font-semibold text-rose-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer" onClick={(e)=>{handleDelete(course.id)}}>
 
                                     <Trash2 size={16} /> 
 

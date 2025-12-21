@@ -1,30 +1,64 @@
 "use client"
 
+import { supabase } from "@/lib/supabse/supabaseConfig";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 
 type Course = {
-    id: number;
-    title: string;
-    category: string;
-    image: string;
-};
+  id: string;
+  title: string;
+  description: string;
+  startDate: string;
+  Duration: number;
+  language: string;
+  domain: string;
+  Delivery_Mode: string;
 
-type Props = {
-    courses: Course[];
-};
+  content: {
+    title: string;
+    subtitle: string;
+  }[];
+
+  image : string;
+}
+
+
 
 const categories = ["All Courses", "Digital Marketing", "Development", "IT & Software", "Data Science"];
 
-const Courses = ({ courses }: Props) => {
+const Courses = () => {
 
     const [activeCategory, setActiveCategory] = useState("All Courses");
+    const [courses , setCourses] = useState<Course[]>([]);
+
+    console.log("THE COURSES DATA IS : ");
+    console.log(courses);
+
+    useEffect(()=>{
+        const handleFetchCourseData = async ()=>{
+            const {data , error} = await supabase.from("Courses").select("*");
+
+
+            if(error){
+
+                console.log("THE ERROR IS : ");
+                console.log(error);
+
+            }
+
+            setCourses(data || []);
+
+        };
+
+        handleFetchCourseData();
+        
+    },[]);
 
     const filteredCourses =
 
         activeCategory === "All Courses"
             ? courses
-            : courses.filter((c) => c.category === activeCategory);
+            : courses.filter((c) => c.domain === activeCategory);
 
     return (
         <section className="w-full pt-20 py-16 bg-[#e9f5ff]">

@@ -11,16 +11,16 @@ import Testimonials from "@/components/Home/Testimonials";
 
 export default function Home() {
 
-  const courses = [
-    { id: 1, title: "Web Development with MERN", category: "Development", image: "/images/Home/courseImage.webp" },
-    { id: 2, title: "Python", category: "Development", image: "/images/Home/TopCourse.jpg" },
-    { id: 3, title: "Data Science", category: "IT & Software", image: "/images/Home/courseImage.webp" },
-    { id: 4, title: "Data Analytics", category: "Data Science", image: "/images/Home/TopCourse.jpg" },
-    { id: 5, title: "Power BI", category: "Data Science", image: "/images/Home/courseImage.webp" },
-    { id: 6, title: "UI/UX Design", category: "Digital Marketing", image: "/images/Home/TopCourse.jpg" },
-    { id: 7, title: "Unity 3D", category: "Development", image: "/images/Home/courseImage.webp" },
-    { id: 8, title: "React", category: "Development", image: "/images/Home/TopCourse.jpg" },
-  ];
+  // const courses = [
+  //   { id: 1, title: "Web Development with MERN", category: "Development", image: "/images/Home/courseImage.webp" },
+  //   { id: 2, title: "Python", category: "Development", image: "/images/Home/TopCourse.jpg" },
+  //   { id: 3, title: "Data Science", category: "IT & Software", image: "/images/Home/courseImage.webp" },
+  //   { id: 4, title: "Data Analytics", category: "Data Science", image: "/images/Home/TopCourse.jpg" },
+  //   { id: 5, title: "Power BI", category: "Data Science", image: "/images/Home/courseImage.webp" },
+  //   { id: 6, title: "UI/UX Design", category: "Digital Marketing", image: "/images/Home/TopCourse.jpg" },
+  //   { id: 7, title: "Unity 3D", category: "Development", image: "/images/Home/courseImage.webp" },
+  //   { id: 8, title: "React", category: "Development", image: "/images/Home/TopCourse.jpg" },
+  // ];
 
 
 
@@ -32,7 +32,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Banner />
-      <Courses courses={courses} />
+      <Courses />
       <Enquiry />
       <TopCourses />
       <Mentors />

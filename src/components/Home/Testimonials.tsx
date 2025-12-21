@@ -37,7 +37,9 @@ const testimonials: Testimonial[] = [
 
 const Testimonials = () => {
   return (
+
     <section className="py-20 bg-white">
+      
       <div className="max-w-7xl mx-auto px-6 text-center">
 
 
@@ -83,8 +85,12 @@ const Testimonials = () => {
               <p className="text-sm text-gray-500">{item.role}</p>
             </div>
           ))}
+
+
         </div>
+
       </div>
+
     </section>
   );
 };

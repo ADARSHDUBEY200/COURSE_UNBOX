@@ -5,16 +5,16 @@ import React, { useState } from "react";
 
 const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
+    const [imageURL , setImageURL] = useState("");
+
     const [formData, setFormData] = useState({
         title: "",
         description: "",
         startDate: "",
-        Duration: "",
+        Duration: 0,
         language: "",
         domain: "",
         Delivery_Mode: "",
-        content: "",
-        image: null as File | null,
     });
 
     const handleChange = (
@@ -22,6 +22,33 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
     ) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
+
+    const handleSave = async () => {
+        const { data, error } = await supabase.from("Courses").insert([{
+
+            title: formData.title,
+            description: formData.description,
+            startDate: formData.startDate,
+            Duration: formData.Duration,
+            language: formData.language,
+            domain: formData.domain,
+            Delivery_Mode: formData.Delivery_Mode,
+            content : {},
+            image : imageURL
+
+        }]).select().single();
+
+        if (error) {
+            console.log("THE ERROR COMES IS : ");
+            console.log(error);
+
+            return
+        };
+
+
+        console.log(data);
+    }
 
 
     const handleFileData = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +74,8 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
         console.log(publicUrlData)
         console.log(publicUrlData.publicUrl);
+        setImageURL(publicUrlData.publicUrl);
+
     }
 
     return (
@@ -55,7 +84,7 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                 <div className="h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
 
                 <div className="text-center text-3xl font-bold mt-4">
-                    Course Editor
+                    Add Course
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-8">
@@ -190,12 +219,12 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                             </label>
                             <textarea
                                 name="content"
-                                value={formData.content}
-                                onChange={handleChange}
                                 rows={4}
                                 className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
                             />
                         </div>
+
+
 
                         {/* Image Upload */}
 
@@ -205,9 +234,9 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                             </label>
 
                             <div className="flex items-center gap-4">
-                                <label   className="flex cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-blue-300 bg-blue-50 px-6 py-4 text-sm font-medium text-blue-600 hover:bg-blue-100 transition">
+                                <label className="flex cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-blue-300 bg-blue-50 px-6 py-4 text-sm font-medium text-blue-600 hover:bg-blue-100 transition">
                                     Upload Image
-                                    <input type="file" className="hidden" onChange={handleFileData}/>
+                                    <input type="file" className="hidden" onChange={handleFileData} />
                                 </label>
                                 <span className="text-xs text-gray-500">
                                     PNG, JPG up to 5MB
@@ -215,12 +244,16 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                             </div>
                         </div>
 
+
+
                         {/* Submit */}
 
-                        <button className="mt-6 px-10 py-4 rounded-3xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition">
+                        <button className="mt-6 px-10 py-4 rounded-3xl bg-blue-600 text-white text-sm font-medium transition cursor-pointer hover:bg-[#020242]" onClick={handleSave}>
                             Save Course
                         </button>
                     </div>
+
+
 
                     {/* ================= PREVIEW ================= */}
 

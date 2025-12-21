@@ -1,15 +1,35 @@
 "use client"
 
 import React, { useState } from 'react'
-import Card from './Card';
-import Input from './Input';
-import TextArea from './TextArea';
 import CourseCards from './CourseEditor/CourseCards';
 import CourseTable from './CourseEditor/CourseTable';
 import AddCourse from './CourseEditor/AddCourse';
+import EditCourse from './CourseEditor/EditCourse';
 
-const CourseEditor = ({collapsed} : {collapsed : boolean}) => {
+type Course = {
+
+    id: string;
+    title: string;
+    description: string;
+    startDate: string;
+    Duration: number;
+    language: string;
+
+    content: {
+        title: string;
+        subtitle: string;
+    }[];
+    
+    created_at: number;
+    domain: string;
+    Delivery_Mode: string
+
+};
+
+
+const CourseEditor = ({ collapsed }: { collapsed: boolean }) => {
     const [active, setActive] = useState("card");
+    const [editItem, setEditItem] = useState<Course | null>(null);
 
     const handleCardView = () => {
         setActive("card");
@@ -19,8 +39,10 @@ const CourseEditor = ({collapsed} : {collapsed : boolean}) => {
         setActive("Table")
     }
 
-    const onEdit = () => {
-        setActive("Edit")
+    const onEdit = (course: Course ) => {
+        setActive("Edit");
+        setEditItem(course);
+
     }
 
     const handleAdd = () => {
@@ -37,9 +59,10 @@ const CourseEditor = ({collapsed} : {collapsed : boolean}) => {
                 </div>
             </div>
 
-            {active === "card" && <CourseCards onEdit = {onEdit} />}
-            {active === "Table" && <CourseTable onEdit = {onEdit} />}
-            {active === "Add" && <AddCourse collapsed = {collapsed}/>}
+            {active === "card" && <CourseCards onEdit={onEdit} />}
+            {active === "Table" && <CourseTable onEdit={onEdit} />}
+            {active === "Add" && <AddCourse collapsed={collapsed} />}
+            {active === "Edit" && (<EditCourse collapsed={collapsed} course={editItem} />)}
 
         </>
     );
