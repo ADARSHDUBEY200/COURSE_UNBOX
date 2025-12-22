@@ -1,23 +1,23 @@
 import React from "react";
 
 const logos = [
-  { name: "Amazon", src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-  { name: "CocaCola", src: "https://cdn.worldvectorlogo.com/logos/coca-cola-2021.svg" },
-  { name: "Practo", src: "https://cdn.brandfetch.io/id6XCI8OsV/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1701366650373" },
-  { name: "OYO", src: "https://cdn.brandfetch.io/idSXt7tZEr/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1667566408645" },
-  { name: "Paytm", src: "https://cdn.worldvectorlogo.com/logos/paytm-1.svg" },
-  { name: "Nestle", src: "https://cdn.brandfetch.io/id1xOwiSj_/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1746445624897" },
+    { name: "Amazon", src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+    { name: "CocaCola", src: "https://cdn.worldvectorlogo.com/logos/coca-cola-2021.svg" },
+    { name: "Practo", src: "https://cdn.brandfetch.io/id6XCI8OsV/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1701366650373" },
+    { name: "OYO", src: "https://cdn.brandfetch.io/idSXt7tZEr/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1667566408645" },
+    { name: "Paytm", src: "https://cdn.worldvectorlogo.com/logos/paytm-1.svg" },
+    { name: "Nestle", src: "https://cdn.brandfetch.io/id1xOwiSj_/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1746445624897" },
 ];
 
 
 export default function Partners() {
     return (
-        <div className="w-full  bg-linear-to-r from-[#1C336E] to-[#3d5ba9] py-8 overflow-hidden">
+        <div className="w-full bg-linear-to-r from-[#1C336E] to-[#3d5ba9] py-8 overflow-hidden">
             <div className="max-w-7xl mx-auto flex items-center gap-12 px-6">
                 {/* Left Stat */}
                 <div className="flex-shrink-0 text-white">
-                    <div className="text-3xl font-bold">10K+</div>
-                    <div className="text-sm opacity-80">Openings daily</div>
+                    <div className="text-3xl font-bold">100K+</div>
+                    <div className="text-sm opacity-80">Students We Teach</div>
                 </div>
 
                 {/* Divider */}
@@ -41,20 +41,6 @@ export default function Partners() {
                     </div>
                 </div>
             </div>
-
-            <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-      `}</style>
         </div>
     );
 }

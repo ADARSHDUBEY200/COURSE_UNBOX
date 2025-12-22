@@ -74,7 +74,7 @@ const Sidebar = () => {
                     {active === "home" && <HomeEditor collapsed = {collapsed} />}
                     {active === "courses" && <CourseEditor collapsed = {collapsed}/>}
                     {active === "about" && <AboutEditor />}
-                    {active === "mentors" && <MentorEditor/>}
+                    {active === "mentors" && <MentorEditor collapsed = {collapsed}/>}
                     {active === "blog" && <BlogEditor />}
                     {active === "settings" && <SettingsEditor />}
 

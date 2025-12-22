@@ -16,7 +16,7 @@ type Mentor = {
 
 
 
-export default function MentorCard() {
+export default function MentorCard({onEdit} : {onEdit : any}) {
 
     const [mentors , setMentors] = useState<Mentor[]>([]);
 
@@ -37,6 +37,10 @@ export default function MentorCard() {
 
         }
     };
+
+    const handleDelete = async (id : number) => {
+        const {data , error } = await supabase.from("Mentors").delete().eq("id", id);
+    }
 
 
     useEffect(()=>{
@@ -110,7 +114,7 @@ export default function MentorCard() {
 
                             
                             <div className="flex items-center gap-4">
-                                <button className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-200 px-4 py-3 text-sm font-semibold text-emerald-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer">
+                                <button className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-200 px-4 py-3 text-sm font-semibold text-emerald-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer" onClick={()=>onEdit(mentor)}>
 
                                     <Pencil size={16} /> 
 
@@ -118,7 +122,7 @@ export default function MentorCard() {
 
                                 </button>
 
-                                <button className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-rose-100 to-rose-200 px-4 py-3 text-sm font-semibold text-rose-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer">
+                                <button className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-rose-100 to-rose-200 px-4 py-3 text-sm font-semibold text-rose-700 shadow-md hover:shadow-xl hover:scale-[1.04] transition-all cursor-pointer" onClick={(e)=>{handleDelete(mentor.id)}}>
 
                                     <Trash2 size={16} /> 
 

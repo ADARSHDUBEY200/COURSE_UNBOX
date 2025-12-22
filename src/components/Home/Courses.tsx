@@ -1,6 +1,7 @@
 "use client"
 
 import { supabase } from "@/lib/supabse/supabaseConfig";
+import { BookA, Clock, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -93,7 +94,7 @@ const Courses = () => {
                     {filteredCourses.map((course) => (
                         <div
                             key={course.id}
-                            className="h-[50vh] w-[20vw] border-2 bg-white border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            className="h-[55vh] w-[20vw] border-2 bg-white border-[#2e19a7] rounded-2xl flex flex-col shadow-xl gap-1 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                         >
                             <Image
                                 src={course.image}
@@ -102,10 +103,30 @@ const Courses = () => {
                                 height={400}
                                 className="rounded-tr-xl rounded-tl-xl h-[30vh]"
                             />
-                            <div>
+                            <div className="">
                                 <p className="mt-4 text-lg font-bold text-[#213c98]">
                                     {course.title}
                                 </p>
+
+                                <div className="w-[50%] mx-auto mt-1 mb-1 bg-indigo-100 p-1 rounded-2xl">
+                                    {course.domain}
+                                </div>
+
+                                <div className="w-[98%] mx-auto bg-gray-100 flex shadow-2xl justify-center gap-3 p-1">
+                                    <div className="flex gap-1 border-r border-[black] p-1.5">
+                                       <Clock/> {course.Duration} 
+                                    </div>
+                                    <div className="flex gap-1 border-r border-[black] p-1.5">
+                                      <ShieldCheck />  Certificate
+                                    </div>
+                                    <div className="flex gap-1 p-1.5">
+                                        <BookA />{course.language}
+                                    </div>
+
+                                   
+                                </div>
+
+                                 <button className="bg-[#dbb004] px-7 py-2 rounded-3xl mt-2 mb-2 cursor-pointer hover:bg-[#052f7c] hover:text-white font-bold">view</button>
                             </div>
                         </div>
                     ))}

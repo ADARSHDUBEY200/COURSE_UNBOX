@@ -3,6 +3,8 @@ import Image from "next/image";
 
 const Hero = () => {
 
+  // bg-linear-to-r from-[#1C336E] to-[#3d5ba9]
+
   return (
     <section
       className="

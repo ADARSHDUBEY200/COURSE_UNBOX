@@ -17,7 +17,10 @@ const TopCompanies = () => {
         <div className='h-[50vh] w-full p-15 bg-[#f6fcfe]'>
 
 
-            <div className='h-[10vh] mb-10 text-center text-5xl font-extrabold text-[#030365]'>Top Companies</div>
+            <div className='h-[10vh] mb-10 text-center text-5xl font-extrabold text-[#030365]'>
+                Hiring Partners
+
+            </div>
 
             <div className="relative flex-1 overflow-hidden mb-10">
                 <div className="flex w-max animate-marquee gap-16">
