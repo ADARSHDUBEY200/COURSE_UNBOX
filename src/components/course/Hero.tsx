@@ -1,38 +1,132 @@
 import React from 'react'
+import { CheckCircle, Star } from "lucide-react";
 
 const Hero = () => {
 
-    
+
     return (
 
 
-        <section className="w-full bg-gradient-to-r from-[#1e3a8a] via-[#6366f1] to-[#ec4899]
- bg-opacity-90 py-16 px-10">
+        <section className="w-full bg-gradient-to-br from-[#01016c] via-[#4d14c6] to-violet-800 bg-opacity-90 py-12 px-10">
+
             <div className="w-8xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-                
-                <div>
 
-                    <h1 className="text-4xl font-extrabold leading-tight">
-                        Data Science With Generative AI Course
-                    </h1>
 
-                    <p className="text-gray-300 mt-4 text-[15px] leading-relaxed">
-                        Become a Certified Data Scientist with PW Skills and harness the power
-                        of Machine Learning, NLP and Generative AI. Learn industry-relevant
-                        skills that can help you build a strong career in Data Science.
-                    </p>
+                <div className="w-full text-white px-4 md:px-10">
 
-                    <div className="mt-8">
-                        <p className="text-gray-300 mb-3">Enroll Now!</p>
 
-                        <div className="flex gap-4">
-                            <button className="bg-[#f4cf3e] hover:bg-[#bac218] px-10 py-3 rounded-3xl font-bold text-black cursor-pointer">
-                                Buy now
-                            </button>
+                    {/* Top Badges */}
 
-                            <button className="border border-[#08087e] bg-[#050590] text-white px-10 py-3 rounded-3xl flex items-center justify-center cursor-pointer">
-                                <span className="text-xl">Download</span>
-                            </button>
+                    <div className="flex flex-wrap items-center gap-3 mb-6">
+                        <span className="bg-white/15 px-4 py-1 rounded-full text-sm font-medium">
+                            Government-certified
+                        </span>
+
+                        <span className="flex items-center gap-1 bg-white/15 px-4 py-1 rounded-full text-sm font-medium">
+                            <Star className="w-4 h-4 text-yellow-400" />
+                            4.5
+                        </span>
+                    </div>
+
+
+
+                    {/* Heading */}
+
+                    <div className="text-3xl md:text-3xl font-bold leading-tight max-w-4xl">
+                        <span className="text-yellow-400">Full Stack Development </span>
+                        Placement Course with AI
+                        <span className="inline-block ml-2 bg-white/15 px-4 py-1 rounded-full text-sm p-5">
+                            Updated in May’25
+                        </span>
+                    </div>
+
+
+
+
+
+                    {/* Features */}
+
+                    <div className="mt-6 space-y-3">
+                        <div className="flex items-center gap-3">
+                            <CheckCircle className="text-green-400" />
+                            <p className="text-lg">
+                                Get placed with <b>₹3–10 LPA</b> salary{" "}
+                                <span className="underline cursor-pointer">Know more</span>
+                            </p>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                            <CheckCircle className="text-green-400" />
+                            <p className="text-lg">Course fee refund if not placed</p>
+                        </div>
+                    </div>
+
+
+
+                    {/* Pricing Card */}
+
+                    <div className="mt-6 w-xl bg-white/10 backdrop-blur-xl rounded-2xl pb-2">
+
+
+                        <div className='flex items-center w-full h-9 bg-[#4f0095] rounded-tr-2xl rounded-tl-2xl border border-white/20 p-3 pb-4 text-lg'>
+                            <p>6 months online course with LIVE sessions</p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-4 items-center pl-3">
+
+                            <div className='pl-7'>
+
+                                <p className="text-sm text-white/80">Batch starts on</p>
+
+                                <h4 className="text-2xl font-bold mt-1">23rd Dec</h4>
+
+                                <span className="inline-block mt-3 bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-semibold">
+                                    Limited seats
+                                </span>
+
+                            </div>
+
+
+                            <div className="md:border-l md:border-white/20 md:pl-9">
+
+                                <p className="text-sm text-white/80">Course Fee</p>
+
+                                <div className="flex items-end gap-3 mt-2">
+                                    <h4 className="text-3xl font-extrabold">₹34,999</h4>
+                                    <span className="line-through text-white/60">₹45,000</span>
+                                </div>
+
+                                <span className="inline-block mt-3 bg-white text-purple-700 px-4 py-1 rounded-full text-sm font-semibold">
+                                    Save ₹10,001
+                                </span>
+
+                                <p className="mt-3 text-yellow-300 text-sm font-medium">
+                                    Course fee increasing soon ↗
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {/* Hiring Partners */}
+
+                    <div className="mt-10">
+                        <p className="text-lg font-semibold mb-4">
+                            Our learners get placed at
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-4">
+                            {["Samsung", "xTo10x", "Haptik", "+250 more hiring partners"].map(
+                                (company) => (
+                                    <div
+                                        key={company}
+                                        className="bg-white/15 px-5 py-2 rounded-lg text-sm font-medium"
+                                    >
+                                        {company}
+                                    </div>
+                                )
+                            )}
                         </div>
                     </div>
                 </div>
@@ -40,11 +134,13 @@ const Hero = () => {
 
 
 
+
+
                 <div className="flex justify-center">
                     <img
-                        src="/images/Course/course.jpeg"
+                        src="/images/Home/UIUX.png"
                         alt="Course Banner"
-                        className="rounded-2xl shadow-lg w-[90%]"
+                        className="rounded-2xl shadow-lg w-[95%] h-[60vh]"
                     />
                 </div>
 

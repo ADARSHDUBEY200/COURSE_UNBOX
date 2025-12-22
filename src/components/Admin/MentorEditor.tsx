@@ -16,9 +16,9 @@ type Mentor = {
     created_at: number
 };
 
-const MentorEditor = ({collapsed} : {collapsed : boolean}) => {
+const MentorEditor = ({ collapsed }: { collapsed: boolean }) => {
     const [active, setActive] = useState("card");
-    const [editItem , setEditItem] = useState<Mentor | null>(null);
+    const [editItem, setEditItem] = useState<Mentor | null>(null);
 
     const handleCardView = () => {
         setActive("card");
@@ -32,11 +32,11 @@ const MentorEditor = ({collapsed} : {collapsed : boolean}) => {
         setActive("Add")
     }
 
-    const onEdit = (mentor : Mentor) => {
+    const onEdit = (mentor: Mentor) => {
         setActive("Edit");
         setEditItem(mentor);
     }
-    
+
     return (
         <>
 
@@ -48,10 +48,10 @@ const MentorEditor = ({collapsed} : {collapsed : boolean}) => {
                 </div>
             </div>
 
-            {active === "card" && <MentorCard onEdit = {onEdit}/>}
-            {active === "Table" && <MentorTable onEdit = {onEdit}/>}
-            {active === "Add" && <AddMentor collapsed = {collapsed} />}
-            {active === "Edit" && <EditMentor collapsed = {collapsed} course = {editItem}/>}
+            {active === "card" && <MentorCard onEdit={onEdit} />}
+            {active === "Table" && <MentorTable onEdit={onEdit} />}
+            {active === "Add" && <AddMentor collapsed={collapsed} />}
+            {active === "Edit" && editItem && (<EditMentor collapsed={collapsed} mentor={editItem} />)}
 
         </>
     );
