@@ -14,6 +14,7 @@ import TopCompanies from "@/components/Home/TopCompanies";
 import LetsConnect from "@/components/Home/LetsConnect";
 import CertificationBanner from "@/components/Home/Deepak";
 import StatsSection from "@/components/Home/StatsSection";
+import Trending from "@/components/Home/Trending";
 
 export default function Home() {
 
@@ -33,6 +34,7 @@ export default function Home() {
       <Mentors />
       <CertificationBanner/>
       <StatsSection/>
+      <Trending/>
       <Testimonials />
       <TopCompanies/>
       <LetsConnect/>
