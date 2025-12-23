@@ -24,7 +24,7 @@ const blogs = [
 export default function RelatedBlog(){
     return (
       <section className="max-w-7xl mx-auto px-4 mt-20 pb-20">
-        <h2 className="text-2xl font-bold text-slate-900 mb-8">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-8 ">
           Related Articles
         </h2>
 

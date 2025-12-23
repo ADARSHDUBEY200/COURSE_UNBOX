@@ -30,7 +30,7 @@ const cards: InternshipCard[] = [
         description:
             "Why the NDTV Content Writing Internship is a big opportunity if you're searching for a content writing internship...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/content-writing",
+        href: "/blog/content-writing",
     },
     {
         id: 2,
@@ -39,7 +39,7 @@ const cards: InternshipCard[] = [
         description:
             "Interactive Python reshaped the way I write code, learn new concepts, and experiment with ideas...",
         image: "/images/Home/Course.jpg",
-        href: "/blogs/interactive-python",
+        href: "/blog/interactive-python",
     },
 
     {
@@ -50,7 +50,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
     {
@@ -61,7 +61,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
     {
@@ -72,7 +72,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
     {
@@ -83,7 +83,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
     {
@@ -94,7 +94,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
     {
@@ -105,7 +105,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
     {
         id: 9,
@@ -115,7 +115,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
     {
         id: 10,
@@ -125,7 +125,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
     {
@@ -136,7 +136,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
     {
@@ -147,7 +147,7 @@ const cards: InternshipCard[] = [
         description:
             "Stripe is offering a Free Software Engineer Internship in Bengaluru with a ₹12 LPA stipend...",
         image: "/images/Home/Course.jpg",
-        href: "/internships/software-engineer",
+        href: "/blog/software-engineer",
     },
 
 ];

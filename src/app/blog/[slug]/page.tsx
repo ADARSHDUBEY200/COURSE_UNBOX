@@ -21,7 +21,7 @@ const Page = ()=> {
          <LeftContent/>
 
           {/* ================= RIGHT SIDEBAR ================= */}
-          <aside className="relative">
+          <aside className="relative shadow-xs">
                 <div className="sticky top-44 space-y-6">
                   <AdCard />
                   <BlogCategories />
