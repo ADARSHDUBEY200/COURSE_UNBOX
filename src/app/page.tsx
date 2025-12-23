@@ -27,6 +27,7 @@ export default function Home() {
       <Hero />
       <Partners />
       <Banner />
+      <Trending/>
       <Courses />
       <Enquiry />
       <TopCourses />
@@ -34,7 +35,6 @@ export default function Home() {
       <Mentors />
       <CertificationBanner/>
       <StatsSection/>
-      <Trending/>
       <Testimonials />
       <TopCompanies/>
       <LetsConnect/>
