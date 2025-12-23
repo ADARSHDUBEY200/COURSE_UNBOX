@@ -1,9 +1,10 @@
 "use client"
 import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 export default function BlogFAQ(){
-    const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const FAQs = [
+  const faqs = [
     {
       question: "How long does it take to master DSA?",
       answer:
@@ -13,38 +14,66 @@ export default function BlogFAQ(){
 
    
     return (
-        <section className="max-w-6xl  px-36 mt-16">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Frequently Asked Questions
+    <section className="max-w-5xl mx-32 px-4 py-16 cursor-pointer">
+      
+      {/* Heading */}
+      <div className="mb-10 ">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+          Frequently Asked <span className="text-blue-600">Questions</span>
         </h2>
+        
+      </div>
 
-        <div className="space-y-4">
-          {FAQs.map((faq, idx) => (
+      {/* FAQ List */}
+      <div className="space-y-4">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+
+          return (
             <div
-              key={idx}
-              className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm"
+              key={index}
+              className="
+                rounded-xl border border-gray-100 bg-white
+                shadow-md transition
+              "
             >
               <button
-                onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
-                className="w-full flex justify-between items-center text-left"
+                onClick={() =>
+                  setOpenIndex(isOpen ? null : index)
+                }
+                className="
+                  w-full flex items-center justify-between gap-4
+                  px-6 py-4 text-left
+                "
               >
-                <span className="font-medium text-slate-800">
+                <span className="font-semibold text-gray-900">
                   {faq.question}
                 </span>
-                <span className="text-blue-600">
-                  {openFAQ === idx ? "−" : "+"}
+
+                <span
+                  className={`
+                    flex h-8 w-8 items-center justify-center rounded-full
+                    bg-blue-50 text-blue-600
+                    transition-transform duration-300
+                    ${isOpen ? "rotate-180" : ""}
+                  `}
+                >
+                  <ChevronDown size={18} />
                 </span>
               </button>
 
-              {openFAQ === idx && (
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed animate-fadeIn">
+              {isOpen && (
+                <div className="px-6 pb-4 text-sm leading-relaxed text-gray-600">
                   {faq.answer}
-                </p>
+                </div>
               )}
 
+              
+              <div className="h-0.5 bg-linear-to-r from-blue-500 rounded-b-xl" />
             </div>
-          ))}
-        </div>
-      </section>
-    )
+          );
+        })}
+      </div>
+    </section>
+  );
 }

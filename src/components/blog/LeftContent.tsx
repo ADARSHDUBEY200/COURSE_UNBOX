@@ -1,9 +1,10 @@
+import { HistoryIcon } from "lucide-react"
 import Link from "next/link"
 
 export default function LeftContent(){
-    return ( <article>
+    return ( <article className=" border-r-gray-400 ">
               {/* ===== BLOG HEADER ===== */}
-              <section className="px-4 pt-16">
+              <section className="px-4 pt-16 ">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-600">
                       Database • SQL
@@ -28,7 +29,7 @@ export default function LeftContent(){
                 <section className="px-4 mt-10">
                   <div className="group relative w-full h-[380px] rounded-2xl overflow-hidden shadow-xl">
                     <img
-                      src="https://www.techicy.com/wp-content/uploads/2018/10/qualities-of-an-excellent-tech-blog.jpg"
+                      src="/images/Blog/Blog.webp"
                       alt="Blog cover"
                       className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                     />
@@ -66,7 +67,7 @@ export default function LeftContent(){
                       In this article, we will cover the most frequently used SQL queries
                       that every data scientist should know.
                     </p>
-
+                    
                     <p>Introduction
 
                    SQL is one of the most important skills for any data scientist. 
