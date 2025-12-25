@@ -1,8 +1,8 @@
 "use client"
-
 import { supabase } from "@/lib/supabse/supabaseConfig";
 import { BookA, Clock, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type Course = {
@@ -54,6 +54,8 @@ const Courses = () => {
         handleFetchCourseData();
 
     }, []);
+
+
 
     const filteredCourses =
 
@@ -114,19 +116,21 @@ const Courses = () => {
 
                                 <div className="w-[98%] mx-auto bg-gray-100 flex shadow-2xl justify-center gap-3 p-1">
                                     <div className="flex gap-1 border-r border-[black] p-1.5">
-                                       <Clock/> {course.Duration} 
+                                        <Clock /> {course.Duration}
                                     </div>
                                     <div className="flex gap-1 border-r border-[black] p-1.5">
-                                      <ShieldCheck />  Certificate
+                                        <ShieldCheck />  Certificate
                                     </div>
                                     <div className="flex gap-1 p-1.5">
                                         <BookA />{course.language}
                                     </div>
 
-                                   
+
                                 </div>
 
-                                 <button className="bg-[#dbb004] px-7 py-2 rounded-3xl mt-2 mb-2 cursor-pointer hover:bg-[#052f7c] hover:text-white font-bold">view</button>
+                                <Link href={`/course/${course.id}`}>
+                                    <button className="bg-[#dbb004] px-7 py-2 rounded-3xl mt-2 mb-2 cursor-pointer hover:bg-[#052f7c] hover:text-white font-bold">view</button>
+                                </Link>
                             </div>
                         </div>
                     ))}

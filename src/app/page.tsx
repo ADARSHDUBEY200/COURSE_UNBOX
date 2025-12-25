@@ -20,56 +20,37 @@ import AboutUs from "@/components/Home/AboutUs";
 import Faq from "@/components/Home/Faq";
 import TestimonialsSection from "@/components/About/TestimonialsSection";
 import DigiCourseSection from "@/components/Home/DigiCourseSection";
+import PhotoGalleryCarousel from "@/components/Home/PhotoGallery";
 
 export default function Home() {
 
-  return (
+      return (
 
 
-    <main className="w-full min-h-screen bg-white">
-<<<<<<< HEAD
+            <main className="w-full min-h-screen bg-white">
 
-      <Navbar />
-=======
-      {/*  <Navbar />
->>>>>>> 96f6e2dd216ac441039ec08ea8782678e4906437
-      <Hero />
-      <Partners />
-      <Banner />
-      <Trending />
-      <Courses />
-      <Enquiry />
-      <TopCourses />
-<<<<<<< HEAD
-      <Hire/>
-      <AboutUs />
-      <CertificationBanner />
-      <Mentors />
-      <StatsSection />
-      <TopCompanies />
-      <Testimonials />
-      <Faq />
-      <LetsConnect />
-      <Footer />
+                  <Navbar />
+                  <Hero />
+                  <Partners />
+                  <Banner />
+                  <Trending />
+                  <Courses />
+                  <Enquiry />
+                  <TopCourses />
+                  <DigiCourseSection />
+                  <Hire />
+                  <AboutUs />
+                  <CertificationBanner />
+                  <Mentors />
+                  <StatsSection />
+                  <PhotoGalleryCarousel />
+                  <TopCompanies />
+                  <Testimonials />
+                  <Faq />
+                  <LetsConnect />
+                  <Footer />
 
-=======
-      <Hire /> */}
-      <Mentors />
-      <CertificationBanner/>
-      <StatsSection/>
-      <Trending/>
-      <AboutUs/>
-      <TestimonialsSection/>
-      <PhotoGallery/>
-      <DigiCourseSection/>
-      {/* <Faq/> */}
-      <Faq/>
-      <Testimonials />
-      <TopCompanies/>
-      <LetsConnect/>
-      <Footer />
->>>>>>> 96f6e2dd216ac441039ec08ea8782678e4906437
-    </main>
+            </main>
 
-  );
+      );
 }

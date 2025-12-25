@@ -1,7 +1,57 @@
-import React from 'react'
-import { CheckCircle, Star } from "lucide-react";
+"use client"
 
-const Hero = () => {
+import { useEffect, useState } from 'react'
+import { CheckCircle, Star } from "lucide-react";
+import { supabase } from '@/lib/supabse/supabaseConfig';
+
+type Course = {
+    id: string;
+    title: string;
+    description: string;
+    startDate: string;
+    Duration: number;
+    language: string;
+    domain: string;
+    Delivery_Mode: string;
+
+    content: {
+        title: string;
+        subtitle: string;
+    }[];
+
+    high: number,
+    low:number,
+    image:string,
+}
+
+const Hero = ({ courseId }: { courseId: string }) => {
+    const [course, setCourse] = useState<Course | null>(null);
+
+
+    const getData = async () => {
+
+        const { data, error } = await supabase.from("Courses").select("*").eq("id", courseId).single();
+
+        if (error) {
+
+            console.log("The error coming in the Hero Section of the : ");
+            console.log(error);
+
+        }
+
+
+        console.log("THE DATA IS FOR THE PARTICULAR ID IS : ");
+        console.log(data);
+        setCourse(data);
+
+    }
+
+
+    useEffect(() => {
+
+        getData();
+
+    }, []);
 
 
     return (
@@ -33,7 +83,7 @@ const Hero = () => {
                     {/* Heading */}
 
                     <div className="text-3xl md:text-3xl font-bold leading-tight max-w-4xl">
-                        <span className="text-yellow-400">Full Stack Development </span>
+                        <span className="text-yellow-400">{course?.title} </span>
                         Placement Course with AI
                         <span className="inline-block ml-2 bg-white/15 px-4 py-1 rounded-full text-sm p-5">
                             Updated in May’25
@@ -50,7 +100,7 @@ const Hero = () => {
                         <div className="flex items-center gap-3">
                             <CheckCircle className="text-green-400" />
                             <p className="text-lg">
-                                Get placed with <b>₹3–10 LPA</b> salary{" "}
+                                Get placed with <b>₹{course?.low}-{course?.high} LPA</b> salary{" "}
                                 <span className="underline cursor-pointer">Know more</span>
                             </p>
                         </div>
@@ -69,7 +119,7 @@ const Hero = () => {
 
 
                         <div className='flex items-center w-full h-9 bg-[#4f0095] rounded-tr-2xl rounded-tl-2xl border border-white/20 p-3 pb-4 text-lg'>
-                            <p>6 months online course with LIVE sessions</p>
+                            <p>{course?.Duration} months online course with LIVE sessions</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-4 items-center pl-3">
@@ -78,7 +128,7 @@ const Hero = () => {
 
                                 <p className="text-sm text-white/80">Batch starts on</p>
 
-                                <h4 className="text-2xl font-bold mt-1">23rd Dec</h4>
+                                <h4 className="text-2xl font-bold mt-1">{course?.startDate}</h4>
 
                                 <span className="inline-block mt-3 bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-semibold">
                                     Limited seats
@@ -138,7 +188,7 @@ const Hero = () => {
 
                 <div className="flex justify-center">
                     <img
-                        src="/images/Home/UIUX.png"
+                        src={course?.image}
                         alt="Course Banner"
                         className="rounded-2xl shadow-lg w-[95%] h-[60vh]"
                     />

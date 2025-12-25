@@ -21,8 +21,8 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
         <>
             <Navbar />
             <div className="w-full min-h-screen text-white">
-                <Hero />
-                <Banner />
+                <Hero courseId={id}/>
+                <Banner courseId={id}/>
                 <Enquiry />
                 <Module />
                 <Mentors />

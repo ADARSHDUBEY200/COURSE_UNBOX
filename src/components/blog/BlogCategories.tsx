@@ -1,4 +1,6 @@
 export default function BlogCategories() {
+
+  
   const categories = [
     "Adventure",
     "Amazing Facts",

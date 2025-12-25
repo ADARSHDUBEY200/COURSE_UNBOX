@@ -71,12 +71,13 @@ const Module = () => {
 
 
 
-                <div className="flex flex-wrap gap-4 mb-12">
+                <div className="flex overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth gap-4 mb-12 p-3">
+
                     {curriculumTabs.map((tab, index) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(index)}
-                            className={`rounded-2xl px-8 py-4 text-sm font-medium transition border cursor-pointer 
+                            className={`rounded-4xl shrink-0 px-12 py-6 text-sm font-medium transition border cursor-pointer 
                 ${activeTab === index
                                     ? "bg-[#050546] text-white border-[#070769]"
                                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
