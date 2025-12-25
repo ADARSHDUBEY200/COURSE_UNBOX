@@ -15,8 +15,11 @@ import LetsConnect from "@/components/Home/LetsConnect";
 import CertificationBanner from "@/components/Home/Deepak";
 import StatsSection from "@/components/Home/StatsSection";
 import Trending from "@/components/Home/Trending";
+import PhotoGallery from "@/components/Home/PhotoGallery";
 import AboutUs from "@/components/Home/AboutUs";
 import Faq from "@/components/Home/Faq";
+import TestimonialsSection from "@/components/About/TestimonialsSection";
+import DigiCourseSection from "@/components/Home/DigiCourseSection";
 
 export default function Home() {
 
@@ -24,8 +27,12 @@ export default function Home() {
 
 
     <main className="w-full min-h-screen bg-white">
+<<<<<<< HEAD
 
       <Navbar />
+=======
+      {/*  <Navbar />
+>>>>>>> 96f6e2dd216ac441039ec08ea8782678e4906437
       <Hero />
       <Partners />
       <Banner />
@@ -33,6 +40,7 @@ export default function Home() {
       <Courses />
       <Enquiry />
       <TopCourses />
+<<<<<<< HEAD
       <Hire/>
       <AboutUs />
       <CertificationBanner />
@@ -44,6 +52,23 @@ export default function Home() {
       <LetsConnect />
       <Footer />
 
+=======
+      <Hire /> */}
+      <Mentors />
+      <CertificationBanner/>
+      <StatsSection/>
+      <Trending/>
+      <AboutUs/>
+      <TestimonialsSection/>
+      <PhotoGallery/>
+      <DigiCourseSection/>
+      {/* <Faq/> */}
+      <Faq/>
+      <Testimonials />
+      <TopCompanies/>
+      <LetsConnect/>
+      <Footer />
+>>>>>>> 96f6e2dd216ac441039ec08ea8782678e4906437
     </main>
 
   );

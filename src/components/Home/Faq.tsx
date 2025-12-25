@@ -48,9 +48,7 @@ function Faq() {
 
   return (
     <>
-
-
-
+    
       <section className="w-full bg-[#f5fbff] py-12">
 
         <div className="w-full text-center mb-5">
