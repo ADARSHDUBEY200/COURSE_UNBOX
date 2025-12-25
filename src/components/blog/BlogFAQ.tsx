@@ -59,11 +59,11 @@ export default function BlogFAQ({ BlogId }: { BlogId: string }) {
 
 
   return (
-    <section className="max-w-5xl mx-32 px-4 py-16 cursor-pointer">
+    <section className="max-w-5xl mx-4 lg:mx-32 px-4 py-16 cursor-pointer">
 
       {/* Heading */}
       <div className="mb-10 ">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 text-center md:text-left">
           Frequently Asked <span className="text-blue-600">Questions</span>
         </h2>
 

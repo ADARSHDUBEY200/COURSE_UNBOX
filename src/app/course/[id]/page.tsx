@@ -10,7 +10,8 @@ import StillConfusedSection from "@/components/course/getConnected";
 import CertificationBanner from "@/components/Home/Deepak";
 import TopCompanies from "@/components/Home/TopCompanies";
 import LetsConnect from "@/components/Home/LetsConnect";
-
+import CourseContent from "@/components/course/CourseContent";
+import Faq from "@/components/course/CourseFAQ";
 
 
 export default async function CoursePage({ params }: { params: Promise<{ id: string }> }) {
@@ -23,11 +24,14 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
             <div className="w-full min-h-screen text-white">
                 <Hero />
                 <Banner />
+                <CourseContent/>
                 <Enquiry />
+                 
                 <Module />
                 <Mentors />
                 <CertificationBanner/>
                 <TopCompanies />
+                <Faq/>
                 <LetsConnect/>
             </div>
             <Footer />

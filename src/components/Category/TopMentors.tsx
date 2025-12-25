@@ -50,68 +50,69 @@ export default function TopMentors() {
 
 /* --- Card Component --- */
 
-function MentorCard({
-  name,
-  role,
-  image,
-  description,
-  readMore = false,
-}: {
-  name: string;
-  role: string;
-  image: string;
-  description: string;
-  readMore?: boolean;
-}) {
-  return (
-    <div
-      className="
-        relative rounded-2xl bg-gray-100 p-6
-        border border-gray-100
-        shadow-sm hover:shadow-md
-        transition
-      "
-    >
-      {/* Profile */}
-      <div className="flex justify-center">
-        <div className="relative">
-          <Image
-            src={image}
-            alt={name}
-            width={110}
-            height={110}
-            className="rounded-full border-2 border-blue-500"
-          />
+  function MentorCard({
+    name,
+    role,
+    image,
+    description,
+    readMore = false,
+  }: {
+    name: string;
+    role: string;
+    image: string;
+    description: string;
+    readMore?: boolean;
+  }) {
+    return (
+      <div
+        className="
+          relative rounded-2xl bg-gray-100 p-6
+          border border-gray-100
+          shadow-sm hover:shadow-md
+          transition
+          mx-4 sm:mx-0
+        "
+      >
+        {/* Profile */}
+        <div className="flex justify-center">
+          <div className="relative">
+            <Image
+              src={image}
+              alt={name}
+              width={110}
+              height={110}
+              className="rounded-full border-2 border-blue-500"
+            />
 
-          <span className="absolute bottom-1 right-1 flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white">
-            <ExternalLink size={14} />
-          </span>
+            <span className="absolute bottom-1 right-1 flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white">
+              <ExternalLink size={14} />
+            </span>
+          </div>
         </div>
+
+        {/* Info */}
+        <div className="mt-5 text-center">
+          <h3 className="text-lg font-semibold text-gray-900">
+            {name}
+          </h3>
+
+          <p className="mt-1 text-sm text-gray-500">
+            {role}
+          </p>
+
+          <p className="mt-4 text-sm leading-relaxed text-gray-600">
+            {description}
+          </p>
+
+          {readMore && (
+            <button className="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-700">
+              Read More →
+            </button>
+          )}
+        </div>
+
+        {/* Subtle accent */}
+        <div className="absolute inset-x-0 bottom-0 h-1 rounded-b-2xl bg-linear-to-r from-blue-500 to-yellow-400" />
       </div>
-
-      {/* Info */}
-      <div className="mt-5 text-center">
-        <h3 className="text-lg font-semibold text-gray-900">
-          {name}
-        </h3>
-
-        <p className="mt-1 text-sm text-gray-500">
-          {role}
-        </p>
-
-        <p className="mt-4 text-sm leading-relaxed text-gray-600">
-          {description}
-        </p>
-
-        {readMore && (
-          <button className="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-700">
-            Read More →
-          </button>
-        )}
-      </div>
-
-      {/* Subtle accent */}
-      <div className="absolute inset-x-0 bottom-0 h-1 rounded-b-2xl bg-linear-to-r from-blue-500 to-yellow-400" />
-    </div>
-  );
-}
+    );
+  }

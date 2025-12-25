@@ -7,14 +7,17 @@ export default function CategoryOverview() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 rounded-xl border-gray-200 shadow-xl bg-linear-to-br from-blue-300 via-yellow-50 to-blue-300">
+    <section className="max-w-7xl mx-auto px-6 rounded-xl border-gray-200 shadow-xl bg-linear-to-br from-blue-300 via-yellow-50 to-blue-300 my-20">
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px) [background-size:24px_24px]" />
 
       <div className="max-w-7xl mx-auto px-4 py-12 bg-[radial-gradient(#ffffff_1px,transparent_1px)">
-      <h2 className="text-2xl md:text-4xl font-extrabold mb-4">
+      <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-black">
        <h2>About the <span className="text-blue-600">Data Science</span> Courses</h2>
 
       </h2>
+
+      <div className="w-20 h-1 mb-6 bg-linear-to-r from-blue-600 to-yellow-400 rounded-full" />
+
 
       <p className="text-gray-700 leading-relaxed text-base md:text-lg ">
         Data Science courses focus on building strong foundations in data analysis,

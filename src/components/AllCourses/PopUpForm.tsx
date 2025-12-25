@@ -29,12 +29,7 @@ export default function PopUpForm({isOpen,onCancel, onConfirm}:IPopForm) {
           ${isOpen ? "translate-y-16 opacity-100 z-999" : "-translate-y-full opacity-0"}
         `}>
 
-           <button
-            onClick={onCancel}
-            className="absolute right-100 top-16 text-gray-700 hover:text-black"
-          >
-            <X className="w-55 h-5" />
-          </button>
+           
 
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 z-9999">
           
@@ -43,7 +38,25 @@ export default function PopUpForm({isOpen,onCancel, onConfirm}:IPopForm) {
           {/* Card */}
           <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-6 md:p-8">
 
-    
+            {/* Close Button */}
+            <button
+              onClick={onCancel}
+              aria-label="Close"
+              className="
+                absolute 
+                top-3 right-3 
+                sm:top-4 sm:right-4
+                w-9 h-9 sm:w-10 sm:h-10
+                flex items-center justify-center
+                rounded-full
+                bg-gray-100 hover:bg-gray-200
+                text-gray-700 hover:text-black
+                transition
+              "
+            >
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
 
             {/* Heading */}
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-900">

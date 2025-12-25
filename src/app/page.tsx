@@ -27,12 +27,7 @@ export default function Home() {
 
 
     <main className="w-full min-h-screen bg-white">
-<<<<<<< HEAD
-
       <Navbar />
-=======
-      {/*  <Navbar />
->>>>>>> 96f6e2dd216ac441039ec08ea8782678e4906437
       <Hero />
       <Partners />
       <Banner />
@@ -40,20 +35,7 @@ export default function Home() {
       <Courses />
       <Enquiry />
       <TopCourses />
-<<<<<<< HEAD
-      <Hire/>
-      <AboutUs />
-      <CertificationBanner />
-      <Mentors />
-      <StatsSection />
-      <TopCompanies />
-      <Testimonials />
-      <Faq />
-      <LetsConnect />
-      <Footer />
-
-=======
-      <Hire /> */}
+      <Hire /> 
       <Mentors />
       <CertificationBanner/>
       <StatsSection/>
@@ -62,13 +44,12 @@ export default function Home() {
       <TestimonialsSection/>
       <PhotoGallery/>
       <DigiCourseSection/>
-      {/* <Faq/> */}
+      
       <Faq/>
       <Testimonials />
       <TopCompanies/>
       <LetsConnect/>
       <Footer />
->>>>>>> 96f6e2dd216ac441039ec08ea8782678e4906437
     </main>
 
   );

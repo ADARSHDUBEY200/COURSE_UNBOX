@@ -4,10 +4,10 @@ import Form from "./Form"
 export default function FinalCTASection(){
     
     return (
-        <section id="form" className="max-w-5xl mx-auto flex gap-4 justify-between items-start" style={{
+        <section id="form" className="max-w-5xl mx-auto flex gap-4 lg:justify-between lg:items-start justify-center items-center" style={{
                 backgroundImage: "url('/images/Student/bg-2.png')",
        }}>
-        <div className="flex flex-col gap-4 py-6 sm:py-12">
+        <div className="hidden lg:flex flex-col gap-4 py-6 sm:py-12">
 
           <div>
             {/* <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-900 text-center">

@@ -1,8 +1,12 @@
+"use client"
 import { Home } from "lucide-react";
 import { IndianRupee } from "lucide-react";
 import CountUp from "./CountUp";
+import { useState } from "react";
+
 
 export default function CategoryHero({ categories }: any) {
+      const [expanded , setExpanded] = useState(false);
   return (
     <section className="relative min-h-screen overflow-hidden bg-linear-to-r from-[#182848] to-[#4b6cb7] text-white">
       
@@ -10,43 +14,59 @@ export default function CategoryHero({ categories }: any) {
       <div className="absolute -top-32 -left-32 w-[420px] md:w-[520px] h-[420px] md:h-[520px] bg-white/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[320px] md:w-[420px] h-80 md:h-[420px] bg-black/10 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 lg:py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 lg:py-12 grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-16 items-center">
         
         {/* LEFT CONTENT */}
-        <div className="text-center lg:text-left">
-          <div className="flex items-center justify-center lg:justify-start gap-2 text-sm text-white/80 mb-5">
+        <div className="text-left lg:text-left">
+          <div className="flex justify-start gap-2 text-sm text-white/80 mb-5">
             <Home size={18} />
             <span>/ Data Science & Analytics</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
             Data Science and <br className="hidden sm:block" />
             Analytics Courses
           </h1>
 
-          <p className="mt-5 text-base sm:text-lg text-white/80 max-w-xl mx-auto lg:mx-0">
+         <p className="mt-5 text-base sm:text-lg text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
             Learn statistical analysis, data visualization, and data mining from
             industry experts. Gain hands-on experience through real-world
             projects and case studies.
+
+            {expanded && (
+              <>
+                <span className="block mt-3">
+                  Our curriculum is designed to bridge theory and practice, helping
+                  learners build job-ready skills through industry-relevant tools,
+                  practical assignments, and guided mentorship.
+                </span>
+              </>
+            )}
           </p>
 
-          <button className="mt-5 text-blue-200 underline underline-offset-4 hover:text-white transition cursor-pointer">
-            Read More
+          <button onClick={()=>setExpanded(!expanded)} className="mt-5 text-blue-200 underline underline-offset-4 hover:text-white transition cursor-pointer">
+            {expanded ? "Read Less" : "Read More"}
           </button>
 
           {/* Partners */}
           <div className="mt-10">
-            <p className="text-sm font-semibold mb-4">
-              Our Program Partners:
-            </p>
+                <p className="text-lg font-semibold mb-4">
+                    Our learners get placed at
+                </p>
 
-            <div className="bg-white rounded-xl p-4 flex flex-wrap justify-center lg:justify-start gap-6 items-center">
-              <span className="text-black font-bold">IBM</span>
-              <span className="text-black font-bold">Microsoft</span>
-              <span className="text-black font-bold">IIT</span>
-              <span className="text-black font-bold">MNIT Jaipur</span>
+                <div className="flex flex-wrap items-center gap-4">
+                    {["Samsung", "xTo10x", "Haptik", "+250 more hiring partners"].map(
+                        (company) => (
+                            <div
+                                key={company}
+                                className="bg-white/15 px-5 py-2 rounded-lg text-sm font-medium"
+                            >
+                                {company}
+                            </div>
+                        )
+                    )}
+                </div>
             </div>
-          </div>
         </div>
 
         {/* RIGHT FORM CARD */}
@@ -100,7 +120,7 @@ export default function CategoryHero({ categories }: any) {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto bg-white rounded-xl flex flex-col sm:flex-row justify-around items-center text-black py-6 gap-6">
+      <div className="max-w-5xl mx-4 my-4 sm:my-0  sm:mx-auto bg-white rounded-xl flex flex-col sm:flex-row justify-around items-center text-black py-6 gap-6">
 
           {/* CARD 1 */}
           <div className="flex items-center gap-2">
