@@ -10,11 +10,13 @@ import StillConfusedSection from "@/components/course/getConnected";
 import CertificationBanner from "@/components/Home/Deepak";
 import TopCompanies from "@/components/Home/TopCompanies";
 import LetsConnect from "@/components/Home/LetsConnect";
+import Testimonials from "@/components/course/TestimonialsSection";
 
 
 
 export default async function CoursePage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
+
     console.log("THE PARAMETERS IS : ", id);
 
     return (
@@ -26,6 +28,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
                 <Enquiry />
                 <Module />
                 <Mentors />
+                <Testimonials courseId={id}/>
                 <CertificationBanner/>
                 <TopCompanies />
                 <LetsConnect/>

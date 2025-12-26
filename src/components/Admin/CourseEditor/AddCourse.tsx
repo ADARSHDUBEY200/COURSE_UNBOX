@@ -5,8 +5,7 @@ import React, { useState } from "react";
 
 const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
-    const [imageURL , setImageURL] = useState("");
-
+    const [imageURL, setImageURL] = useState("");
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -17,10 +16,33 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
         Delivery_Mode: "",
     });
 
+    const [content, setContent] = useState({
+        firstTitle: "",
+        firstDescription: "",
+        secondTitle: "",
+        secondDescription: "",
+        thirdTitle: "",
+        thirdDescription: "",
+        fourthTitle: "",
+        fourthDescription: "",
+        fifthTitle: "",
+        fifthDescription: "",
+        sixthTitle: "",
+        sixthDescription: ""
+    });
+
+
+
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleContentChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        setContent({ ...content, [e.target.name]: e.target.value });
     };
 
 
@@ -34,8 +56,8 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
             language: formData.language,
             domain: formData.domain,
             Delivery_Mode: formData.Delivery_Mode,
-            content : {},
-            image : imageURL
+            content: {},
+            image: imageURL
 
         }]).select().single();
 
@@ -104,6 +126,7 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                                 value={formData.title}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                required
                             />
                         </div>
 
@@ -115,25 +138,26 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                                     Domain
                                 </label>
                                 <select
-                                    name="Delivery_Mode"
+                                    name="domain"
                                     value={formData.domain}
                                     onChange={handleChange}
                                     className="w-full rounded-xl border px-4 py-3 text-sm"
                                 >
                                     <option value="">Select Mode</option>
-                                    <option value="Online">Digital Marketing</option>
-                                    <option value="Offline">Development</option>
-                                    <option value="Hybrid">IT & Software</option>
-                                    <option value="Hybrid">Data Science</option>
+                                    <option value="digi">Digital Marketing</option>
+                                    <option value="deve">Development</option>
+                                    <option value="IT">IT & Software</option>
+                                    <option value="Data">Data Science</option>
+
                                 </select>
                             </div>
 
                             <div className="w-full">
                                 <label className="block text-sm font-medium mb-2">
-                                    Domain
+                                    language
                                 </label>
                                 <select
-                                    name=""
+                                    name="language"
                                     value={formData.language}
                                     onChange={handleChange}
                                     className="w-full rounded-xl border px-4 py-3 text-sm"
@@ -211,20 +235,6 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                             />
                         </div>
 
-                        {/* Content */}
-
-                        <div>
-                            <label className="block text-sm font-medium mb-2">
-                                Course Content
-                            </label>
-                            <textarea
-                                name="content"
-                                rows={4}
-                                className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
-                            />
-                        </div>
-
-
 
                         {/* Image Upload */}
 
@@ -244,46 +254,203 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                             </div>
                         </div>
 
+                    </div>
 
 
-                        {/* Submit */}
+                    <div>
+                        {/* content */}
 
-                        <button className="mt-6 px-10 py-4 rounded-3xl bg-blue-600 text-white text-sm font-medium transition cursor-pointer hover:bg-[#020242]" onClick={handleSave}>
-                            Save Course
-                        </button>
+                        <div className="h-[80vh] border p-3 rounded-3xl">
+                            <p className="text-center text-2xl font-bold mb-5">Why choose this course section ?</p>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3">
+                                    <label className="block text-sm font-medium mb-2">
+                                        FirstTitle
+                                    </label>
+                                    <input
+                                        name="firstTitle"
+                                        value={content.firstTitle}
+                                        onChange={handleContentChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <label className="block text-sm font-medium mb-2">
+                                        First Description
+                                    </label>
+                                    <textarea
+                                        name="firstDescription"
+                                        value={content.firstDescription}
+                                        onChange={handleContentChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3">
+                                    <label className="block text-sm font-medium mb-2">
+                                        SecondTitle
+                                    </label>
+                                    <input
+                                        name="secondTitle"
+                                        value={content.secondTitle}
+                                        onChange={handleContentChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Second Description
+                                    </label>
+                                    <textarea
+                                        name="secondDescription"
+                                        value={content.secondDescription}
+                                        onChange={handleContentChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3">
+                                    <label className="block text-sm font-medium mb-2">
+                                        ThirdTitle
+                                    </label>
+                                    <input
+                                        name="thirdTitle"
+                                        value={content.thirdTitle}
+                                        onChange={handleContentChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <label className="block text-sm font-medium mb-2">
+                                        First Description
+                                    </label>
+                                    <textarea
+                                        name="thirdDescription"
+                                        value={content.thirdDescription}
+                                        onChange={handleContentChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3">
+                                    <label className="block text-sm font-medium mb-2">
+                                        fourthTitle
+                                    </label>
+                                    <input
+                                        name="fourthTitle"
+                                        value={content.fourthTitle}
+                                        onChange={handleContentChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <label className="block text-sm font-medium mb-2">
+                                        fourth Description
+                                    </label>
+                                    <textarea
+                                        name="fourthDescription"
+                                        value={content.fourthDescription}
+                                        onChange={handleContentChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3">
+                                    <label className="block text-sm font-medium mb-2">
+                                        FifthTitle
+                                    </label>
+                                    <input
+                                        name="fifthTitle"
+                                        value={content.fifthTitle}
+                                        onChange={handleContentChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Fifth Description
+                                    </label>
+                                    <textarea
+                                        name="fifthDescription"
+                                        value={content.fifthDescription}
+                                        onChange={handleContentChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3">
+                                    <label className="block text-sm font-medium mb-2">
+                                        sixthTitle
+                                    </label>
+                                    <input
+                                        name="sixthTitle"
+                                        value={content.sixthTitle}
+                                        onChange={handleContentChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <label className="block text-sm font-medium mb-2">
+                                        sixth Description
+                                    </label>
+                                    <textarea
+                                        name="sixthDescription"
+                                        value={content.sixthDescription}
+                                        onChange={handleContentChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
 
 
 
-                    {/* ================= PREVIEW ================= */}
+                </div>
 
-                    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-8">
-                        <p className="text-xs font-medium text-gray-500 mb-3">
-                            LIVE PREVIEW
-                        </p>
+                <div className="w-[95%] mx-auto flex border rounded-2xl h-[50vh]">
+                    <div>
+                    </div>
 
-                        <div className="space-y-4">
-                            <h1 className="text-3xl font-bold text-gray-900">
-                                {formData.title || "Course title goes here"}
-                            </h1>
+                    <div>
+                    </div>
 
-                            <span className="inline-block rounded-full bg-indigo-100 px-4 py-1 text-xs font-semibold text-indigo-700">
-                                {formData.domain || "Domain"}
-                            </span>
-
-                            <p className="text-gray-600">
-                                {formData.description || "Course description preview"}
-                            </p>
-
-                            <div className="text-sm text-gray-500 space-y-1">
-                                <p>📅 Start: {formData.startDate || "Not set"}</p>
-                                <p>⏱ Duration: {formData.Duration || "0"} days</p>
-                                <p>🌐 Mode: {formData.Delivery_Mode || "N/A"}</p>
-                                <p>🗣 Language: {formData.language || "English"}</p>
-                            </div>
-                        </div>
+                    <div>
                     </div>
                 </div>
+
+                {/* Submit */}
+
+                <button className="mt-6 px-10 py-4 rounded-3xl bg-blue-600 text-white text-sm font-medium transition cursor-pointer hover:bg-[#020242] ml-3 mb-3" onClick={handleSave}>
+                    Save Course
+                </button>
+
+
             </div>
         </div>
     );

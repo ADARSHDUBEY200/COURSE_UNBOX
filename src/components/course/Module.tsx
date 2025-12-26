@@ -1,86 +1,192 @@
-"use client"
+"use client";
 
-import React from 'react'
-import { useState } from "react"
+import { useState } from "react";
+import { Lock, ChevronRight } from "lucide-react";
 
+const TABS = [
+    "Data Science Foundations",
+    "Python",
+    "Statistics",
+    "EDA",
+    "Machine Learning",
+    "SQL",
+    "MLOps",
+];
 
-type Lecture = {
-    id: number;
-    title: string;
-    locked: boolean;
-};
-
-type Module = {
-    id: number;
-    title: string;
-    lectures: Lecture[];
-};
-
-const Module = () => {
-
-
-    const curriculumTabs = [
-        "Data Science Foundations",
-        "Python",
-        "Statistics",
-        "EDA",
-        "Machine Learning",
-        "SQL",
-        "MLOps",
-    ];
-
-    const modules: Module[] = [
-
+const CURRICULUM: Record<string, any[]> = {
+    "Data Science Foundations": [
         {
-            id: 1,
+            module: "Module 1",
             title: "What is Data Science?",
             lectures: [
-                { id: 1, title: "Lecture 1 : What is DS?", locked: true },
-                { id: 2, title: "Lecture 2 : Why DS Matters", locked: true },
-                { id: 3, title: "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)", locked: true },
-                { id: 4, title: "Lecture 4 : Tools used in DS", locked: true },
-                { id: 5, title: "Lecture 5 : Industry examples", locked: true },
+                "Lecture 1 : What is DS?",
+                "Lecture 2 : Why DS Matters",
+                "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)",
+                "Lecture 4 : Tools used in DS",
+                "Lecture 5 : Industry examples",
             ],
         },
         {
-            id: 2,
+            module: "Module 2",
             title: "Future of Data Science",
-            lectures: [{ id: 1, title: "Lecture 1 : What is DS next Module?", locked: true },
-            { id: 2, title: "Lecture 2 : Why DS Matters", locked: true },
-            { id: 3, title: "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)", locked: true },
-            { id: 4, title: "Lecture 4 : Tools used in DS", locked: true },
-            { id: 5, title: "Lecture 5 : Industry examples", locked: true },],
+            lectures: [
+                "Lecture 1 : DS Career Growth",
+                "Lecture 2 : AI & Data Trends",
+                "Lecture 3 : Skills for Future",
+            ],
         },
-    ];
-
-    const [activeTab, setActiveTab] = useState(0);
-    const [activeModule, setActiveModule] = useState<number>(1);
+    ],
 
 
+    "Python": [
+        {
+            module: "Module 1",
+            title: "What is Data Science?",
+            lectures: [
+                "Lecture 1 : What is DS?",
+                "Lecture 2 : Why DS Matters",
+                "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)",
+                "Lecture 4 : Tools used in DS",
+                "Lecture 5 : Industry examples",
+            ],
+        },
+        {
+            module: "Module 2",
+            title: "Future of Data Science",
+            lectures: [
+                "Lecture 1 : DS Career Growth",
+                "Lecture 2 : AI & Data Trends",
+                "Lecture 3 : Skills for Future",
+            ],
+        },
+    ],
+
+    "Statistics": [
+        {
+            module: "Module 1",
+            title: "What is Data Science?",
+            lectures: [
+                "Lecture 1 : What is DS?",
+                "Lecture 2 : Why DS Matters",
+                "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)",
+                "Lecture 4 : Tools used in DS",
+                "Lecture 5 : Industry examples",
+            ],
+        },
+        {
+            module: "Module 2",
+            title: "Future of Data Science",
+            lectures: [
+                "Lecture 1 : DS Career Growth",
+                "Lecture 2 : AI & Data Trends",
+                "Lecture 3 : Skills for Future",
+            ],
+        },
+    ],
+
+    "EDA": [
+        {
+            module: "Module 1",
+            title: "What is Data Science?",
+            lectures: [
+                "Lecture 1 : What is DS?",
+                "Lecture 2 : Why DS Matters",
+                "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)",
+                "Lecture 4 : Tools used in DS",
+                "Lecture 5 : Industry examples",
+            ],
+        },
+        {
+            module: "Module 2",
+            title: "Future of Data Science",
+            lectures: [
+                "Lecture 1 : DS Career Growth",
+                "Lecture 2 : AI & Data Trends",
+                "Lecture 3 : Skills for Future",
+            ],
+        },
+    ],
+
+    "Machine Learning": [
+        {
+            module: "Module 1",
+            title: "What is Data Science?",
+            lectures: [
+                "Lecture 1 : What is DS?",
+                "Lecture 2 : Why DS Matters",
+                "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)",
+                "Lecture 4 : Tools used in DS",
+                "Lecture 5 : Industry examples",
+            ],
+        },
+        {
+            module: "Module 2",
+            title: "Future of Data Science",
+            lectures: [
+                "Lecture 1 : DS Career Growth",
+                "Lecture 2 : AI & Data Trends",
+                "Lecture 3 : Skills for Future",
+            ],
+        },
+    ],
+
+    "SQL": [
+        {
+            module: "Module 1",
+            title: "What is Data Science?",
+            lectures: [
+                "Lecture 1 : What is DS?",
+                "Lecture 2 : Why DS Matters",
+                "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)",
+                "Lecture 4 : Tools used in DS",
+                "Lecture 5 : Industry examples",
+            ],
+        },
+        {
+            module: "Module 2",
+            title: "Future of Data Science",
+            lectures: [
+                "Lecture 1 : DS Career Growth",
+                "Lecture 2 : AI & Data Trends",
+                "Lecture 3 : Skills for Future",
+            ],
+        },
+    ],
+
+
+
+};
+
+export default function Module() {
+    const [activeTab, setActiveTab] = useState(TABS[0]);
+    const [activeModule, setActiveModule] = useState(0);
+
+    const modules = CURRICULUM[activeTab] || [];
 
     return (
+        <section className="p-10 bg-[#f5fafd]">
+            <div className="w-full p-6">
 
-        <section className="py-16 bg-white">
-            <div className="mx-auto max-w-7xl px-6">
+                {/* Heading */}
 
+                <h2 className="text-3xl font-bold mb-6 text-black">
+                    Your Guide To Upskilling: Our Curriculum
+                </h2>
 
-                <div className="flex items-center gap-4 mb-10">
-                    <span className="h-10 w-1 bg-[#060650] rounded" />
-                    <h2 className="text-3xl font-bold text-black">Your Guide To Upskilling: Our Curriculum</h2>
-                </div>
+                {/* Tabs */}
 
-
-
-                <div className="flex overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth gap-4 mb-12 p-3">
-
-                    {curriculumTabs.map((tab, index) => (
+                <div className="flex gap-3 mb-8 overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth">
+                    {TABS.map((tab) => (
                         <button
                             key={tab}
-                            onClick={() => setActiveTab(index)}
-                            className={`rounded-4xl shrink-0 px-12 py-6 text-sm font-medium transition border cursor-pointer 
-                ${activeTab === index
-                                    ? "bg-[#050546] text-white border-[#070769]"
-                                    : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
+                            onClick={() => {
+                                setActiveTab(tab);
+                                setActiveModule(0);
+                            }}
+                            className={`px-20 py-6 text-black shrink-0 rounded-4xl text-sm font-medium transition cursor-pointer 
+              ${activeTab === tab
+                                    ? "bg-[#030363] text-white"
+                                    : "bg-[white] hover:bg-gray-200"
                                 }`}
                         >
                             {tab}
@@ -88,67 +194,45 @@ const Module = () => {
                     ))}
                 </div>
 
+                {/* Content */}
 
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border border-black rounded-lg p-4">
+                    {/* Left Modules */}
 
-                <div className="grid md:grid-cols-3 gap-10">
-
-
-                    <div className="space-y-4">
-                        {modules.map((module) => (
+                    <div className="md:col-span-1 border-r pr-4">
+                        {modules.map((mod, index) => (
                             <button
-                                key={module.id}
-                                onClick={() => setActiveModule(module.id)}
-                                className={`w-full flex items-center justify-between rounded-xl border p-5 text-left transition 
-                  ${activeModule === module.id
-                                        ? "border-orange-400 bg-orange-50"
-                                        : "border-gray-200 hover:bg-gray-50"
+                                key={mod.title}
+                                onClick={() => setActiveModule(index)}
+                                className={`w-full text-left p-4 mb-2 rounded-md flex justify-between items-center transition cursor-pointer
+                ${activeModule === index
+                                        ? "bg-[#040455] border-l-4 border-[#02025a]"
+                                        : "hover:bg-[#020286]"
                                     }`}
                             >
                                 <div>
-                                    <p className="text-xs text-orange-500 font-semibold">Module {module.id}</p>
-                                    <h3
-                                        className={`text-lg font-semibold mt-1 ${activeModule === module.id ? "text-orange-600" : "text-gray-800"
-                                            }`}
-                                    >
-                                        {module.title}
-                                    </h3>
+                                    <p className="text-xs text-gray-500">{mod.module}</p>
+                                    <p className="font-medium text-white">{mod.title}</p>
                                 </div>
-                                <span className="text-xl">›</span>
+                                <ChevronRight className="text-gray-400" />
                             </button>
                         ))}
                     </div>
 
-
-                    <div className="md:col-span-2 border rounded-xl">
-                        {modules
-                            .find((m) => m.id === activeModule)
-                            ?.lectures.map((lecture) => (
-                                <div
-                                    key={lecture.id}
-                                    className="flex items-center justify-between px-6 py-4 border-b last:border-b-0"
-                                >
-                                    <p className="text-sm font-medium text-gray-800">{lecture.title}</p>
-                                    {lecture.locked && (
-                                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
-                                            🔒
-                                        </span>
-                                    )}
-                                </div>
-                            ))}
-
-                        {modules.find((m) => m.id === activeModule)?.lectures.length === 0 && (
-                            <div className="p-10 text-center text-gray-500">
-                                Lectures coming soon
+                    {/* Right Lectures */}
+                    <div className="md:col-span-2">
+                        {modules[activeModule]?.lectures.map((lecture: string) => (
+                            <div
+                                key={lecture}
+                                className="flex items-center justify-between p-4 border rounded-md mb-3"
+                            >
+                                <p className="text-sm text-black">{lecture}</p>
+                                <Lock className="w-4 h-4 text-[#a1a112]" />
                             </div>
-                        )}
+                        ))}
                     </div>
                 </div>
             </div>
-
-
         </section>
-
-    )
+    );
 }
-
-export default Module
