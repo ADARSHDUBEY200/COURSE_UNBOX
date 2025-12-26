@@ -19,6 +19,7 @@ type blog = {
         answer: string
     }[];
     created_at: number;
+    image : string,
     domain: string;
 
 };
