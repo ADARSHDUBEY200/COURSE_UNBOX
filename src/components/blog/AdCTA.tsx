@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function AdCard() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="hidden  lg:flex flex-col items-center ">
              <div
                className="relative group w-full max-w-sm sm:max-w-md rounded-xl
                           overflow-hidden border-4 shadow-lg

@@ -28,7 +28,6 @@ export default function Home() {
 
 
             <main className="w-full min-h-screen bg-white">
-
                   <Navbar />
                   <Hero />
                   <Partners />
@@ -37,19 +36,20 @@ export default function Home() {
                   <Courses />
                   <Enquiry />
                   <TopCourses />
-                  <DigiCourseSection />
                   <Hire />
-                  <AboutUs />
-                  <CertificationBanner />
                   <Mentors />
+                  <CertificationBanner />
                   <StatsSection />
-                  <PhotoGalleryCarousel />
-                  <TopCompanies />
-                  <Testimonials />
+                  <Trending />
+                  <AboutUs />
+                  <TestimonialsSection />
+                  <PhotoGallery />
+                  <DigiCourseSection />
                   <Faq />
+                  <Testimonials />
+                  <TopCompanies />
                   <LetsConnect />
                   <Footer />
-
             </main>
 
       );

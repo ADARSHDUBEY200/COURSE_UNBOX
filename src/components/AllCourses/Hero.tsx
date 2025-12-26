@@ -1,50 +1,62 @@
 "use client"
 import { IndianRupee , TrendingUp, Globe  } from "lucide-react";
 import CountUp from "../Category/CountUp";
+import PopUpForm from "./PopUpForm";
 
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Hero(){
+    const [expanded , setExpanded] = useState(false);
+    const [isOpen , setIsOpen] = useState(false);
+    
     return (
-    <section className="relative overflow-hidden bg-linear-to-r from-[#003a8f] via-[#004fb3] to-[#0066d6] py-6">
+      <>
+      <PopUpForm  isOpen={isOpen} onCancel={()=>setIsOpen(false)} onConfirm={()=>setIsOpen(false)}/>
+      <section className="relative overflow-hidden bg-linear-to-r from-[#003a8f] via-[#004fb3] to-[#0066d6] py-3">
       
       {/* Soft Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-size-[24px_24px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 pt-4 sm:pt-12 pb-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         
         {/* ============ LEFT CONTENT ============ */}
         <div className="text-white">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+          <h1 className=" text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
             Explore Industry-Ready <br />
             <span className="text-yellow-400">Professional Courses</span>
           </h1>
 
-          <ul className="mt-8 space-y-4 text-lg text-blue-100">
-            <li className="flex items-start gap-3">
-              <span className="text-yellow-400 text-xl">•</span>
-              Learn from top universities & industry experts
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-yellow-400 text-xl">•</span>
-              Job-oriented programs across AI, Tech & Management
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-yellow-400 text-xl">•</span>
-              Flexible online learning with certifications
-            </li>
-          </ul>
+          <p className="mt-5 text-xs md:text-base lg:text-lg text-white/80 max-w-xl  leading-relaxed">
+            Learn statistical analysis, data visualization, and data mining from
+            industry experts. Gain hands-on experience through real-world
+            projects and case studies.
 
-          <button className="mt-10 inline-flex items-center gap-3 bg-yellow-400 text-[#003a8f] font-semibold px-8 py-4 rounded-lg hover:bg-yellow-300 transition">
-            Browse all courses
-            <span className="text-xl">›</span>
+            {expanded && (
+              <>
+                <span className="block mt-3">
+                  Our curriculum is designed to bridge theory and practice, helping
+                  learners build job-ready skills through industry-relevant tools,
+                  practical assignments, and guided mentorship.
+                </span>
+              </>
+            )}
+          </p>
+
+          <button onClick={()=>setExpanded(!expanded)} className="mt-5 text-blue-200 underline underline-offset-4 hover:text-white transition cursor-pointer">
+            {expanded ? "Read Less" : "Read More"}
+          </button>
+
+          <button onClick={()=>setIsOpen(true)} className="mt-6 md:mt-10 block items-center gap-3 bg-yellow-400 cursor-pointer text-[#003a8f] font-semibold px-4 py-2 sm:px-5 sm:py-2 md:px-6 md:py-3 rounded-lg hover:bg-yellow-300 transition">
+             Get Courses
+            <span className="text-xl">{" "}›</span>
           </button>
         </div>
 
-       <div className="relative hidden lg:flex justify-center">
+       <div className="relative hidden md:flex justify-center">
   
             {/* Big Circle */}
-            <div className="absolute w-[420px] h-[420px] rounded-full " />
+            <div className="absolute w-[180px] h-[180px] sm:w-[350px] sm:h-[450px] md:w-[420px] md:h-[420px] rounded-full " />
 
             {/* Illustration */}
             <div className="relative z-10 w-[440px] h-[460px]  rounded-xl overflow-hidden">
@@ -69,10 +81,10 @@ export default function Hero(){
 
      </div>
 
-     <div className="max-w-5xl mx-auto bg-white rounded-xl flex flex-col sm:flex-row justify-around items-center text-black py-6 gap-6">
+     <div className="max-w-2xl md:max-w-3xl lg:max-w-5xl mx-2 lg:mx-auto bg-white rounded-xl flex flex-col md:flex-row md:justify-around justify-center  items-center text-black py-6 gap-6">
 
           {/* CARD 1 */}
-          <div className="flex items-center gap-2">
+          <div className=" flex items-center gap-2">
             <IndianRupee color="#d18800" size={45} />
             <div>
               <p className="text-lg sm:text-2xl font-bold">
@@ -85,7 +97,7 @@ export default function Hero(){
           </div>
 
           {/* CARD 2 */}
-          <div className="flex items-center gap-2">
+          <div className=" flex items-center gap-2">
             <Globe color="#d18800" size={45} />
             <div>
               <p className="text-lg sm:text-2xl font-bold">
@@ -98,7 +110,7 @@ export default function Hero(){
           </div>
 
           {/* CARD 3 */}
-          <div className="flex items-center gap-2">
+          <div className=" flex items-center gap-2">
             <TrendingUp  color="#d18800" size={45} />
             <div>
               <p className="text-lg sm:text-2xl font-bold">
@@ -113,6 +125,11 @@ export default function Hero(){
      </div>
 
 
+
+
+
     </section>
+      </>
+    
   );
 }

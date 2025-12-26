@@ -65,7 +65,7 @@ const [Blogs, setBlogs] = useState<Blog | null>(null);
         <span className="text-xs text-slate-500">8 min read</span>
       </div>
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
         {Blogs?.title}
       </h1>
 
@@ -79,8 +79,8 @@ const [Blogs, setBlogs] = useState<Blog | null>(null);
     </section>
 
     {/* ===== FEATURE IMAGE ===== */}
-    <section className="px-4 mt-10">
-      <div className="group relative w-full h-[380px] rounded-2xl overflow-hidden shadow-xl">
+    <section className="px-6 sm:px-4 mt-10">
+      <div className="group relative w-full h-70 sm:h-95 rounded-2xl overflow-hidden shadow-xl">
         <img
           src="/images/Blog/Blog.webp"
           alt="Blog cover"
