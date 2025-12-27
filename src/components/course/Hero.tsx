@@ -57,7 +57,7 @@ const Hero = ({ courseId }: { courseId: string }) => {
     return (
 
 
-        <section className="w-full bg-gradient-to-br from-[#01016c] via-[#4d14c6] to-violet-800 bg-opacity-90 py-12 px-10">
+        <section className="w-full bg-linear-to-br from-[#01016c] via-[#4d14c6] to-violet-800 bg-opacity-90 py-12 px-10">
 
             <div className="w-8xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
 
@@ -111,18 +111,26 @@ const Hero = ({ courseId }: { courseId: string }) => {
                         </div>
                     </div>
 
+                    <div className=" lg:hidden space-y-3 ">
+                    <img
+                        src={course?.image ||"/images/Course/CouresesHero.svg" }
+                        alt="Course Banner"
+                        className="rounded-2xl shadow-lg w-[95%] h-[40vh]"
+                    />
+                   </div>
+
 
 
                     {/* Pricing Card */}
 
-                    <div className="mt-6 w-xl bg-white/10 backdrop-blur-xl rounded-2xl pb-2">
+                    <div className="mt-6  lg:w-xl bg-white/10 backdrop-blur-xl rounded-2xl pb-2">
 
 
-                        <div className='flex items-center w-full h-9 bg-[#4f0095] rounded-tr-2xl rounded-tl-2xl border border-white/20 p-3 pb-4 text-lg'>
+                        <div className='flex  items-center w-full  md:h-9 bg-[#4f0095] rounded-tr-2xl rounded-tl-2xl border border-white/20 p-3 pb-4 text-lg'>
                             <p>{course?.Duration} months online course with LIVE sessions</p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-4 items-center pl-3">
+                        <div className="grid grid-cols-2 gap-4 items-center pl-3">
 
                             <div className='pl-7'>
 
@@ -142,7 +150,7 @@ const Hero = ({ courseId }: { courseId: string }) => {
                                 <p className="text-sm text-white/80">Course Fee</p>
 
                                 <div className="flex items-end gap-3 mt-2">
-                                    <h4 className="text-3xl font-extrabold">₹34,999</h4>
+                                    <h4 className="text-xl sm:text-2xl md:text-3xl font-extrabold">₹34,999</h4>
                                     <span className="line-through text-white/60">₹45,000</span>
                                 </div>
 
@@ -186,9 +194,9 @@ const Hero = ({ courseId }: { courseId: string }) => {
 
 
 
-                <div className="flex justify-center">
+                <div className="hidden lg:flex justify-center">
                     <img
-                        src={course?.image}
+                        src={course?.image ||"/images/Course/CouresesHero.svg" }
                         alt="Course Banner"
                         className="rounded-2xl shadow-lg w-[95%] h-[60vh]"
                     />
