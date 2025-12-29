@@ -79,7 +79,7 @@ const AddMentor = ({ collapsed}: { collapsed: boolean}) => {
       }
 
 
-    ]).eq("id", mentor.id);
+    ]);
 
 
     if (error) {
@@ -200,7 +200,7 @@ const AddMentor = ({ collapsed}: { collapsed: boolean}) => {
 
               <div>
                 {
-                  imageURL.slice(0,10)
+                  imageURL.slice(0, 10)
                 }...
               </div>
             </div>
