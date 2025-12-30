@@ -57,6 +57,7 @@ const BlogTable = ({ onEdit }: { onEdit: any }) => {
         const { data, error } = await supabase.from("Blog").delete().eq("id", id);
 
         if (error) {
+            
             console.log("THE ERROR OCCUR IS : ");
             console.log(error);
           

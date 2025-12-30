@@ -7,40 +7,40 @@ import AddCourse from './CourseEditor/AddCourse';
 import EditCourse from './CourseEditor/EditCourse';
 
 type Course = {
-  id: string;
-  title: string;
-  description: string;
-  startDate: string;
-  Duration: number;
-  language: string;
-  domain: string;
-  Delivery_Mode: string;
-  low: number,
-  high: number,
-  price: number,
-  content: {
+    id: string;
     title: string;
-    subtitle: string;
-  }[];
-  Testimonials:
-  {
-    name: string,
-    role: string,
-    company: string,
-    title: string,
-    description: string,
-    ranking: string,
-    course: string
-  }[],
-  modules: Record<
-    string,
+    description: string;
+    startDate: string;
+    Duration: number;
+    language: string;
+    domain: string;
+    Delivery_Mode: string;
+    low: number,
+    high: number,
+    price: number,
+    content: {
+        title: string;
+        subtitle: string;
+    }[];
+    Testimonials:
     {
-      module: string;
-      title: string;
-      lectures: string[];
-    }[]
-  >,
-  image: string;
+        name: string,
+        role: string,
+        company: string,
+        title: string,
+        description: string,
+        ranking: string,
+        course: string
+    }[],
+    modules: Record<
+        string,
+        {
+            module: string;
+            title: string;
+            lectures: string[];
+        }[]
+    >,
+    image: string;
 }
 
 
@@ -56,7 +56,7 @@ const CourseEditor = ({ collapsed }: { collapsed: boolean }) => {
         setActive("Table")
     }
 
-    const onEdit = (course: Course ) => {
+    const onEdit = (course: Course) => {
         setActive("Edit");
         setEditItem(course);
 

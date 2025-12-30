@@ -52,7 +52,7 @@ export default function MentorCard({onEdit} : {onEdit : any}) {
 
         toast.success("The Mentor Data is Delete : ");
 
-         setMentors((prev) => prev.filter((mentor) => mentor.id !== id));
+        setMentors((prev) => prev.filter((mentor) => mentor.id !== id));
         
     }
 

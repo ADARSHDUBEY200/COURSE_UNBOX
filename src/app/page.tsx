@@ -33,11 +33,9 @@ export default function Home() {
                   <Hero />
                   <Partners />
                   <Banner />
-                  {/* <UpdatedBanner/> */}
                   <Trending />
                   <Courses />
                   <Enquiry />
-                  {/* <HomeEnquiry/> */}
                   <TopCourses />
                   <Hire />
                   <Mentors />

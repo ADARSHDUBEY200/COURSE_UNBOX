@@ -13,7 +13,7 @@ const Editor = dynamic(
 const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
     const [imageURL, setImageURL] = useState<string>("");
-    const [loading , setloading] = useState(false);
+    const [loading, setloading] = useState(false);
     const [editorValue, setEditorValue] = useState<string>(`{
     "Data Science Foundations": [
 
@@ -83,6 +83,23 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
         sixthDescription: ""
     });
 
+    const [FAQ, setFAQ] = useState({
+
+        firstQuestion: "",
+        firstAnswer: "",
+        secondQuestion: "",
+        secondAnswer: "",
+        thirdQuestion: "",
+        thirdAnswer: "",
+        fourthQuestion: "",
+        fourthAnswer: "",
+        fifthQuestion: "",
+        fifthAnswer: "",
+        sixthQuestion: "",
+        sixthAnswer: ""
+
+    });
+
     const [Testimonial1, setTestimonial1] = useState({
         name: "",
         role: "",
@@ -121,6 +138,13 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+
+    const handleFAQChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        setFAQ({ ...FAQ, [e.target.name]: e.target.value });
     };
 
 
@@ -182,7 +206,7 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
         event.preventDefault();
         const validationJson = handleModuleParse();
 
-        if(!validationJson){
+        if (!validationJson) {
 
             alert("Your current Editor Value for Module is not in correct format please write it correctly : ")
 
@@ -228,6 +252,15 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
             ],
 
+            FAQ: [
+                { question: FAQ.firstQuestion, answer: FAQ.firstAnswer },
+                { question: FAQ.secondQuestion, answer: FAQ.secondAnswer },
+                { question: FAQ.thirdQuestion, answer: FAQ.thirdAnswer },
+                { question: FAQ.fourthQuestion, answer: FAQ.fourthAnswer },
+                { question: FAQ.fifthQuestion, answer: FAQ.fifthAnswer },
+                { question: FAQ.sixthQuestion, answer: FAQ.sixthAnswer },
+            ],
+
             Testimonials: [
 
                 {
@@ -259,7 +292,8 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                 }
 
             ],
-            modules : parsedJson,
+
+            modules: parsedJson,
             image: imageURL
 
         }]).select().single();
@@ -721,6 +755,181 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
                     </div>
 
+                    <div>
+                        {/* content */}
+
+                        <div className="h-[80vh] border p-5 rounded-3xl mb-7">
+                            <p className="text-center text-2xl font-bold mb-5"> Frequently Asked Questions ? </p>
+
+                            <div className="flex gap-4 justify-between w-full">
+                                <div className="flex flex-col mb-3 w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        First Question
+                                    </label>
+                                    <input
+                                        name="firstQuestion"
+                                        value={FAQ.firstQuestion}
+                                        onChange={handleFAQChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col w-full">
+                                    <label className="block text-sm font-medium mb-2 ">
+                                        First Answer
+                                    </label>
+                                    <textarea
+                                        name="firstAnswer"
+                                        value={FAQ.firstAnswer}
+                                        onChange={handleFAQChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3 w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Second Question
+                                    </label>
+                                    <input
+                                        name="secondQuestion"
+                                        value={FAQ.secondQuestion}
+                                        onChange={handleFAQChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col w-full">
+                                    <label className="block text-sm font-medium mb-2 ">
+                                        Second Answer
+                                    </label>
+                                    <textarea
+                                        name="secondAnswer"
+                                        value={FAQ.secondAnswer}
+                                        onChange={handleFAQChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3 w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Third Question
+                                    </label>
+                                    <input
+                                        name="thirdQuestion"
+                                        value={FAQ.thirdQuestion}
+                                        onChange={handleFAQChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col w-full">
+
+                                    <label className="block text-sm font-medium mb-2">
+
+                                        Third Answer
+
+                                    </label>
+                                    <textarea
+                                        name="thirdAnswer"
+                                        value={FAQ.thirdAnswer}
+                                        onChange={handleFAQChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3 w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        fourth Question
+                                    </label>
+                                    <input
+                                        name="fourthQuestion"
+                                        value={FAQ.fourthQuestion}
+                                        onChange={handleFAQChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        fourth Answer
+                                    </label>
+                                    <textarea
+                                        name="fourthAnswer"
+                                        value={FAQ.fourthAnswer}
+                                        onChange={handleFAQChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between">
+                                <div className="flex flex-col mb-3 w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Fifth Question
+                                    </label>
+                                    <input
+                                        name="fifthQuestion"
+                                        value={FAQ.fifthQuestion}
+                                        onChange={handleFAQChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Fifth Answer
+                                    </label>
+                                    <textarea
+                                        name="fifthAnswer"
+                                        value={FAQ.fifthAnswer}
+                                        onChange={handleFAQChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 justify-between w-full">
+                                <div className="flex flex-col mb-3 w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        sixth Answer
+                                    </label>
+                                    <input
+                                        name="sixthQuestion"
+                                        value={FAQ.sixthQuestion}
+                                        onChange={handleFAQChange}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        sixth Question
+                                    </label>
+                                    <textarea
+                                        name="sixthAnswer"
+                                        value={FAQ.sixthAnswer}
+                                        onChange={handleFAQChange}
+                                        rows={2}
+                                        className="w-full rounded-xl border px-4 text-sm resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                     <div className="w-[95%] mx-auto border rounded-2xl h-[75vh]">
                         <p className="text-2xl text-black font-bold text-center mb-4">Testimonials Section</p>
                         <div className="flex w-full items-center justify-center gap-4">
@@ -1022,7 +1231,7 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
             </form>
 
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     );
 };

@@ -1,19 +1,11 @@
-"use client"
-import { supabase } from "@/lib/supabse/supabaseConfig";
 import Image from "next/image";
-import { title } from "process";
-import { useEffect, useState } from "react";
-import { Send } from "lucide-react";
-import PopUpForm from "../AllCourses/PopUpForm";
 
 
 const Hero = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
+
     <>
-      <PopUpForm isOpen={isOpen} onCancel={() => setIsOpen(false)} onConfirm={() => setIsOpen(false)} />
       <section
         className="
         w-full hidden md:block
@@ -24,9 +16,6 @@ const Hero = () => {
         xl:h-[58vh]
       "
       >
-
-
-
         <div
           className="
           w-[95%] mx-auto
@@ -37,22 +26,20 @@ const Hero = () => {
         >
           {/* LEFT CONTENT */}
           <div className="w-[50%] text-center content-center lg:text-left">
-            <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-4xl font-bold mb-2 sm:mb-6">
-              Get Certified by amazon <span className="text-yellow-400">and Flipkart</span>
+            <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-3xl font-bold mb-4 sm:mb-6">
+              Get Certified By Amazon<span className="text-yellow-400"> And FlipKart</span>
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg lg:text-lg mb-8 sm:mb-10 lg:ml-5">
-              Indias no.1 Ai/digital Marketing Institution
+              India's No.1 Ai/Digital Marketing Institution
             </p>
-
-
 
             {/* CTA BUTTONS */}
             <div className="flex flex-col xl:flex-row gap-4 sm:gap-6">
               <button
                 className="
                 flex items-center justify-center gap-2
-                bg-[#e6ba2b] text-white
+                bg-[#e6ba2b] text-gray-800
                 pl-3
                 pr-7
                 px-5 py-2.5
@@ -61,19 +48,16 @@ const Hero = () => {
                 w-full sm:w-auto
                 hover:bg-[#b9b940]
                 transition
-                pointer-events-auto
                 cursor-pointer
               "
-                onClick={() => setIsOpen(true)}
               >
-                {/* <Image
-                src="/images/Home/googleLogo.png"
-                width={50}
-                height={20}
-                alt="google"
-              /> */}
-                <Send fill="#ffffff" className="text-gray-300" size={22} />
-                <span className="cursor-pointer" onClick={() => setIsOpen(true)}>Let's connect</span>
+                <Image
+                  src="/images/Home/googleLogo.png"
+                  width={50}
+                  height={20}
+                  alt="google"
+                />
+                <span>Continue with Google</span>
               </button>
 
               <button
@@ -82,12 +66,11 @@ const Hero = () => {
                 bg-blue-500 pl-3
                 pr-10 py-2.5
                 rounded-full
-                cursor-pointer
                 font-medium
                 w-full sm:w-auto
                 hover:bg-[#060646]
                 transition
-                
+                cursor-pointer
               "
               >
                 <Image
@@ -155,12 +138,12 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <button className="flex items-center justify-center gap-3 bg-[#e6ba2b] text-gray-800 px-6 py-3 rounded-full">
+          <button className="flex items-center justify-center gap-3 bg-[#e6ba2b] text-gray-800 px-6 py-3 rounded-full cursor-pointer">
             <Image src="/images/Home/googleLogo.png" width={40} height={20} alt="google" />
-            Continue with Google
+            <span>Let's Connect</span>
           </button>
 
-          <button className="flex items-center justify-center gap-3 bg-blue-500 px-6 py-3 rounded-full">
+          <button className="flex items-center justify-center gap-3 bg-blue-500 px-6 py-3 rounded-full cursor-pointer">
             <Image src="/images/Home/GmailLogo.webp" width={32} height={20} alt="email" />
             Continue with Email
           </button>
@@ -172,7 +155,6 @@ const Hero = () => {
       </section>
 
     </>
-
 
   );
 };

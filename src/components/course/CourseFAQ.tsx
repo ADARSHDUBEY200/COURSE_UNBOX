@@ -1,38 +1,89 @@
 "use client";
 
+import { supabase } from "@/lib/supabse/supabaseConfig";
 import { ChevronDown, CircleQuestionMark } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-let faqs =[
-  {
-    ques: "Which is the best Digital Marketing Institute in Delhi NCR for practical learning?",
-    ans: "The best Digital Marketing Institute in Delhi NCR is one that focuses on hands-on training, real-world projects, updated tools, and career support—not just theory. Institutes like Course Unbox emphasize live projects, industry tools, and mentor-led learning to help students become job-ready rather than just certified."
-  },
-  {
-    ques: "What skills should I learn from a Digital Marketing course in Delhi NCR?",
-    ans: "A good Digital Marketing course in Delhi NCR should cover SEO, Google Ads and performance marketing, social media marketing, content marketing, email marketing, web analytics, and real campaign optimization. Practical exposure to tools like Google Analytics, Search Console, and paid ad platforms is essential for real career growth."
-  },
-  {
-    ques: "Is Digital Marketing a good career option in Delhi NCR?",
-    ans: "Yes, digital marketing is a strong career choice in Delhi NCR due to the region’s high concentration of startups, agencies, and corporate businesses. Skilled digital marketers are in demand for roles like SEO specialist, performance marketer, social media manager, and content strategist, with opportunities for both full-time jobs and freelancing."
-  },
-  {
-    ques: "How much does a Digital Marketing course cost in Delhi NCR?",
-    ans: "The fees for a Digital Marketing course in Delhi NCR vary depending on course depth, duration, tools access, and placement support. Instead of choosing a course based only on price, learners should compare curriculum quality, live projects, trainer experience, and post-course career guidance. Course Unbox offers transparent pricing with industry-aligned training and practical exposure."
-  },
-  {
-    ques: "Does Course Unbox provide placement support after Digital Marketing training?",
-    ans: "Yes, Course Unbox provides structured placement and career support, including resume building, interview preparation, portfolio guidance, and job referrals based on skill performance. The focus is on helping learners transition confidently into real digital marketing roles."
-  },
-  {
-    ques: "Who should join a Digital Marketing Institute in Delhi NCR?",
-    ans: "A Digital Marketing Institute in Delhi NCR is suitable for students, working professionals, career switchers, freelancers, and business owners. No prior technical background is required—only the willingness to learn, practice, and adapt. Structured institutes like Course Unbox make the learning process easier through guided mentorship and practical training."
-  }
-]
+type Course = {
 
-function Faq() {
+  id: string;
+  title: string;
+  description: string;
+  startDate: string;
+  Duration: number;
+  language: string;
+  domain: string;
+  Delivery_Mode: string;
+  low: number,
+  high: number,
+  price: number,
+  content: {
+    title: string;
+    subtitle: string;
+  }[];
+  Testimonials:
+  {
+    name: string,
+    role: string,
+    company: string,
+    title: string,
+    description: string,
+    ranking: string,
+    course: string
+  }[],
+  modules: Record<
+    string,
+    {
+      module: string;
+      title: string;
+      lectures: string[];
+    }[]
+  >,
+
+  FAQ: {
+    question: string;
+    answer: string
+  }[];
+  image: string;
+  
+}
+
+function Faq({courseId} : {courseId : string}) {
+
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+
+  const [content, setContent] = useState<Course | null>(null);
+  
+    const getBlogData = async () => {
+  
+      const { data, error } = await supabase
+        .from("Courses")
+        .select("*")
+        .eq("id", courseId)
+        .single();
+  
+      if (error) {
+  
+        console.error(error);
+  
+      }
+  
+      console.log("THE DATA IS : ");
+      console.log(data);
+  
+      setContent(data);
+  
+    }
+  
+  
+  
+    useEffect(() => {
+  
+      getBlogData();
+  
+    }, []);
+  
 
   return (
     <>
@@ -41,7 +92,7 @@ function Faq() {
 
         <div className="w-full text-center mb-5">
           <h2 className="relative inline-block font-extrabold text-3xl md:text-4xl lg:text-5xl mb-16 text-black">
-           FAQs : Digital Marketing Institute in Delhi NCR
+           FAQs : Frequently Asked Questions
             <svg
               className="absolute left-0 -bottom-16 w-full"
               viewBox="0 0 300 20"
@@ -66,7 +117,7 @@ function Faq() {
 
           <div className="w-full md:w-[60%] mx-auto md:px-4 px-8">
             <div className="flex flex-col gap-4">
-              {faqs.map((data, index) => {
+              {content?.FAQ.map((data, index) => {
                 const isOpen = currentIndex === index;
                 // xl:px-5 xl:py-4 
                 return (
@@ -78,7 +129,7 @@ function Faq() {
                       }>
 
                       <span className={`text-sm md:text-sm lg:text-md xl:text-md font-semibold transition-colors duration-300 ease-in-out
-                    ${isOpen ? "text-[#47b2e4]" : "text-[#37517e]"}`}><CircleQuestionMark className={`inline-block mr-2 w-5 `} />{data.ques}</span>
+                    ${isOpen ? "text-[#47b2e4]" : "text-[#37517e]"}`}><CircleQuestionMark className={`inline-block mr-2 w-5 `} />{data.question}</span>
                       {/* <span  className={`text-sky-500 text-xl transition-transform duration-300 ${isOpen ? "rotate-45" : "rotate-0"}`}>
                     +
                   </span> */}
@@ -96,7 +147,7 @@ function Faq() {
 
                       <div className="overflow-hidden">
                         <p className=" pb-4 text-gray-600 leading-relaxed text-sm md:text-md lg:text-lg xl:px-4 xl:py-3  p-2 font">
-                          {data.ans}
+                          {data.answer}
                         </p>
                       </div>
                     </div>

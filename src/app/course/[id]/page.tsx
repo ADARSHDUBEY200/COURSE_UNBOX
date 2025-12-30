@@ -1,4 +1,3 @@
-
 import Banner from "@/components/course/Banner";
 import Hero from "@/components/course/Hero";
 import Enquiry from "@/components/course/Enquiry";
@@ -40,12 +39,12 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
                 <Banner courseId={id}/>
                 <Enquiry courseId={id}/> 
                 <Module courseId={id}/>
-                <CourseContent/>
+                <CourseContent courseId={id}/>
                 <Mentors/>
                 <Testimonials courseId={id}/>
                 <CertificationBanner/>
                 <TopCompanies />
-                <Faq/>
+                <Faq courseId={id}/>
                 <LetsConnect/>
             </div>
             <Footer />
