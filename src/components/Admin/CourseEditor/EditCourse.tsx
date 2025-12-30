@@ -481,10 +481,10 @@ const EditCourse = ({ collapsed, course }: { collapsed: boolean; course: Course 
                     className="w-full rounded-xl border px-4 py-3 text-sm"
                   >
                     <option value="">Select Mode</option>
-                    <option value="Online">Digital Marketing</option>
-                    <option value="Offline">Development</option>
-                    <option value="Hybrid">IT & Software</option>
-                    <option value="Hybrid">Data Science</option>
+                    <option value="digital Marketing">Digital Marketing</option>
+                    <option value="developement">Development</option>
+                    <option value="IT & Software">IT & Software</option>
+                    <option value="Data Science">Data Science</option>
                   </select>
                 </div>
 
@@ -586,14 +586,14 @@ const EditCourse = ({ collapsed, course }: { collapsed: boolean; course: Course 
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Short Description
+                  About Us
                 </label>
                 <textarea
                   name="description"
                   value={formData.description}
                   onChange={handleChange}
                   rows={3}
-                  className="w-full rounded-xl border px-4 py-3 text-sm resize-none"
+                  className="w-full rounded-xl border px-4 py-3 text-sm"
                 />
               </div>
 

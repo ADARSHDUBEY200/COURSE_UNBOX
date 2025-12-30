@@ -355,10 +355,10 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                                         required
                                     >
                                         <option value="">Select Mode</option>
-                                        <option value="digi">Digital Marketing</option>
-                                        <option value="deve">Development</option>
-                                        <option value="IT">IT & Software</option>
-                                        <option value="Data">Data Science</option>
+                                        <option value="digital Marketing">Digital Marketing</option>
+                                        <option value="developement">Development</option>
+                                        <option value="IT & Software">IT & Software</option>
+                                        <option value="Data Science">Data Science</option>
 
                                     </select>
                                 </div>
@@ -488,7 +488,7 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
                             <div>
                                 <label className="block text-sm font-medium mb-2">
-                                    Short Description
+                                    About Us
                                 </label>
                                 <textarea
                                     name="description"
