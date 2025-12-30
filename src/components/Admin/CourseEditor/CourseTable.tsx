@@ -51,7 +51,7 @@ type Course = {
 const CourseTable = ({ onEdit }: { onEdit: any }) => {
 
 
-  const [courses, setCourses] = useState<course[]>([]);
+  const [courses, setCourses] = useState<Course[]>([]);
 
   const fetchTableData = async () => {
 
