@@ -8,14 +8,14 @@ import PopUpForm from "../AllCourses/PopUpForm";
 
 
 const Hero = () => {
-  
-  const [isOpen , setIsOpen] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-    <PopUpForm isOpen={isOpen} onCancel={()=>setIsOpen(false)} onConfirm={()=>setIsOpen(false)}/>
-    <section
-      className="
+      <PopUpForm isOpen={isOpen} onCancel={() => setIsOpen(false)} onConfirm={() => setIsOpen(false)} />
+      <section
+        className="
         w-full hidden md:block
         bg-linear-to-r from-[#1C336E] to-[#3d5ba9]
         text-white
@@ -23,12 +23,12 @@ const Hero = () => {
         pt-14 pb-3
         xl:h-[58vh]
       "
-    >
+      >
 
 
 
-      <div
-        className="
+        <div
+          className="
           w-[95%] mx-auto
           flex flex-row
           items-center
@@ -47,10 +47,10 @@ const Hero = () => {
 
 
 
-          {/* CTA BUTTONS */}
-          <div className="flex flex-col xl:flex-row gap-4 sm:gap-6">
-            <button
-              className="
+            {/* CTA BUTTONS */}
+            <div className="flex flex-col xl:flex-row gap-4 sm:gap-6">
+              <button
+                className="
                 flex items-center justify-center gap-2
                 bg-[#e6ba2b] text-white
                 pl-3
@@ -64,17 +64,17 @@ const Hero = () => {
                 pointer-events-auto
                 cursor-pointer
               "
-              onClick={()=>setIsOpen(true)}
-            >
-              {/* <Image
+                onClick={() => setIsOpen(true)}
+              >
+                {/* <Image
                 src="/images/Home/googleLogo.png"
                 width={50}
                 height={20}
                 alt="google"
               /> */}
-              <Send fill="#ffffff" className="text-gray-300" size={22}/>
-              <span className="cursor-pointer" onClick={()=>setIsOpen(true )}>Let's connect</span>
-            </button>
+                <Send fill="#ffffff" className="text-gray-300" size={22} />
+                <span className="cursor-pointer" onClick={() => setIsOpen(true)}>Let's connect</span>
+              </button>
 
               <button
                 className="
