@@ -5,6 +5,7 @@ import { ChevronDown} from "lucide-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ChevronRight , Star } from "lucide-react";
 
 
 const categories = [
@@ -108,25 +109,35 @@ export default function AllCoursesPage() {
       <div className="hidden max-w-7xl mx-auto px-6 py-16 lg:grid grid-cols-1 lg:grid-cols-4 gap-12">
 
         {/* ================= LEFT SIDEBAR ================= */}
-        <aside className="lg:col-span-1">
-          <div className="sticky top-24 rounded-xl   p-6 bg-white shadow-xl">
-            <h3 className="font-bold text-lg mb-6">Categories</h3>
+        <aside className="lg:col-span ">
+          <div className="sticky top-24 rounded-xl   p-6 bg-blue-50 shadow-xl">
+            <h3 className="font-bold text-lg mb-6 ">Categories</h3>
 
             <ul className="space-y-6 text-sm">
               {categories.map((cat, i) => (
                 <li
                   key={i}
-                  onClick={()=>setSelected(i)}
-                  className={`cursor-pointer pl-3 border-l-4 transition
+                  onClick={() => setSelected(i)}
+                  className={`cursor-pointer px-4  border-l-4 transition flex items-center justify-between
                     ${
                       selected === i
-                        ? "border-blue-600 text-blue-600 font-medium bg-blue-50"
-                        : "border-transparent text-gray-700 hover:text-blue-600"
+                        ? "border-blue-600 text-gray-800 font-bold bg-blue-100 py-3"
+                        : "border-transparent text-gray-700 hover:bg-blue-100 py-3 py-1"
                     }
                   `}
                 >
-                  {cat}
+                  {/* LEFT TEXT */}
+                  <span>{cat}</span>
+
+                  {/* RIGHT ICON */}
+                  <ChevronRight
+                    size={22}
+                    className={`transition-opacity duration-300 ${
+                      selected === i ? "opacity-100 text-gray-800 translate-x-0 " : "opacity-0 -translate-x-1"
+                    }`}
+                  />
                 </li>
+
               ))}
             </ul>
           </div>
@@ -134,7 +145,7 @@ export default function AllCoursesPage() {
 
         {/* ================= RIGHT CONTENT ================= */}
         <main className="lg:col-span-3">
-          <h2 className="text-2xl font-bold mb-8">
+          <h2 className="text-2xl text-gray-500 font-bold mb-8">
             Top AI Courses <span className="text-gray-500">(7)</span>
           </h2>
 
@@ -142,7 +153,7 @@ export default function AllCoursesPage() {
             {courses.map((course, i) => (
               <div
                 key={i}
-                className="bg-white rounded-xl border shadow-sm hover:shadow-lg transition overflow-hidden"
+                className="bg-white rounded-xl border border-blue-300 shadow-sm hover:shadow-lg transition overflow-hidden"
               >
                 {/* Image Placeholder */}
                 <div className="h-36 bg-blue-50 flex items-center justify-center relative">
@@ -151,13 +162,18 @@ export default function AllCoursesPage() {
                       {course.badge}
                     </span>
                   )}
-                  <span className="text-blue-600 font-semibold">Course Image</span>
+                  <img className="w-full h-full object-contain" src="https://training-comp-uploads.internshala.com/homepage/media/courses_section/card_images/upgrad_course.png?v=1&v=v6" alt="mm" />
                 </div>
 
                 {/* Card Content */}
                 <div className="p-5">
-                  <div className="flex items-center gap-2 text-sm mb-2">
-                    ⭐ <span className="font-medium">{course.rating}</span>
+                  <div className="flex items-center justify-between shadow-lg gap-2 text-sm mb-2 px-3 py-2 rounded-xs bg-linear-to-br from-white via-amber-50 to-amber-100 ">
+                    <div className="flex items-center gap-2 ">
+                         <Star size={16} className="text-yellow-500 fill-yellow-500"/> <span className="font-medium">{course.rating}</span>
+                    </div>
+                      <p className="text-sm text-gray-500">
+                       {course.duration}
+                      </p>
                   </div>
 
                   <h3 className="font-semibold text-lg leading-snug mb-2">
@@ -168,12 +184,10 @@ export default function AllCoursesPage() {
                     {course.desc}
                   </p>
 
-                  <p className="text-sm text-gray-500 mb-5">
-                    {course.duration}
-                  </p>
+                 
 
-                  <button className="text-blue-600 text-sm font-medium hover:underline">
-                    Know more →
+                  <button className="text-blue-700 text-sm font-medium  flex items-center cursor-pointer">
+                    <p>Know more</p> <ChevronRight className="mt-1" size={20}/>
                   </button>
                 </div>
               </div>

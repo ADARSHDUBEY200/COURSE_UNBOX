@@ -3,6 +3,7 @@
 import { supabase } from "@/lib/supabse/supabaseConfig";
 import Link from "next/link"
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 
 type Blog = {
@@ -17,7 +18,7 @@ type Blog = {
     answer: string;
   }[];
 
-  image: string
+  image: string;
 
   created_at: string;
 
@@ -57,7 +58,7 @@ export default function LeftContent({ BlogId }: { BlogId: string }) {
   return (<article className=" border-r-gray-400 ">
 
     {/* ===== BLOG HEADER ===== */}
-    <section className="px-4 pt-16 ">
+    <section className="px-8 sm:px-4 pt-16 ">
 
       <div className="flex items-center gap-3 mb-4">
 
@@ -84,14 +85,23 @@ export default function LeftContent({ BlogId }: { BlogId: string }) {
 
     {/* ===== FEATURE IMAGE ===== */}
     <section className="px-6 sm:px-4 mt-10">
-      <div className="group relative w-full h-70 sm:h-95 rounded-2xl overflow-hidden shadow-xl">
+      <div className="group relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl">
+        <img
+          src={Blogs?.image}
+          alt="Blog cover"
+          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-transparent" />
+
+      </div>
+
+      {/* <div className="group relative w-full h-70 sm:h-95 rounded-2xl overflow-hidden shadow-xl">
         <img
           src={Blogs?.image}
           alt="Blog cover"
           className="object-contain w-full h-full transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-transparent" />
-      </div>
+      </div> */}
     </section>
 
 
