@@ -11,7 +11,7 @@ export default async function sitemap() {
     .from("Blog")
     .select('*');
 
-  const baseUrl = "https://course-unbox-8nec.vercel.app";
+  const baseUrl = "https://courseunbox.com";
 
   const courseUrls =
     courses?.map((course) => ({
