@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabse/supabaseConfig";
+import emailjs from "@emailjs/browser";
 
 type Course = {
   id: string;
