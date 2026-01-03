@@ -91,7 +91,7 @@ function Faq({courseId} : {courseId : string}) {
       <section className="w-full bg-[#dceefa] py-12">
 
         <div className="w-full text-center mb-5">
-          <h2 className="relative inline-block font-extrabold text-3xl md:text-4xl lg:text-5xl mb-16 text-black">
+          <h2 className="relative inline-block font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-16 text-black">
            FAQs : Frequently Asked Questions
             <svg
               className="absolute left-0 -bottom-16 w-full"
@@ -134,7 +134,7 @@ function Faq({courseId} : {courseId : string}) {
                     +
                   </span> */}
 
-                      <ChevronDown className={`w-12 h-12 sm:w-5 sm:h-5 md:w-6 md:h-6 xl:w-5 xl:h-5 transition-transform duration-300 ease-linear
+                      <ChevronDown className={` sm:w-5 sm:h-5 md:w-6 md:h-6 xl:w-5 xl:h-5 transition-transform duration-300 ease-linear
                     ${isOpen ? "rotate-180 text-[#47b2e4]" : "rotate-0 text-[#37517e]"}`} />
 
 
