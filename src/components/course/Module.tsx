@@ -86,12 +86,12 @@ export default function Module({ courseId }: { courseId: string }) {
 
 
     return (
-        <section className="p-10 bg-[#f6fbff]">
+        <section className="p-2 sm:p-6 md:p-10 bg-[#f6fbff]">
             <div className="w-full p-6">
 
                 {/* Heading */}
 
-                <h2 className="text-3xl font-bold mb-6 p-2 text-black border-l-8">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 p-2 text-black border-l-8">
                     Your Guide To Upskilling: Our Curriculum
                 </h2>
 
@@ -107,10 +107,10 @@ export default function Module({ courseId }: { courseId: string }) {
                                     setActiveTab(tab);
                                     setActiveModule(0);
                                 }}
-                                className={`px-20 py-6 text-black shrink-0 rounded-4xl text-sm font-medium transition cursor-pointer 
-        ${activeTab === tab
+                                className={`px-10 py-3 sm:px-16 sm:py-5 md:px-20 md:py-6 text-black shrink-0 rounded-4xl text-sm font-medium transition cursor-pointer 
+                                ${activeTab === tab
                                         ? "bg-[#030363] text-white"
-                                        : "bg-white hover:bg-gray-200"
+                                        : "md:bg-white bg-gray-100  hover:bg-gray-200"
                                     }`}
                             >
                                 {tab}
@@ -125,7 +125,7 @@ export default function Module({ courseId }: { courseId: string }) {
 
                 {/* Content */}
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-lg p-4 bg-white shadow-xl">
+                <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 rounded-lg p-4 bg-white shadow-xl">
 
                     {/* Left Modules */}
 
@@ -162,7 +162,78 @@ export default function Module({ courseId }: { courseId: string }) {
                         ))}
                     </div>
                 </div>
-            </div>
+
+
+                {/* ================= MOBILE VIEW ================= */}
+               <div className="md:hidden  py-6 bg-slate-50">
+
+                    <div className="space-y-3">
+                        {modules.map((mod, index) => {
+                        const isOpen = activeModule === index;
+
+                        return (
+                            <div
+                            key={mod.title}
+                            className="bg-white rounded-xl border border-slate-200 overflow-hidden transition-shadow duration-300"
+                            >
+                            {/* MODULE HEADER */}
+                            <button
+                                onClick={() => setActiveModule(isOpen ? -1 : index)}
+                                className={`
+                                w-full flex items-center justify-between p-4
+                                transition-colors duration-300
+                                ${isOpen ? "bg-indigo-100" : "hover:bg-slate-50"}
+                                `}
+                            >
+                                <div className="text-left">
+                                <p className="text-[11px] uppercase tracking-wide text-slate-500">
+                                    {mod.module}
+                                </p>
+                                <p className="text-sm font-semibold text-slate-900">
+                                    {mod.title}
+                                </p>
+                                </div>
+
+                                <ChevronRight
+                                className={`
+                                    w-5 h-5 text-slate-400
+                                    transition-transform duration-300
+                                    ${isOpen ? "rotate-90" : ""}
+                                `}
+                                />
+                            </button>
+
+                            {/* LECTURES */}
+                            {isOpen && (
+                                <div className="px-4 pb-4 space-y-2 animate-fadeIn mt-2">
+                                {mod.lectures.map((lecture: string) => (
+                                    <div
+                                    key={lecture}
+                                    className="
+                                        flex items-center justify-around
+                                        p-3 rounded-lg
+                                        bg-slate-50 border border-slate-200
+                                    "
+                                    >
+                                    <p className="text-sm text-slate-800 font-medium">
+                                        {lecture}
+                                    </p>
+                                     <div className="bg-gray-200 p-1 rounded-full" >
+                                        <Lock className="size-4 text-slate-500 " />
+                                    </div>  
+                                    </div>
+                                ))}
+                                </div>
+                            )}
+                            </div>
+                        );
+                        })}
+                    </div>
+                    </div>
+
+                    
+                </div>
+
         </section>
     );
 }

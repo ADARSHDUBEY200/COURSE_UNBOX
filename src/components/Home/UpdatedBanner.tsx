@@ -36,15 +36,15 @@ export const UpdatedBanner = () => {
    ];
 
   return (
-    <section className=" px-3 sm:px-6 md:px-20 py-4  bg-linear-to-r from-[#1C336E] to-[#3d5ba9] ">
-      <div className="max-w-2xl md:max-w-3xl lg:max-w-5xl mx-2 lg:mx-auto md:bg-white rounded-xl md:flex grid grid-cols-2 px-6 md:px-0  md:flex-row md:justify-around justify-center  items-center text-black py-6 gap-6">
+    <section className=" px-3 sm:px-6 md:px-20 py-4  bg-linear-to-r from-[rgb(28,51,110)] to-[#3d5ba9] ">
+      <div className="max-w-2xl md:max-w-3xl lg:max-w-5xl mx-auto bg-white rounded-xl md:flex grid grid-cols-1 sm:grid-cols-2  px-6 md:px-0  lg:flex-row md:justify-around justify-center  items-center text-black py-6 gap-6">
 
          
           {
             stats.map((item,idx)=>{
 
-                return (<>
-                     <div key={idx} className="flex items-center gap-2 bg-white rounded-lg md:rounded-0 p-4 md:p-0 ">
+                return (<React.Fragment key={idx}>
+                     <div className="flex items-center gap-2  rounded-lg md:rounded-0 p-4 md:p-0 justify-center md:justify-normal">
                             {item.icon}
                             <div>
                             <p className="text-lg sm:text-2xl font-bold">
@@ -57,7 +57,7 @@ export const UpdatedBanner = () => {
                            </div>
                      </div>
                     {idx<=2 && <div className="hidden md:block bg-linear-to-br from-yellow-100 via-yellow-400 to-amber-100 h-12 w-0.5"/>}
-                   </>
+                   </React.Fragment>
              )
 
             })

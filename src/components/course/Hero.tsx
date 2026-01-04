@@ -64,12 +64,12 @@ const Hero = ({ courseId }: { courseId: string }) => {
     return (
 
 
-        <section className="w-full bg-linear-to-br from-[#01016c] via-[#4d14c6] to-violet-800 bg-opacity-90 py-12 px-10">
+        <section className="w-full bg-linear-to-br from-[#01016c] via-[#4d14c6] to-violet-800 bg-opacity-90 py-6 px-6 md:px-10 md:py-12">
 
-            <div className="w-8xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div className="w-full md:w-8xl md:mx-auto grid lg:grid-cols-2 gap-12 items-center">
 
 
-                <div className="w-full text-white px-4 md:px-10">
+                <div className="w-full text-white md:px-10">
 
 
                     {/* Top Badges */}
@@ -89,10 +89,10 @@ const Hero = ({ courseId }: { courseId: string }) => {
 
                     {/* Heading */}
 
-                    <div className="text-3xl md:text-3xl font-bold leading-tight max-w-4xl">
+                    <div className="text-2xl md:text-3xl font-bold leading-tight max-w-4xl">
                         <span className="text-yellow-400">{course?.title} </span>
                         Placement Course with AI
-                        <span className="inline-block ml-2 bg-white/15 px-4 py-1 rounded-full text-sm p-5">
+                        <span className="inline-block ml-2 mt-4 bg-white/15 px-4 py-1 rounded-full text-sm p-5">
                             Updated in May’25
                         </span>
                     </div>
@@ -106,7 +106,7 @@ const Hero = ({ courseId }: { courseId: string }) => {
                     <div className="mt-6 space-y-3">
                         <div className="flex items-center gap-3">
                             <CheckCircle className="text-green-400" />
-                            <p className="text-lg">
+                            <p className="text-sm md:text-lg ">
                                 Get placed with <b>₹{course?.low}-{course?.high} LPA</b> salary{" "}
                                 <span className="underline cursor-pointer">Know more</span>
                             </p>
@@ -114,7 +114,7 @@ const Hero = ({ courseId }: { courseId: string }) => {
 
                         <div className="flex items-center gap-3">
                             <CheckCircle className="text-green-400" />
-                            <p className="text-lg">Course fee refund if not placed</p>
+                            <p className="text-sm md:text-lg">Course fee refund if not placed</p>
                         </div>
                     </div>
 
@@ -133,39 +133,39 @@ const Hero = ({ courseId }: { courseId: string }) => {
                     <div className="mt-6  lg:w-xl bg-white/10 backdrop-blur-xl rounded-2xl pb-2">
 
 
-                        <div className='flex  items-center w-full  md:h-9 bg-[#4f0095] rounded-tr-2xl rounded-tl-2xl border border-white/20 p-3 pb-4 text-lg'>
+                        <div className='flex  items-center w-full  md:h-9 bg-[#4f0095] rounded-tr-2xl rounded-tl-2xl border border-white/20 p-3 pb-4 text-sm sm:text-lg'>
                             <p>{course?.Duration} months online course with LIVE sessions</p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 items-center pl-3">
+                        <div className="grid grid-cols-2 gap-4 items-center pl-1 sm:pl-3">
 
                             <div className='pl-7'>
 
                                 <p className="text-sm text-white/80">Batch starts on</p>
 
-                                <h4 className="text-2xl font-bold mt-1">{course?.startDate}</h4>
+                                <h4 className="text-lg sm:text-xl md:text-2xl font-bold mt-1">{course?.startDate}</h4>
 
-                                <span className="inline-block mt-3 bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-semibold">
+                                <span className="inline-block mt-3 bg-yellow-400 text-black px-3 sm:px-4 py-1 rounded-3xl sm:rounded-full  text-xs sm:text-sm font-semibold">
                                     Limited seats
                                 </span>
 
                             </div>
 
 
-                            <div className="md:border-l md:border-white/20 md:pl-9">
+                            <div className="border-l md:border-white/20 md:pl-9 pl-3">
 
                                 <p className="text-sm text-white/80">Course Fee</p>
 
-                                <div className="flex items-end gap-3 mt-2">
-                                    <h4 className="text-3xl font-extrabold">₹{course?.price}</h4>
-                                    <span className="line-through text-white/60">₹{course?.price! + 10001}</span>
+                                <div className="flex items-end gap-3 mt-2 flex-wrap">
+                                    <h4 className="text-lg sm:text-xl md:text-2xl  font-extrabold">₹{course?.price}</h4>
+                                    <span className="line-through text-white/60 text-xs  sm:text-normal">₹{course?.price! + 10001}</span>
                                 </div>
 
-                                <span className="inline-block mt-3 bg-white text-purple-700 px-4 py-1 rounded-full text-sm font-semibold">
+                                <span className="inline-block mt-3 bg-white text-purple-700  px-3 sm:px-4 py-1 rounded-3xl sm:rounded-full text-xs sm:text-sm font-semibold">
                                     Save ₹10,001
                                 </span>
 
-                                <p className="mt-3 text-yellow-300 text-sm font-medium">
+                                <p className="mt-3 text-yellow-300 text-xs sm:text-sm font-medium">
                                     Course fee increasing soon ↗
                                 </p>
                             </div>
@@ -186,7 +186,7 @@ const Hero = ({ courseId }: { courseId: string }) => {
                                 (company) => (
                                     <div
                                         key={company}
-                                        className="bg-white/15 px-5 py-2 rounded-lg text-sm font-medium"
+                                        className="bg-white/15 px-3 py-1  sm:px-5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium"
                                     >
                                         {company}
                                     </div>

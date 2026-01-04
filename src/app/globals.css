@@ -157,3 +157,30 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;             
 }
+
+
+/* Mentors Section, infinite scroll animation */
+
+.mentor-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: mentor-scroll 30s linear infinite;
+}
+
+.mentor-track:hover {
+  animation-play-state: paused;
+}
+
+.mentor-card {
+  min-width: 380px;
+}
+
+@keyframes mentor-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

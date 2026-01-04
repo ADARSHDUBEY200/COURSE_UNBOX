@@ -17,7 +17,7 @@ export default function PopUpForm({ isOpen, onCancel, onConfirm }: IPopForm) {
   const [occupation, setOccupation] = useState("");
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const templateParams = {

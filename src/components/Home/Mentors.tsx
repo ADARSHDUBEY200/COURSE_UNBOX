@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { supabase } from "@/lib/supabse/supabaseConfig";
 
@@ -19,32 +16,7 @@ type Mentor = {
 
 const Mentors = () => {
 
-    var settings = {
-        dots: true,
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        speed: 2000,
-        autoplaySpeed: 2000,
-        cssEase: "linear",
-
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 1,
-                    dots: false,
-                },
-            },
-        ],
-    };
+    
 
     const [MentorsData, setMentorsData] = useState<Mentor[]>([]);
 
@@ -76,62 +48,62 @@ const Mentors = () => {
 
     return (
 
-        <div className="bg-[#eef5fc] w-full h-[87vh] mx-auto px-4 py-12 slider-container content-center">
-            <div className=" text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#061b52] w-full mb-10 lg:pl-20 ">
+        <div className="bg-[#eef5fc] w-full h-[87vh] mx-auto px-4 py-12 overflow-hidden">
+  
+            <div className="text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#061b52] mb-12">
                 Our Mentors
             </div>
-            <Slider {...settings} className="mx-auto">
 
+            {/* SCROLL WRAPPER */}
+            <div className="relative w-full overflow-hidden">
+                
+                
+                <div className="mentor-track">
 
-                {
-                    MentorsData.map((mentor) => {
-                        return (
-                            <div className="cursor-pointer w-full sm:max-w-sm mx-auto">
-                                <div
-                                    className="
-                                    h-[32vh]
-                                    sm:h-[36vh]
-                                    md:h-[40vh]
-                                    lg:h-[50vh]
-                                    xl:h-[60vh]
-                                    rounded-2xl
-                                    overflow-hidden
-                                    flex
-                                    flex-col
-                                    transition
-                                    hover:scale-[1.02]
-                                    duration-300
-                                    bg-white
-                                    "
-                                >
-                                    {/* IMAGE */}
-                                    <div className="relative w-full h-[70%]">
-                                    <Image
-                                        src="/images/Home/TopCourse.jpg"
-                                        alt="Mentor Image"
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 768px) 100vw, 410px"
-                                    />
-                                    </div>
+                {[...MentorsData, ...MentorsData].map((mentor, index) => (
+                    <div
+                    key={index}
+                    className="mentor-card cursor-pointer"
+                    >
+                    <div
+                        className="
+                        h-[32vh]
+                        sm:h-[36vh]
+                        md:h-[40vh]
+                        lg:h-[50vh]
+                        xl:h-[60vh]
+                        rounded-2xl
+                        overflow-hidden
+                        flex flex-col
+                        bg-white
+                        transition
+                        hover:scale-[1.02]
+                        "
+                    >
+                        
+                        <div className="relative w-full h-[70%]">
+                        <Image
+                            src="/images/Home/TopCourse.jpg"
+                            alt="Mentor Image"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 410px"
+                        />
+                        </div>
 
-                                    {/* CONTENT */}
-                                    <div className="flex-1 px-4 py-3 flex items-center">
-                                    <div className="font-bold text-base sm:text-lg text-gray-900">
-                                        {mentor.name}
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
+                        
+                        <div className="flex-1 px-4 py-3 flex items-center justify-center">
+                        <div className="font-bold text-base sm:text-lg text-gray-900">
+                            {mentor.name}
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                ))}
 
-                        )
-
-                    })
-                }
-
-            </Slider>
-
-        </div>
+                </div>
+            </div>
+    </div>
 
     );
 

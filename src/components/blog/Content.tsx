@@ -143,36 +143,36 @@ const Content = () => {
         <div className="flex flex-wrap gap-8 pb-4">
           {blogs.map((card, idx) => (
             <Link
-              key={idx}
+              key={card.id}
               href={`/blog/${card.id}`}
               className="min-w-[340px] max-w-[340px] bg-white rounded-3xl shadow hover:shadow-2xl hover:shadow-indigo-300 transition"
             >
-
-              <div className="relative h-44 w-full overflow-hidden rounded-t-3xl">
-
+              {/* IMAGE */}
+              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-3xl bg-gray-100">
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
-                  className="object-cover"
+                  className="object-contain transition-transform duration-500 hover:scale-105"
                 />
               </div>
 
+              {/* CONTENT */}
               <div className="p-6">
                 <span className="inline-block mb-3 rounded-full bg-gray-100 px-4 py-1 text-xs font-medium text-gray-700">
                   {card.domain}
                 </span>
+
                 <h3 className="text-lg font-semibold leading-snug mb-3">
                   {card.title}
                 </h3>
+
                 <p className="text-sm text-gray-600 line-clamp-3">
-                  {
-                    card.content.slice(0, 400)
-                  }
-                  ...
+                  {card.content.slice(0, 400)}...
                 </p>
               </div>
             </Link>
+
           ))}
         </div>
 

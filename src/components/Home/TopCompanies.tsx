@@ -14,16 +14,16 @@ const TopCompanies = () => {
 
 
     return (
-        
+
         <div className='h-[50vh] w-full p-15 bg-[#f6fcfe]'>
 
 
-            <div className='h-[10vh] mb-10 text-center text-5xl font-extrabold text-[#030365]'>
+            <div className='h-[10vh] mb-8 md:mb-10 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#030365]'>
                 Hiring Partners
 
             </div>
 
-            <div className="relative flex-1 overflow-hidden mb-10">
+            <div className="relative flex-1 overflow-hidden mb-8 md:mb-10">
                 <div className="flex w-max animate-marquee gap-16">
                     {[...logos, ...logos].map((logo, idx) => (
                         <div
@@ -33,7 +33,7 @@ const TopCompanies = () => {
                             <img
                                 src={logo.src}
                                 alt={logo.name}
-                                className="h-10 object-contain"
+                                className="h-5 sm:h-7 md:h-10 object-contain"
                             />
                         </div>
                     ))}
@@ -50,7 +50,7 @@ const TopCompanies = () => {
                             <img
                                 src={logo.src}
                                 alt={logo.name}
-                                className="h-10 object-contain"
+                                className="h-5 sm:h-7 md:h-10 object-contain"
                             />
                         </div>
                     ))}
