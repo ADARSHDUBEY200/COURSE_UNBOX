@@ -14,6 +14,7 @@ const TopCompanies = () => {
 
 
     return (
+        
         <div className='h-[50vh] w-full p-15 bg-[#f6fcfe]'>
 
 

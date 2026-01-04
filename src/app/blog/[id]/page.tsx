@@ -11,22 +11,24 @@ import { supabase } from "@/lib/supabse/supabaseConfig";
 import { title } from "process";
 
 
-// export async function generateMetadata({params} : {params : Promise<{id : string}>}) {
-//    const {id} = await params;
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
-//    const {data , error} = await supabase.from("Blogs").select("*").eq("id", id);
+  const { data, error } = await supabase.from("Blogs").select("*").eq("id", id).single();
 
-//    return {
-//       title : data,
-//       description : data
-//    }
-// } 
+  return {
+
+    title: data.meta.title,
+    description: data.meta.description
+
+  }
+}
 
 
 
-const Page = async ({ params }: { params: Promise<{ id: string }>}) => {
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
-  const {id} = await params;
+  const { id } = await params;
 
   console.log("THE ID WE HAVE GOT IS : ");
   console.log(id);
@@ -44,7 +46,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }>}) => {
           <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-10" >
 
 
-            <LeftContent BlogId={id}/>
+            <LeftContent BlogId={id} />
 
 
             <aside className="relative shadow-xs">
@@ -64,7 +66,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }>}) => {
         </div>
 
 
-        <BlogFAQ BlogId={id}/>
+        <BlogFAQ BlogId={id} />
 
 
         <RelatedBlog />

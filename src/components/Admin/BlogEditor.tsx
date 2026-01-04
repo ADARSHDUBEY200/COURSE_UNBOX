@@ -12,13 +12,20 @@ type blog = {
     id: string;
     title: string;
     content: string;
-    author: string;
     FAQ: {
         question: string;
         answer: string
     }[];
+    image: string,
+
+    meta: {
+
+        title: string,
+        description: string
+    },
+
     created_at: number;
-    image : string,
+    author: string,
     domain: string;
 
 };
@@ -38,7 +45,7 @@ const BlogEditor = ({ collapsed }: { collapsed: boolean }) => {
         setActive("Table")
     }
 
-    const onEdit = (blog : blog ) => {
+    const onEdit = (blog: blog) => {
         setActive("Edit");
         setEditItem(blog);
 

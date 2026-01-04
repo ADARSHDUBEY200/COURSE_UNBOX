@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Hire() {
   return (
     <section className="w-full  lg:h-[70vh] px-4 md:px-10 flex justify-start items-start lg:justify-center lg:items-center">
@@ -126,10 +128,12 @@ export default function Hire() {
 
 
 
+          <Link href="/course">
           <button className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold  py-4 px-3 mt-4 rounded-lg transition shadow-md cursor-pointer">
             Our Courses
             <span className="text-xl">→</span>
           </button>
+          </Link>
         </div>
       </div>
     </section>

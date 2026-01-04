@@ -14,6 +14,7 @@ const Hero = () => {
   return (
     <>
       <PopUpForm isOpen={isOpen} onCancel={() => setIsOpen(false)} onConfirm={() => setIsOpen(false)} />
+        
       <section
         className="
         w-full hidden md:block
@@ -38,7 +39,7 @@ const Hero = () => {
           {/* LEFT CONTENT */}
           <div className="w-[50%] text-center content-center lg:text-left">
             <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6">
-              Get Certified By Amazon <span className="text-yellow-400">And FlipKart</span>
+              Best Digital Marketing Institute <span className="text-yellow-400">In Delhi NCR</span>
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg lg:text-lg mb-8 sm:mb-10 lg:ml-5">
@@ -134,8 +135,8 @@ const Hero = () => {
       >
 
         <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold mb-4">
-            Get Certified By Amazon <span className="text-yellow-400">And FlipKart</span>
+          <h1 className="text-2xl font-bold mb-4">
+            Best Digital Marketing Institute <span className="text-yellow-400">In Delhi NCR</span>
           </h1>
           <p className="text-base">
             Indias no.1 Ai/Digital Marketing Institution

@@ -20,6 +20,11 @@ type blog = {
         answer: string
     }[];
     image: string,
+    meta : {
+        
+        title : string,
+        description : string
+    }
     created_at: number;
     author: string,
     domain: string;
@@ -29,8 +34,10 @@ type blog = {
 
 
 
-const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
+const EditBlog = ({ collapsed, blog } : { collapsed: boolean; blog: blog }) => {
+
     const [imageURL, setimageURL] = useState("");
+
     const [formData, setFormData] = useState({
         title: "",
         content: "",
@@ -58,6 +65,13 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
 
     const [loading, setloading] = useState(false);
 
+    const [meta, setMeta] = useState({
+
+        metaTitle: "",
+        metaDescription: ""
+
+    });
+
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
@@ -72,6 +86,13 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
     };
 
 
+    const handleMeta = async (event : React.ChangeEvent<HTMLInputElement>) => {
+
+        setMeta({ ...meta, [event.target.name]: event.target.value });
+
+    };
+
+
     useEffect(() => {
         setFormData({
             title: blog.title,
@@ -82,6 +103,7 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
         setimageURL(blog.image)
 
         setContent({
+
             firstQuestion: blog.FAQ?.[0]?.question || "",
             firstAnswer: blog.FAQ?.[0]?.answer || "",
 
@@ -99,6 +121,7 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
 
             sixthQuestion: blog.FAQ?.[5]?.question || "",
             sixthAnswer: blog.FAQ?.[5]?.answer || "",
+
         });
 
         setEditorContent(blog.content);
@@ -162,6 +185,11 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
 
                 ],
 
+                meta:{
+                    title: meta.metaTitle,
+                    description: meta.metaDescription,
+                },
+
                 image: imageURL || blog.image
 
             }
@@ -175,10 +203,12 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
         };
 
         if (error) {
+
             console.error(error);
             setloading(true);
             toast.error("Update failed");
             return;
+
         }
 
         setloading(false);
@@ -241,6 +271,36 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: blog }) => {
                                             <option value="IT & Software">IT & Software</option>
                                             <option value="Data Science">Data Science</option>
                                         </select>
+                                    </div>
+
+                                </div>
+
+
+                                <div className="flex gap-4">
+                                    <div className="w-full">
+                                        <label className="block text-sm font-medium mb-2">
+                                            Meta Title
+                                        </label>
+                                        <input
+                                            name="metaTitle"
+                                            value={meta.metaTitle}
+                                            onChange={handleMeta}
+                                            className="w-full rounded-xl border px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="w-full">
+                                        <label className="block text-sm font-medium mb-2">
+                                            Meta Description
+                                        </label>
+                                        <input
+                                            name="metaDescription"
+                                            value={meta.metaDescription}
+                                            onChange={handleMeta}
+                                            className="w-full rounded-xl border px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                            required
+                                        />
                                     </div>
 
                                 </div>

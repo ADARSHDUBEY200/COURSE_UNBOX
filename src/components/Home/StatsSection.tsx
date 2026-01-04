@@ -32,10 +32,10 @@ export default function StatsSection() {
 
 
   return (
-    <section className="w-full bg-sky-50 py-10" ref={containerRef}>
-      <div className="max-w-7xl mx-auto px-5 ">
+    <section className="w-full bg-[#f3fbff] py-10" ref={containerRef}>
+      <div className="max-w-7xl mx-auto px-5">
         {/* Card */}
-        <div className="relative bg-white rounded-2xl shadow-sm xl:px-8 xl:py-10 px-6 py-6">
+        <div className="relative bg-white rounded-3xl shadow-md hover:shadow-xl hover:border hover:border-[#92d7fc] xl:px-8 xl:py-10 px-6 py-6 cursor-pointer transition ease-in-out">
           {/* Heading */}
           <div className="mb-8">
             <div className="flex items-center gap-3">

@@ -14,7 +14,16 @@ type blog = {
         question: string;
         answer: string
     }[];
+    image: string,
+
+    meta : {
+
+        title : string,
+        description : string
+    },
+    
     created_at: number;
+    author: string,
     domain: string;
 
 };

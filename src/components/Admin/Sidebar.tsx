@@ -8,15 +8,18 @@ import CourseEditor from './CourseEditor';
 import BlogEditor from './BlogEditor';
 
 
-import { Home, BookOpen, Info, FileText, Settings, Menu, Users } from "lucide-react";
+import { Home, BookOpen, Info, FileText, Settings, Menu, Users , ChartColumnBigIcon} from "lucide-react";
 import MentorEditor from './MentorEditor';
+import Stastics from './Stastics';
 
 const sidebarItems = [
 
+    { key: "stats", label: "Stats", icon: ChartColumnBigIcon },
     { key: "home", label: "Home", icon: Home },
     { key: "courses", label: "Courses", icon: BookOpen },
     { key: "mentors", label: "Mentors", icon: Users },
     { key: "blog", label: "Blog", icon: FileText },
+    
     
 ];
 
@@ -67,7 +70,7 @@ const Sidebar = () => {
                 </header>
 
                 <div className="grid gap-6">
-
+                    {active === "stats" && <Stastics collapsed={collapsed} />}
                     {active === "home" && <HomeEditor collapsed={collapsed} />}
                     {active === "courses" && <CourseEditor collapsed={collapsed} />}
                     {active === "mentors" && <MentorEditor collapsed={collapsed} />}

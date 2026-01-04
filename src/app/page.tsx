@@ -31,9 +31,9 @@ export default function Home() {
             <main className="w-full min-h-screen bg-white">
                   <Navbar />
                   <Hero />
+                  <UpdatedBanner />
                   <Partners />
                   {/* <Banner /> */}
-                  <UpdatedBanner/>
                   <Trending />
                   <Courses />
                   <Enquiry />

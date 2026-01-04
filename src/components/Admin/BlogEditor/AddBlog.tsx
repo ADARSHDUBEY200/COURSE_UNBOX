@@ -43,6 +43,14 @@ const AddBlog = ({ collapsed }: { collapsed: boolean }) => {
 
     const [loading, setloading] = useState(false);
 
+    const [meta, setMeta] = useState({
+
+        metaTitle: "",
+        metaDescription: ""
+
+    });
+
+
 
 
     const handleChange = (
@@ -59,10 +67,26 @@ const AddBlog = ({ collapsed }: { collapsed: boolean }) => {
     };
 
 
+    const handleMeta = async (event: React.ChangeEvent<HTMLInputElement>) => {
+
+        setMeta({ ...meta, [event.target.name]: event.target.value });
+
+    };
+
+
+
 
     const handleSave = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setloading(true);
+
+        if(imageURL == ""){
+
+            setloading(false);
+            alert("You also need to Give the image Url currently you image is empty");
+            return;
+
+        }
 
         const { data, error } = await supabase.from("Blog").insert([{
 
@@ -78,6 +102,14 @@ const AddBlog = ({ collapsed }: { collapsed: boolean }) => {
                 { question: content.fifthQuestion, answer: content.fifthAnswer },
                 { question: content.sixthQuestion, answer: content.sixthAnswer },
             ],
+
+            meta: {
+
+                title: meta.metaTitle,
+                description: meta.metaDescription
+
+            },
+
             image: imageURL
 
         }]).select().single();
@@ -93,14 +125,14 @@ const AddBlog = ({ collapsed }: { collapsed: boolean }) => {
 
         if (error) {
             console.error(error);
-            setloading(true);
+            setloading(false);
             toast.error("Update failed");
             return;
         }
 
         setloading(false);
         toast.success("Blog Added successfully");
-        
+
     }
 
 
@@ -206,6 +238,37 @@ const AddBlog = ({ collapsed }: { collapsed: boolean }) => {
                                     className="w-full rounded-xl border px-4 py-3 text-sm"
                                     required
                                 />
+                            </div>
+
+
+
+                            <div className="flex gap-4">
+                                <div className="w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Meta Title
+                                    </label>
+                                    <input
+                                        name="metaTitle"
+                                        value={meta.metaTitle}
+                                        onChange={handleMeta}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="w-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Meta Description
+                                    </label>
+                                    <input
+                                        name="metaDescription"
+                                        value={meta.metaDescription}
+                                        onChange={handleMeta}
+                                        className="w-full rounded-xl border px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                        required
+                                    />
+                                </div>
+
                             </div>
 
 
@@ -452,7 +515,7 @@ const AddBlog = ({ collapsed }: { collapsed: boolean }) => {
 
             </form>
 
-            <ToastContainer/>
+            <ToastContainer />
 
         </div>
 
