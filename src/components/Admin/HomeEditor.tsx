@@ -14,12 +14,12 @@ const HomeEditor = ({ collapsed }: { collapsed: boolean }) => {
   return (
 
     <>
-    
+
       <Hero collapsed={collapsed} />
       <Banner collapsed={collapsed} />
       <TrendingImage collapsed={collapsed} />
       <AboutHome collapsed={collapsed} />
-      <DigitalMarketing collapsed={collapsed}/>
+      <DigitalMarketing collapsed={collapsed} />
 
     </>
   );

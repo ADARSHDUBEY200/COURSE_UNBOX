@@ -17,6 +17,7 @@ const LetsConnect = () => {
       </button>
 
       </div>
+      
       <PopUpForm isOpen={isOpen} onCancel={()=>setIsOpen(false)} onConfirm={()=>setIsOpen(false)} />
     </>
    
