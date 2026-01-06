@@ -7,6 +7,7 @@ import Link from "next/link";
 import Router from "next/router";
 import { useRouter } from "next/navigation";
 const Navbar = () => {
+  
   const [open, setOpen] = useState(false);
   const router = useRouter();
 

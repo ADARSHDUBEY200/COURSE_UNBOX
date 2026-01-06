@@ -4,6 +4,7 @@ import Footer from '@/components/Home/Footer';
 import Content from '@/components/blog/Content';
 import LetConnect from "@/components/blog/LetConnect";
 import LetsConnect from "@/components/Home/LetsConnect";
+import { supabase } from '@/lib/supabse/supabaseConfig';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,7 +13,25 @@ export const metadata: Metadata = {
 }
 
 
-const page = () => {
+ const getBlogData = async () => {
+
+      const { data, error } = await supabase.from("Blog").select("*");
+
+      if (error) {
+
+        console.log("There is some of the error I have got");
+        console.log(error);
+
+      }
+
+      return data;
+
+    }
+
+
+const page = async () => {
+
+    const blogs = await getBlogData();
 
     return (
 
@@ -21,7 +40,7 @@ const page = () => {
 
             <LetConnect />
 
-            <Content />
+            <Content blogs = {blogs ?? []}/>
 
             <LetsConnect />
 

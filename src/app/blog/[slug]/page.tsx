@@ -33,6 +33,25 @@ export async function generateMetadata(
 }
 
 
+const getBlogData = async (BlogId : string) => {
+  const { data, error } = await supabase
+    .from("Blog")
+    .select("*")
+    .eq("slug", BlogId)
+    .single();
+
+  if (error) {
+
+    console.error(error);
+
+  }
+
+  return data;
+
+  
+}
+
+
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   const { slug } = await params;
@@ -40,7 +59,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   console.log("THE ID WE HAVE GOT IS : ");
   console.log(slug);
 
-  const { data: blog , error } = await supabase
+  const { data: blog, error } = await supabase
     .from("Blog")
     .select("id, slug")
     .eq("slug", slug)
@@ -52,6 +71,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     notFound();
 
   }
+
+  const Blogs = await getBlogData(slug);
 
 
   return (
@@ -66,7 +87,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-10" >
 
 
-            <LeftContent BlogId={slug} />
+            <LeftContent Blogs={Blogs} />
 
 
             <aside className="relative shadow-xs">
@@ -86,10 +107,10 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </div>
 
 
-        <BlogFAQ BlogId={slug} />
+        <BlogFAQ Blogs = {Blogs}/>
 
 
-        <RelatedBlog />
+        <RelatedBlog/>
 
 
         <FinalCTASection />

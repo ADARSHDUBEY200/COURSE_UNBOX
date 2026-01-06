@@ -1,8 +1,6 @@
-"use client"
-import { supabase } from '@/lib/supabse/supabaseConfig';
 import Image from 'next/image';
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+
 
 type Blog = {
 
@@ -31,35 +29,8 @@ type Blog = {
 };
 
 
-const Content = () => {
+const Content = ({blogs} : {blogs : Blog [] }) => {
 
-
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-
-  useEffect(() => {
-
-    const getBlogData = async () => {
-
-      const { data, error } = await supabase.from("Blog").select("*");
-
-      if (error) {
-
-        console.log("There is some of the error I have got");
-        console.log(error);
-
-      }
-
-      setBlogs(data || []);
-
-      console.log("THE BLOG DATA COME FROM THE DATA BASE IS : ");
-      console.log(data);
-
-    }
-
-
-    getBlogData();
-
-  }, []);
 
   return (
 
@@ -120,18 +91,6 @@ const Content = () => {
             </Link>
           ))}
         </div>
-
-
-        {/* {hasMore && (
-          <div
-            ref={loaderRef}
-            className="py-10 text-center text-gray-500"
-          >
-            {loading ? "Loading..." : "Scroll to load more"}
-          </div>
-        )} */}
-
-
 
       </div>
     </section>

@@ -1,4 +1,5 @@
 "use client"
+
 import { supabase } from "@/lib/supabse/supabaseConfig";
 import { BookA, Clock, ShieldCheck } from "lucide-react";
 import Image from "next/image";
@@ -52,9 +53,7 @@ type Course = {
   },
 
   slug : string,
-
   alt : string,
-  
   image: string;
 
 }
@@ -63,36 +62,12 @@ type Course = {
 
 const categories = ["All Courses", "Digital Marketing", "Development", "IT & Software", "Data Science"];
 
-const Courses = () => {
+const Courses = ({courses} : {courses : Course[]}) => {
 
     const [activeCategory, setActiveCategory] = useState("All Courses");
-    const [courses, setCourses] = useState<Course[]>([]);
-
+    
     console.log("THE COURSES DATA IS : ");
     console.log(courses);
-
-    useEffect(() => {
-
-        const handleFetchCourseData = async () => {
-            const { data, error } = await supabase.from("Courses").select("*");
-
-
-            if (error) {
-
-                console.log("THE ERROR IS : ");
-                console.log(error);
-
-            }
-
-            setCourses(data || []);
-
-        };
-
-        handleFetchCourseData();
-
-    }, []);
-
-
 
     const filteredCourses =
 

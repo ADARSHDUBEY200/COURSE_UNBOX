@@ -46,7 +46,6 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: Blog }) => {
 
     const [formData, setFormData] = useState({
         title: "",
-        content: "",
         domain: "",
         alt: "",
         slug: "",
@@ -105,7 +104,6 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: Blog }) => {
     useEffect(() => {
         setFormData({
             title: blog.title,
-            content: blog.content,
             domain: blog.domain,
             alt: blog.alt,
             slug: blog.slug,
@@ -139,8 +137,10 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: Blog }) => {
         setEditorContent(blog.content);
 
         setMeta({
+
             metaTitle : blog.meta.title,
             metaDescription : blog.meta.description
+
         })
 
         setimageURL(blog.image);
@@ -205,7 +205,7 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: Blog }) => {
             {
 
                 title: formData.title,
-                content: formData.content,
+                content: editorContent,
                 domain: formData.domain,
                 slug: slug,
                 alt: formData.alt,
@@ -215,7 +215,7 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: Blog }) => {
 
                     { question: content.firstQuestion, answer: content.firstAnswer },
                     { question: content.secondQuestion, answer: content.secondAnswer },
-                    { question: content.thirdQuestion, answer: content.secondAnswer },
+                    { question: content.thirdQuestion, answer: content.thirdAnswer },
                     { question: content.fourthQuestion, answer: content.fourthAnswer },
                     { question: content.fifthQuestion, answer: content.fifthAnswer },
                     { question: content.sixthQuestion, answer: content.sixthAnswer },
@@ -223,8 +223,10 @@ const EditBlog = ({ collapsed, blog }: { collapsed: boolean; blog: Blog }) => {
                 ],
 
                 meta: {
+
                     title: meta.metaTitle,
                     description: meta.metaDescription,
+
                 },
 
                 image: imageURL || blog.image

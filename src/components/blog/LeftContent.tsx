@@ -1,9 +1,5 @@
-"use client"
-
-import { supabase } from "@/lib/supabse/supabaseConfig";
 import Link from "next/link"
-import { useEffect, useState } from "react";
-import Image from "next/image";
+
 
 
 type Blog = {
@@ -32,36 +28,12 @@ type Blog = {
 
 };
 
-export default function LeftContent({ BlogId }: { BlogId: string }) {
+export default function LeftContent({ Blogs }: { Blogs : Blog }) {
 
-  const [Blogs, setBlogs] = useState<Blog | null>(null);
-
-  const getBlogData = async () => {
-    const { data, error } = await supabase
-      .from("Blog")
-      .select("*")
-      .eq("slug", BlogId)
-      .single();
-
-    if (error) {
-
-      console.error(error);
-
-    }
-
-    console.log("THE DATA IS : ");
-    console.log(data);
-
-    setBlogs(data);
-  }
+  
 
 
 
-  useEffect(() => {
-
-    getBlogData();
-
-  }, []);
   return (<article className=" border-r-gray-400 ">
 
     {/* ===== BLOG HEADER ===== */}
