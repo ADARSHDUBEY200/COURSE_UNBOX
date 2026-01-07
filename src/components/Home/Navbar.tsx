@@ -7,6 +7,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import CoursesDropdown from "./DropDown/CourseDropDown";
 import BlogsDropdown from "./DropDown/BlogsDropDown";
+
+
+
 const Navbar = () => {
   
   const [open, setOpen] = useState(false);

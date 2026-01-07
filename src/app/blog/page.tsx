@@ -39,7 +39,7 @@ const page = async () => {
 
             <LetConnect />
 
-            <Content blogs = {blogs ?? []}/>
+            <Content/>
 
             <LetsConnect />
 
