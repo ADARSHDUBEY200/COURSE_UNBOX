@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import PopUpForm from "../AllCourses/PopUpForm";
 

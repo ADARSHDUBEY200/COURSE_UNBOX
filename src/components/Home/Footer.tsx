@@ -93,7 +93,7 @@ const socialMedia = [
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <Link
-                  href="/post-graduation-digital-marketing"
+                  href="/"
                   className="hover:text-blue-600 transition-colors"
                 >
                   Post Graduation in Digital Marketing
@@ -102,7 +102,7 @@ const socialMedia = [
 
               <li>
                 <Link
-                  href="/online-digital-marketing-courses"
+                  href="/"
                   className="hover:text-blue-600 transition-colors"
                 >
                   Online Digital Marketing Courses
@@ -111,7 +111,7 @@ const socialMedia = [
 
               <li>
                 <Link
-                  href="/short-term-certifications"
+                  href="/"
                   className="hover:text-blue-600 transition-colors"
                 >
                   Short Term Certifications
@@ -120,7 +120,7 @@ const socialMedia = [
 
               <li>
                 <Link
-                  href="/free-digital-marketing-courses"
+                  href="/"
                   className="hover:text-blue-600 transition-colors"
                 >
                   Free Digital Marketing Courses Online
@@ -165,7 +165,7 @@ const socialMedia = [
 
                 <li>
                   <Link
-                    href="/contact-us"
+                    href="/"
                     className="hover:text-white transition-colors"
                   >
                     Contact Us
@@ -174,7 +174,7 @@ const socialMedia = [
 
                 <li>
                   <Link
-                    href="/refer-and-earn"
+                    href="/"
                     className="hover:text-white transition-colors"
                   >
                     Refer & Earn
@@ -211,7 +211,7 @@ const socialMedia = [
 
             <li>
               <Link
-                href="/presentations"
+                href="/"
                 className="hover:text-white transition-colors"
               >
                 Presentations

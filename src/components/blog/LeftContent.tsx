@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 
 
@@ -100,13 +98,14 @@ export default function LeftContent({ Blogs }: { Blogs : Blog }) {
 
     {/* ===== BLOG CONTENT ===== */}
     <section className="mx-auto px-4 mt-12">
-      <div className="
-  prose prose-slate max-w-none
-  prose-ul:list-disc
-  prose-ul:pl-6
-  prose-ol:list-decimal
-  prose-li:marker:text-slate-500
-"
+      <div className="BlogContent
+      prose prose-slate max-w-none
+      prose-ul:list-disc prose-ul:pl-6
+      prose-ol:list-decimal prose-ol:pl-6
+      prose-li:my-1
+      prose-li:marker:text-slate-500
+      prose-p:leading-7
+    "
         dangerouslySetInnerHTML={{ __html: Blogs?.content ?? "" }}
       />
 

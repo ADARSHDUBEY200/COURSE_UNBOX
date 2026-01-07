@@ -7,9 +7,8 @@ import AdCard from "@/components/blog/AdCTA";
 import BlogCategories from "@/components/blog/BlogCategories";
 import FinalCTASection from "@/components/blog/FinalCTASection";
 import LeftContent from "@/components/blog/LeftContent";
-import type { Metadata } from "next";
 import { supabase } from "@/lib/supabse/supabaseConfig";
-import { title } from "process";
+
 
 
 export async function generateMetadata(
@@ -78,6 +77,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   return (
 
     <>
+
       <Navbar />
 
       <div className="w-full min-h-screen bg-slate-50"  >
@@ -118,6 +118,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       </div>
 
       <Foter />
+
     </>
 
   );
