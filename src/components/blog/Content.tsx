@@ -11,6 +11,7 @@ export type InternshipCard = {
   title: string;
   content: string;
   subcontent : string
+  slug : string
   FAQ: string;
   image : string
 
@@ -74,7 +75,7 @@ const Content = () => {
           {blogs.map((card, idx) => (
             <Link
               key={idx}
-              href={`/blog/${card.id}`}
+              href={`/blog/${card.slug}`}
               className="min-w-[340px] max-w-[340px] bg-white rounded-3xl shadow hover:shadow-2xl hover:shadow-indigo-300 transition"
             >
 
