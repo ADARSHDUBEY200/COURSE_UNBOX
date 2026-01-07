@@ -23,6 +23,7 @@ import DigiCourseSection from "@/components/Home/DigiCourseSection";
 import PhotoGalleryCarousel from "@/components/Home/PhotoGallery";
 import HomeEnquiry from "@/components/Home/HomeEnquiry";
 import { UpdatedBanner } from "@/components/Home/UpdatedBanner";
+import WhyChooseUs from "@/components/AllCourses/WhyChooseUs";
 export default function Home() {
 
       return (
@@ -45,6 +46,7 @@ export default function Home() {
                   <AboutUs />
                   <PhotoGallery />
                   <DigiCourseSection />
+                  <WhyChooseUs/>
                   <Faq />
                   <Testimonials />
                   <TopCompanies />

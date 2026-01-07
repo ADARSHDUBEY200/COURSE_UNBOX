@@ -26,7 +26,7 @@ type Blog = {
   slug: string,
   alt: string,
   subcontent: string,
-  created_at: number;
+  created_at: Date;
   author: string,
   domain: string;
 
@@ -42,6 +42,7 @@ export default function LeftContent({ BlogId }: { BlogId: string }) {
       .select("*")
       .eq("slug", BlogId)
       .single();
+      
 
     if (error) {
 
@@ -74,7 +75,7 @@ export default function LeftContent({ BlogId }: { BlogId: string }) {
           {Blogs && Blogs.domain}
 
         </span>
-        <span className="text-xs text-slate-500">8 min read</span>
+        <span className="text-xs text-slate-500">10 min read</span>
       </div>
 
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
@@ -85,8 +86,11 @@ export default function LeftContent({ BlogId }: { BlogId: string }) {
       <div className="mt-3 h-1 w-24 bg-linear-to-r from-blue-500 via-indigo-500 to-transparent rounded-full"></div>
 
       <p className="mt-4 text-sm text-slate-600">
-        By <span className="font-medium text-slate-800">{Blogs?.author}</span> · Jun 28,
-        2025
+        By <span className="font-medium text-slate-800">{Blogs?.author}</span> · {Blogs && new Date(Blogs?.created_at).toLocaleDateString('en-GB',{
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+        })}
       </p>
     </section>
 
@@ -129,7 +133,7 @@ export default function LeftContent({ BlogId }: { BlogId: string }) {
 
 
     {/* ===== BLOG CONTENT ===== */}
-    <section className="mx-auto px-4 mt-12">
+    <section className="mx-auto px-4 ">
       <div className="
   prose prose-slate max-w-none
   prose-ul:list-disc
