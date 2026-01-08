@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabse/supabaseConfig';
 import React, { useEffect, useState } from 'react'
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 type Mentor = {
 
@@ -26,6 +26,8 @@ const AddMentor = ({ collapsed }: { collapsed: boolean }) => {
     description: ""
 
   });
+
+  const [loading , setLoading] = useState(false)
 
 
   const handleChange = (
@@ -64,8 +66,16 @@ const AddMentor = ({ collapsed }: { collapsed: boolean }) => {
 
   }
 
-  const handleData = async () => {
+  const handleData = async (event : React.FormEvent) => {
 
+    event?.preventDefault();
+
+    if(imageURL == ""){
+      alert("YOUR MENTOR IMAGE IS EMPTY PLAEASE FILL IT : ");
+      return
+    }
+
+    setLoading(true);
 
     const { data, error } = await supabase.from("Mentors").insert([
 
@@ -87,11 +97,15 @@ const AddMentor = ({ collapsed }: { collapsed: boolean }) => {
     if (error) {
 
       console.log("The error ocuur in this is : ");
+      setLoading(false)
+      toast.error("Mentor Data is not added : ");
       console.log(error);
 
     }
 
     console.log(data);
+
+    toast.success("Mentor Data is Added : ");
 
   }
 
@@ -111,7 +125,7 @@ const AddMentor = ({ collapsed }: { collapsed: boolean }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-8">
 
           {/* ================= FORM ================= */}
-          <form>
+          <form onSubmit={handleData}>
             <div className="space-y-5">
 
               <div>
@@ -209,7 +223,7 @@ const AddMentor = ({ collapsed }: { collapsed: boolean }) => {
 
               {/* Submit */}
 
-              <button className="mt-6 px-10 py-4 rounded-3xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition cursor-pointer" onClick={handleData}>
+              <button type='submit' className="mt-6 px-10 py-4 rounded-3xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition cursor-pointer">
                 Save Mentor
               </button>
 

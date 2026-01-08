@@ -1,8 +1,53 @@
 import Image from "next/image";
 import Link from "next/link";
-import Form from "../blog/Form";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 export default function HomeEnquiry() {
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [occupation, setOccupation] = useState("");
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const templateParams = {
+
+      name: `${firstName} ${lastName}`,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+      occupation: occupation
+
+    };
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+      .then(() => {
+        alert("Message sent successfully!");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setOccupation("")
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Failed to send message");
+      });
+  };
+
+
   return (
     <section className="relative overflow-hidden py-20">
       {/* Background Gradient */}
@@ -35,7 +80,7 @@ export default function HomeEnquiry() {
                 href="/course"
                 className="inline-flex items-center justify-center rounded-xl bg-yellow-400 px-8 py-4 text-base font-semibold text-blue-900 hover:bg-yellow-300 transition"
               >
-                Explore Courses 
+                Explore Courses
               </Link>
 
               <Link
@@ -60,80 +105,80 @@ export default function HomeEnquiry() {
                 className="w-full h-auto object-cover"
                 priority
               /> */}
-                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-6 md:p-8">
+              <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-6 md:p-8">
 
                 {/* Heading */}
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-900">
-                    Let's Connect
+                  Let's Connect
                 </h2>
-                
+
                 {/* Divider */}
                 <div className=" my-3 sm:my-4 h-[3px] w-32 sm:w-48 rounded-full bg-linear-to-r from-transparent via-blue-600 to-transparent" />
 
                 {/* Form */}
                 <form className="space-y-3 sm:space-y-4">
 
-                    {/* Name */}
-                    <div className="flex gap-6">
-                        <div>
-                        <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                            Name
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Your First Name"
-                            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
-                                    text-sm sm:text-base
-                                    focus:outline-none focus:ring-2 focus:ring-blue-600"
-                        />
-                        </div>
-
-                        <div>
-                        <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                            Last Name
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Your Last Name"
-                            className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
-                                    text-sm sm:text-base
-                                    focus:outline-none focus:ring-2 focus:ring-blue-600"
-                        />
-                        </div>
-
-                    </div>
-                    
-
-                    {/* Email */}
+                  {/* Name */}
+                  <div className="flex gap-6">
                     <div>
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Your First Name"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
+                                    text-sm sm:text-base
+                                    focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Your Last Name"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
+                                    text-sm sm:text-base
+                                    focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      />
+                    </div>
+
+                  </div>
+
+
+                  {/* Email */}
+                  <div>
                     <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                        Email
+                      Email
                     </label>
                     <input
-                        type="email"
-                        placeholder="your@email.com"
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
+                      type="email"
+                      placeholder="your@email.com"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
                                 text-sm sm:text-base
                                 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     />
-                    </div>
+                  </div>
 
-                    {/* Phone */}
-                    <div>
+                  {/* Phone */}
+                  <div>
                     <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
-                        Phone
+                      Phone
                     </label>
                     <input
-                        type="tel"
-                        placeholder="Phone Number"
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
+                      type="tel"
+                      placeholder="Phone Number"
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 sm:py-3
                                 text-sm sm:text-base
                                 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     />
-                    </div>
+                  </div>
 
-                    {/* Submit */}
-                    <button
+                  {/* Submit */}
+                  <button
                     type="submit"
                     className="w-full mt-4 sm:mt-5
                                 bg-blue-600 hover:bg-blue-700
@@ -141,14 +186,14 @@ export default function HomeEnquiry() {
                                 py-2.5 sm:py-3
                                 rounded-xl shadow-lg
                                 transition-all duration-200 cursor-pointer"
-                    >
+                  >
                     Send Enquiry »
-                    </button>
+                  </button>
                 </form>
-                </div>
-                    
-                    </div>
+              </div>
+
             </div>
+          </div>
 
         </div>
       </div>

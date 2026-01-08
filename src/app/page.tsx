@@ -19,20 +19,10 @@ import Faq from "@/components/Home/Faq";
 import DigiCourseSection from "@/components/Home/DigiCourseSection";
 import { UpdatedBanner } from "@/components/Home/UpdatedBanner";
 import { supabase } from "@/lib/supabse/supabaseConfig";
+import GetCertifiedByAmazon from "@/components/Home/GetCertifiedByAmazon";
+import HomeEnquiry from "@/components/Home/HomeEnquiry";
 
 
-const FetchCourseData = async () => {
-
-      const { data, error } = await supabase.from("Courses").select("*");
-
-      if (error) {
-            console.log("THE ERROR IS : ");
-            console.log(error);
-      }
-
-      return data;
-
-};
 
 
 const getAboutData = async () => {
@@ -51,29 +41,12 @@ const getAboutData = async () => {
 }
 
 
-const getMentorsData = async () => {
-
-      const { data, error } = await supabase.from("Mentors").select("*");
-
-      if (error) {
-
-            console.log("There is some error I have in my code : ");
-            console.log(error);
-
-      }
-
-      return data;
-
-}
 
 
 
 export default async function Home() {
 
-      const courses = await FetchCourseData();
       const about = await getAboutData();
-      const mentors = await getMentorsData();
-
 
       return (
 
@@ -83,13 +56,14 @@ export default async function Home() {
                   <Navbar />
                   <Hero />
                   <UpdatedBanner />
+                  <GetCertifiedByAmazon />
                   <Partners />
                   <Trending />
-                  <Courses/>
-                  <Enquiry />
+                  <Courses />
+                  {/* <HomeEnquiry /> */}
                   <TopCourses />
                   <Hire />
-                  <Mentors MentorsData = {mentors  ?? []}/>
+                  <Mentors />
                   <CertificationBanner />
                   <StatsSection />
                   <AboutUs about={about} />

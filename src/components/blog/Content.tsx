@@ -10,10 +10,10 @@ export type InternshipCard = {
   domain: string;
   title: string;
   content: string;
-  subcontent : string
-  slug : string
+  subcontent: string
+  slug: string
   FAQ: string;
-  image : string
+  image: string
 
 };
 
@@ -51,25 +51,27 @@ const Content = () => {
 
   return (
 
-    
+
     <section className="py-16">
       <div className="mx-auto w-full px-6">
-        <h2 className="relative inline-block font-extrabold text-5xl mb-10 ">
-          Latest Blogs
-          <svg
-            className="absolute left-0 -bottom-6 w-full"
-            viewBox="0 0 300 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 15 C 60 5, 240 5, 295 15"
-              stroke="#2BB0FF"
-              strokeWidth="6"
-              strokeLinecap="round"
-            />
-          </svg>
-        </h2>
+        <div className='w-full text-center mb-10'>
+          <h2 className="relative inline-block font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-6xl mb-5 sm:mb-6 md:mb-10 lg:mb-15">
+            Latest Blogs
+            <svg
+              className="absolute left-0 -bottom-6 w-full"
+              viewBox="0 0 300 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 15 C 60 5, 240 5, 295 15"
+                stroke="#2BB0FF"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </h2>
+        </div>
 
         <div className="flex flex-wrap gap-8 pb-4">
           {blogs.map((card, idx) => (

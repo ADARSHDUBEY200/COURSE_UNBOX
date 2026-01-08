@@ -101,10 +101,7 @@ const Hero = () => {
               </a>
             </div>
 
-            <p className="text-xs sm:text-sm mt-4">
-              By continuing, you agree to our{" "}
-              <span className="underline cursor-pointer">T&amp;C</span>.
-            </p>
+            
           </div>
 
           {/* RIGHT IMAGE */}
