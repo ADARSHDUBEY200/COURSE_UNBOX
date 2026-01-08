@@ -60,12 +60,12 @@ const Content = () => {
 
   }, []);
 
-  useEffect(() => {
-    const start = (page * 12) - 11;
-    const end = page * 12;
-
-    setCurrBlogs(blogs.slice(start, end));
-  }, [blogs, page])
+   useEffect(()=>{
+    const start  =  (page * 12) - 11;
+    const end =  page * 12;
+    
+    setCurrBlogs(blogs.slice(start,end+1));
+  },[blogs,page])
 
 
 
