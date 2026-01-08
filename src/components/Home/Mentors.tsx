@@ -96,7 +96,7 @@ const Mentors = () => {
                                 <div className="flex-1 px-4 py-1 flex">
                                     <div >
                                         <p className="font-bold text-base sm:text-lg text-gray-900">{mentor.name}</p>
-                                        <p>{mentor.teaching_Experience.slice(0, 25)}...</p>
+                                        {/* <p>{mentor.teaching_Experience}...</p> */}
 
                                     </div>
 
