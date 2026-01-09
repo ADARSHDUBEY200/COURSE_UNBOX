@@ -38,7 +38,7 @@ export default function RelatedBlog() {
     const { data, error } = await supabase
       .from("Blog")
       .select("*")
-      .order("created_at", { ascending: false })
+      .order("created_at", {ascending : false})
       .limit(3);
 
     if (error) {

@@ -1,7 +1,6 @@
 "use client";
 import { supabase } from "@/lib/supabse/supabaseConfig";
 import dynamic from "next/dynamic";
-import { title } from "process";
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "suneditor/dist/css/suneditor.min.css";
@@ -30,35 +29,33 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
     const [editorContent, setEditorContent] = useState("");
 
-    const [editorValue, setEditorValue] = useState<string>(`{
-    "Data Science Foundations": [
-
-        {
-            "module": "Module 1",
-            "title": "What is Data Science?",
-            "lectures": [
-
-                "Lecture 1 : What is DS?",
-                "Lecture 2 : Why DS Matters",
-                "Lecture 3 : DS Roles (DS, ML Engineer, AI Engineer)",
-                "Lecture 4 : Tools used in DS",
-                "Lecture 5 : Industry examples"
-
-            ]
-        },
-
-        {
-            "module": "Module 2",
-            "title": "Future of Data Science",
-            "lectures": [
-                "Lecture 1 : DS Career Growth",
-                "Lecture 2 : AI & Data Trends",
-                "Lecture 3 : Skills for Future"
-            ]
-        }
-
+    const [editorValue, setEditorValue] = useState<string>(`[
+  {
+    "HTML & CSS Fundamentals": [
+      {
+        "title": "Introduction to Web Development",
+        "module": "Module 1",
+        "lectures": [
+          "Lecture 1: What is Web Development?",
+          "Lecture 2: How the Web Works (Client & Server)",
+          "Lecture 3: Frontend vs Backend",
+          "Lecture 4: Tools Required for Web Development",
+          "Lecture 5: Setting Up Development Environment"
+        ]
+      },
+      {
+        "title": "HTML Basics",
+        "module": "Module 2",
+        "lectures": [
+          "Lecture 1: HTML Structure & Tags",
+          "Lecture 2: Headings, Paragraphs & Lists",
+          "Lecture 3: Links, Images & Media",
+          "Lecture 4: Forms & Input Elements",
+          "Lecture 5: Semantic HTML"
+        ]
+      }
     ]
-}`);
+    }]`);
 
     const [parsedMessage, setParsedMessage] = useState<{
         status: boolean | null;
@@ -445,8 +442,8 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                                         required
                                     >
                                         <option value="">Select Mode</option>
-                                        <option value="digital Marketing">Digital Marketing</option>
-                                        <option value="developement">Development</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Development">Development</option>
                                         <option value="IT & Software">IT & Software</option>
                                         <option value="Data Science">Data Science</option>
 

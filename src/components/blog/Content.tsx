@@ -39,7 +39,7 @@ const Content = () => {
 
     const getBlogData = async () => {
 
-      const { data, error } = await supabase.from("Blog").select("*");
+      const { data, error } = await supabase.from("Blog").select("*").order("created_at", {ascending : false});
 
       if (error) {
 
