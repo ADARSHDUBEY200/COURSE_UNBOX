@@ -239,8 +239,8 @@ const AddBlog = ({ collapsed }: { collapsed: boolean }) => {
                                         required
                                     >
                                         <option value="">Select Mode</option>
-                                        <option value="digital Marketing">Digital Marketing</option>
-                                        <option value="development">Development</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Development">Development</option>
                                         <option value="IT & Software">IT & Software</option>
                                         <option value="Data Science">Data Science</option>
 

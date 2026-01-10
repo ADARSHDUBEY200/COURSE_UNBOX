@@ -31,14 +31,13 @@ type Course = {
         ranking: string,
         course: string
     }[],
-    modules: Record<
-        string,
-        {
+    modules: {
+        [categoryName: string]: {
             module: string;
             title: string;
             lectures: string[];
-        }[]
-    >,
+        }[];
+    }[];
 
     FAQ: {
         question: string;
@@ -67,7 +66,7 @@ type ModuleType = {
 export default function Module({ courseSlug }: { courseSlug: string }) {
 
     const [course, setCourse] = useState<Course | null>(null);
-    const [activeTab, setActiveTab] = useState<string | null>(null);
+    const [activeTabIndex, setActiveTabIndex] = useState(0);
     const [activeModule, setActiveModule] = useState(0);
     console.log("THE COURSE COMING IS : ");
     console.log(course);
@@ -96,7 +95,7 @@ export default function Module({ courseSlug }: { courseSlug: string }) {
 
 
         setCourse(data);
-        setActiveTab([...Object.keys(data.modules)].reverse()[0]);
+        setActiveTabIndex(0);
 
 
     };
@@ -107,9 +106,19 @@ export default function Module({ courseSlug }: { courseSlug: string }) {
 
 
 
-    /* Derived Modules */
+    const activeCategoryObj =
+        course?.modules[activeTabIndex];
+
+    const activeCategoryName =
+        activeCategoryObj
+            ? Object.keys(activeCategoryObj)[0]
+            : null;
+
     const modules: ModuleType[] =
-        course && activeTab ? course.modules[activeTab] : [];
+        activeCategoryName && activeCategoryObj
+            ? activeCategoryObj[activeCategoryName]
+            : [];
+
 
 
     return (
@@ -125,27 +134,26 @@ export default function Module({ courseSlug }: { courseSlug: string }) {
                 {/* Tabs */}
 
                 <div className="flex gap-3 mb-8 overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth">
-                    {course &&
-                        [...Object.keys(course.modules)].reverse().map((tab) => (
+                    {course?.modules.map((categoryObj, index) => {
+                        const categoryName = Object.keys(categoryObj)[0];
 
+                        return (
                             <button
-                                key={tab}
+                                key={categoryName}
                                 onClick={() => {
-                                    setActiveTab(tab);
+                                    setActiveTabIndex(index);
                                     setActiveModule(0);
                                 }}
                                 className={`px-10 py-3 sm:px-16 sm:py-5 md:px-20 md:py-6 text-black shrink-0 rounded-4xl text-sm font-medium transition cursor-pointer 
-                                ${activeTab === tab
+                                ${activeTabIndex === index
                                         ? "bg-[#030363] text-white"
                                         : "md:bg-white bg-gray-100  hover:bg-gray-200"
                                     }`}
                             >
-                                {tab}
-
+                                {categoryName}
                             </button>
-
-
-                        ))}
+                        );
+                    })}
 
 
                 </div>
@@ -192,7 +200,7 @@ export default function Module({ courseSlug }: { courseSlug: string }) {
 
 
                 {/* ================= MOBILE VIEW ================= */}
-                
+
                 <div className="md:hidden  py-6 bg-slate-50">
 
                     <div className="space-y-3">
