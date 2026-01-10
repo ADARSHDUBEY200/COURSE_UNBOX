@@ -7,55 +7,55 @@ import { useEffect, useState } from "react";
 
 type Course = {
 
-  id: string;
-  title: string;
-  description: string;
-  startDate: string;
-  Duration: number;
-  language: string;
-  domain: string;
-  Delivery_Mode: string;
-  low: number,
-  high: number,
-  price: number,
-  content: {
+    id: string;
     title: string;
-    subtitle: string;
-  }[];
-  Testimonials:
-  {
-    name: string,
-    role: string,
-    company: string,
-    title: string,
-    description: string,
-    ranking: string,
-    course: string
-  }[],
-  modules: Record<
-    string,
+    description: string;
+    startDate: string;
+    Duration: number;
+    language: string;
+    domain: string;
+    Delivery_Mode: string;
+    low: number,
+    high: number,
+    price: number,
+    content: {
+        title: string;
+        subtitle: string;
+    }[];
+    Testimonials:
     {
-      module: string;
-      title: string;
-      lectures: string[];
-    }[]
-  >,
+        name: string,
+        role: string,
+        company: string,
+        title: string,
+        description: string,
+        ranking: string,
+        course: string
+    }[],
+    modules: Record<
+        string,
+        {
+            module: string;
+            title: string;
+            lectures: string[];
+        }[]
+    >,
 
-  FAQ: {
-    question: string;
-    answer: string
-  }[];
+    FAQ: {
+        question: string;
+        answer: string
+    }[];
 
-  meta : {
-    title : string,
-    description : string
-  },
+    meta: {
+        title: string,
+        description: string
+    },
 
-  slug : string,
+    slug: string,
 
-  alt : string,
-  
-  image: string;
+    alt: string,
+
+    image: string;
 
 }
 
@@ -154,20 +154,24 @@ const Courses = () => {
                         >
                             {/* IMAGE */}
                             <div className="relative w-full h-[240px] lg:h-[260px]">
-                                <Image
-                                    src={course.image}
-                                    alt={course.title}
-                                    fill
-                                    className="object-cover rounded-tr-xl rounded-tl-xl"
-                                    sizes="(max-width: 768px) 100vw, 400px"
-                                />
+                                <Link href={`/course/${course.slug}`}>
+                                    <Image
+                                        src={course.image}
+                                        alt={course.title}
+                                        fill
+                                        className="object-cover rounded-tr-xl rounded-tl-xl"
+                                        sizes="(max-width: 768px) 100vw, 400px"
+                                    />
+                                </Link>
                             </div>
 
                             {/* CONTENT */}
                             <div className="flex flex-col flex-1 px-5 py-4 text-center gap-3">
-                                <p className="text-lg font-bold text-[#213c98] line-clamp-2">
-                                    {course.title}
-                                </p>
+                                <Link href={`/course/${course.slug}`}>
+                                    <p className="text-lg font-bold text-[#213c98] hover:text-blue-500 line-clamp-2">
+                                        {course.title}
+                                    </p>
+                                </Link>
 
                                 <div className="w-fit mx-auto bg-indigo-100 px-4 py-1 rounded-2xl text-sm font-medium">
                                     {course.domain}

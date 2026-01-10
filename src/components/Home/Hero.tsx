@@ -86,7 +86,7 @@ const Hero = () => {
                 z-99
                 
               "
-                href="/brochure.pdf"
+                href="/Course Unbox Brochure.pdf"
                 download
               >
                 {/* <Image

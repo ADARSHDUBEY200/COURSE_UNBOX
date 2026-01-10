@@ -109,6 +109,7 @@ export default function AllCoursesCTA() {
                 hover:bg-yellow-300 
                 hover:scale-[1.03]
                 transition
+                cursor-pointer
               "
               onClick={()=>setIsOpen(true)}
             >

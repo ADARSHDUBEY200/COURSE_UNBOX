@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = Array.from({ length: 12 }).map((_, i) => ({
   id: i + 1,
-  src: `https://picsum.photos/600/400?random=${i + 1}`,
+  src: `/images/Photo Gallery/IMAGE ${i + 1}.JPG`,
   alt: `Gallery Image ${i + 1}`,
 }));
 

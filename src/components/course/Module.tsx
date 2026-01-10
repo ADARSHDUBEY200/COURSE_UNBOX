@@ -127,7 +127,7 @@ export default function Module({ courseSlug }: { courseSlug: string }) {
 
                 {/* Heading */}
 
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 p-2 text-black border-l-8">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 p-2 text-yellow-500 border-l-8">
                     Your Guide To Upskilling: Our Curriculum
                 </h2>
 
@@ -172,7 +172,7 @@ export default function Module({ courseSlug }: { courseSlug: string }) {
                                 className={`w-full text-left p-4 mb-2 rounded-md flex justify-between items-center transition cursor-pointer
                 ${activeModule === index
                                         ? "bg-[#040455] border-l-4 border-[#02025a]"
-                                        : "hover:bg-[#020286] bg-blue-300"
+                                        : "hover:bg-[#020246] bg-[#020286]"
                                     }`}
                             >
                                 <div>
@@ -189,7 +189,7 @@ export default function Module({ courseSlug }: { courseSlug: string }) {
                         {modules[activeModule]?.lectures.map((lecture: string) => (
                             <div
                                 key={lecture}
-                                className="flex bg-white items-center justify-between p-4 border-2 border-black rounded-md mb-3"
+                                className="flex bg-white items-center justify-between p-4 border-2 border-gray-200 rounded-md mb-3"
                             >
                                 <p className="text-sm font-bold text-black">{lecture}</p>
                                 <Lock className="w-4 h-4 text-[#a1a112]" />

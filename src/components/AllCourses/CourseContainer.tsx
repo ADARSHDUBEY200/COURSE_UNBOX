@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronRight, Star } from "lucide-react";
+import Link from "next/link"
+import { supabase } from "@/lib/supabse/supabaseConfig";
 
 
 const categories = [
@@ -22,221 +24,6 @@ const categories = [
   "Human Resource",
   "Architecture",
 ];
-
-const courses = [
-  {
-    title: "Microsoft Generative AI",
-    desc: "Learn to use 15+ AI tools like Copilot, ChatGPT and more",
-    duration: "6 weeks",
-    rating: 4.8,
-    badge: "Newly Launched",
-    category: "Data Science",
-  },
-  {
-    title: "Prompt Engineering for GenAI",
-    desc: "Learn prompt writing for AI tools",
-    duration: "6 weeks",
-    rating: 4.8,
-    category: "Data Science",
-  },
-  {
-    title: "Full Stack Web Development",
-    desc: "Build modern web apps using MERN stack",
-    duration: "12 weeks",
-    rating: 4.7,
-    category: "Development",
-  },
-  {
-    title: "Advanced React & Next.js",
-    desc: "Build scalable, SEO-friendly React apps",
-    duration: "8 weeks",
-    rating: 4.8,
-    category: "Development",
-  },
-  {
-    title: "Java with DSA",
-    desc: "Master data structures & algorithms in Java",
-    duration: "10 weeks",
-    rating: 4.9,
-    category: "Development",
-  },
-  {
-    title: "Python for Data Science",
-    desc: "Analyze data using Python, NumPy & Pandas",
-    duration: "6 weeks",
-    rating: 4.6,
-    category: "Data Science",
-  },
-  {
-    title: "Data Analytics with Excel & SQL",
-    desc: "Analyze and visualize data efficiently",
-    duration: "6 weeks",
-    rating: 4.5,
-    category: "Data Analytics",
-  },
-  {
-    title: "Power BI for Business Intelligence",
-    desc: "Create dashboards and business reports",
-    duration: "4 weeks",
-    rating: 4.6,
-    category: "Data Analytics",
-  },
-  {
-    title: "Digital Marketing Mastery",
-    desc: "SEO, social media & paid ads from scratch",
-    duration: "8 weeks",
-    rating: 4.7,
-    category: "Digital Marketing",
-  },
-  {
-    title: "AI in Digital Marketing",
-    desc: "Leverage AI tools for marketing growth",
-    duration: "6 weeks",
-    rating: 4.5,
-    category: "Digital Marketing",
-  },
-  {
-    title: "Social Media Marketing",
-    desc: "Grow brands on Instagram & LinkedIn",
-    duration: "4 weeks",
-    rating: 4.4,
-    category: "Digital Marketing",
-  },
-  {
-    title: "UI/UX Design Fundamentals",
-    desc: "Design user-friendly interfaces",
-    duration: "6 weeks",
-    rating: 4.6,
-    category: "Design",
-  },
-  {
-    title: "Figma for UI Designers",
-    desc: "Design modern apps using Figma",
-    duration: "4 weeks",
-    rating: 4.7,
-    category: "Design",
-  },
-  {
-    title: "Graphic Design with Photoshop",
-    desc: "Create stunning designs & posters",
-    duration: "6 weeks",
-    rating: 4.5,
-    category: "Design",
-  },
-  {
-    title: "Creative Writing Essentials",
-    desc: "Improve storytelling & writing skills",
-    duration: "4 weeks",
-    rating: 4.3,
-    category: "Creative Arts",
-  },
-  {
-    title: "Photography Masterclass",
-    desc: "Learn composition, lighting & editing",
-    duration: "6 weeks",
-    rating: 4.4,
-    category: "Creative Arts",
-  },
-  {
-    title: "Video Editing with Premiere Pro",
-    desc: "Edit professional videos",
-    duration: "5 weeks",
-    rating: 4.6,
-    category: "Creative Arts",
-  },
-  {
-    title: "Spoken English Mastery",
-    desc: "Improve fluency and communication",
-    duration: "6 weeks",
-    rating: 4.5,
-    category: "Language",
-  },
-  {
-    title: "Business English",
-    desc: "Professional English for workplaces",
-    duration: "4 weeks",
-    rating: 4.4,
-    category: "Language",
-  },
-  {
-    title: "French for Beginners",
-    desc: "Learn basic French communication",
-    duration: "6 weeks",
-    rating: 4.3,
-    category: "Language",
-  },
-  {
-    title: "Career Planning & Resume Building",
-    desc: "Land your dream job",
-    duration: "3 weeks",
-    rating: 4.6,
-    category: "Career Development",
-  },
-  {
-    title: "Interview Preparation Bootcamp",
-    desc: "Crack technical & HR interviews",
-    duration: "4 weeks",
-    rating: 4.7,
-    category: "Career Development",
-  },
-  {
-    title: "Leadership & Communication Skills",
-    desc: "Become an effective leader",
-    duration: "5 weeks",
-    rating: 4.5,
-    category: "Career Development",
-  },
-  {
-    title: "HR Analytics",
-    desc: "Use data for better HR decisions",
-    duration: "4 weeks",
-    rating: 4.4,
-    category: "Human Resource",
-  },
-  {
-    title: "Talent Acquisition & Recruitment",
-    desc: "Master hiring strategies",
-    duration: "5 weeks",
-    rating: 4.5,
-    category: "Human Resource",
-  },
-  {
-    title: "Payroll & Compliance",
-    desc: "Understand HR payroll systems",
-    duration: "3 weeks",
-    rating: 4.3,
-    category: "Human Resource",
-  },
-  {
-    title: "Cloud Computing Fundamentals",
-    desc: "Learn AWS, cloud & DevOps basics",
-    duration: "6 weeks",
-    rating: 4.6,
-    category: "IT & Software",
-  },
-  {
-    title: "Cybersecurity Essentials",
-    desc: "Protect systems & networks",
-    duration: "5 weeks",
-    rating: 4.5,
-    category: "IT & Software",
-  },
-  {
-    title: "AutoCAD for Architects",
-    desc: "Create professional architectural designs",
-    duration: "6 weeks",
-    rating: 4.4,
-    category: "Architecture",
-  },
-  {
-    title: "Sustainable Architecture Design",
-    desc: "Design eco-friendly buildings",
-    duration: "5 weeks",
-    rating: 4.6,
-    category: "Architecture",
-  },
-];
-
 
 const mobileSliderSettings = {
   dots: true,
@@ -273,32 +60,100 @@ function NextArrow(props: any) {
   );
 }
 
-type course = {
-  title: string,
-  desc: string,
-  duration: string,
-  rating: number,
-  category: string
+type Course = {
+
+  id: string;
+  title: string;
+  description: string;
+  startDate: string;
+  Duration: number;
+  language: string;
+  domain: string;
+  Delivery_Mode: string;
+  low: number,
+  high: number,
+  price: number,
+  content: {
+    title: string;
+    subtitle: string;
+  }[];
+  Testimonials:
+  {
+    name: string,
+    role: string,
+    company: string,
+    title: string,
+    description: string,
+    ranking: string,
+    course: string
+  }[],
+  modules: Record<
+    string,
+    {
+      module: string;
+      title: string;
+      lectures: string[];
+    }[]
+  >,
+
+  FAQ: {
+    question: string;
+    answer: string
+  }[];
+
+  meta: {
+    title: string,
+    description: string
+  },
+
+  slug: string,
+
+  alt: string,
+
+  image: string;
+
 }
 
 
 
 export default function AllCoursesPage() {
 
-  const [selected, setSelected] = useState<number | null>(null);
-  const [filtered, setFiltered] = useState<course[]>([]);
-
-  console.log("THESE ARE THE RENDERED COURSES SEE IT CAREFULLY : ");
-  console.log(filtered);
+  const [selected, setSelected] = useState<number>(0);
+  const [filtered, setFiltered] = useState<Course[]>([]);
+  const [courses, setCourses] = useState<Course[]>([])
 
   const handleFilteredCourse = (category: string, index: number) => {
-
     setSelected(index);
 
-    const filteredCourses = courses.filter((course, index) => course.category === category)
+    if (category === "All courses") {
+      setFiltered(courses);
+      return;
+    }
+
+    const filteredCourses = courses.filter((course, index) => course.domain === category)
     setFiltered(filteredCourses);
 
   }
+
+
+  const getCoursesData = async () => {
+    const { data, error } = await supabase.from("Courses").select("*");
+
+    console.log("THE DATA OF THE ARCHIVE PAGE IS : ");
+    console.log(data);
+
+    if (error) {
+      console.log("THERE IS SOME CAUSED IN ARCHIVE PAGE : ");
+      console.log(error);
+    }
+    setFiltered(data ?? []);
+    setCourses(data ?? []);
+  };
+
+
+  useEffect(() => {
+    getCoursesData();
+  }, []);
 
   return (
 
@@ -346,45 +201,47 @@ export default function AllCoursesPage() {
           </h2>
 
           <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8 shadow-xl p-6">
-            {courses.map((course, i) => (
+            {filtered.map((course, i) => (
               <div
                 key={i}
                 className="bg-white rounded-xl border border-blue-300 shadow-sm hover:shadow-lg transition overflow-hidden"
               >
                 {/* Image Placeholder */}
                 <div className="h-36 bg-blue-50 flex items-center justify-center relative">
-                  {course.badge && (
-                    <span className="absolute top-3 left-3 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
-                      {course.badge}
-                    </span>
-                  )}
-                  <img className="w-full h-full object-contain" src="https://training-comp-uploads.internshala.com/homepage/media/courses_section/card_images/upgrad_course.png?v=1&v=v6" alt="mm" />
+                  <Link href={`/course/${course.slug}`}>
+                    <img className="w-full h-full object-cover" src={course.image} alt={course.alt} />
+                  </Link>
                 </div>
 
                 {/* Card Content */}
                 <div className="p-5">
                   <div className="flex items-center justify-between shadow-lg gap-2 text-sm mb-2 px-3 py-2 rounded-xs bg-linear-to-br from-white via-amber-50 to-amber-100 ">
                     <div className="flex items-center gap-2 ">
-                      <Star size={16} className="text-yellow-500 fill-yellow-500" /> <span className="font-medium">{course.rating}</span>
+                      <Star size={16} className="text-yellow-500 fill-yellow-500" /> <span className="font-medium">4.5</span>
                     </div>
                     <p className="text-sm text-gray-500">
-                      {course.duration}
+                      {course.Duration}
                     </p>
                   </div>
 
-                  <h3 className="font-semibold text-lg leading-snug mb-2">
-                    {course.title}
-                  </h3>
+                  <Link href={`/course/${course.slug}`}>
+                    <h3 className="font-semibold text-lg leading-snug mb-2 hover:text-blue-500">
+                      {course.title}
+                    </h3>
+                  </Link>
+
+
 
                   <p className="text-sm text-gray-600 mb-4">
-                    {course.desc}
+                    {course.content[0].subtitle.slice(0, 30)}
                   </p>
 
+                  <Link href={`/course/${course.slug}`}>
+                    <button className="text-blue-700 text-sm font-medium  flex items-center cursor-pointer hover:text-blue-950">
+                      Know more →
+                    </button>
+                  </Link>
 
-
-                  <button className="text-blue-700 text-sm font-medium  flex items-center cursor-pointer">
-                    <p>Know more</p> <ChevronRight className="mt-1" size={20} />
-                  </button>
                 </div>
               </div>
             ))}
@@ -405,7 +262,7 @@ export default function AllCoursesPage() {
             >
               {/* Header */}
               <button
-                onClick={() => setSelected(isOpen ? null : index)}
+                onClick={() => setSelected(isOpen ? 0 : index)}
                 className="w-full flex items-center justify-between px-5 py-4"
               >
                 <span className="font-semibold text-gray-900">{cat}</span>
@@ -426,11 +283,7 @@ export default function AllCoursesPage() {
                         <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
                           {/* Image */}
                           <div className="h-36 bg-blue-50 flex items-center justify-center relative">
-                            {course.badge && (
-                              <span className="absolute top-3 left-3 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
-                                {course.badge}
-                              </span>
-                            )}
+
                             <span className="text-blue-600 font-semibold">
                               Course Image
                             </span>
@@ -439,7 +292,7 @@ export default function AllCoursesPage() {
                           {/* Content */}
                           <div className="p-5">
                             <div className="flex items-center gap-2 text-sm mb-2">
-                              ⭐ <span className="font-medium">{course.rating}</span>
+                              ⭐ <span className="font-medium">4.5</span>
                             </div>
 
                             <h3 className="font-semibold text-lg mb-2">
@@ -447,16 +300,18 @@ export default function AllCoursesPage() {
                             </h3>
 
                             <p className="text-sm text-gray-600 mb-4">
-                              {course.desc}
+                              {course.content[0].subtitle.slice(0, 30)}
                             </p>
 
                             <p className="text-sm text-gray-500 mb-5">
-                              {course.duration}
+                              {course.Duration}
                             </p>
 
-                            <button className="text-blue-600 text-sm font-medium">
-                              Know more →
-                            </button>
+                            <Link href={`/course/${course.slug}`}>
+                              <button className="text-blue-600 text-sm font-medium">
+                                Know more →
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
