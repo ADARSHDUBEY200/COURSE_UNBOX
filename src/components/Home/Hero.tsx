@@ -39,13 +39,14 @@ const Hero = () => {
         >
           {/* LEFT CONTENT */}
           <div className="w-[50%] text-center content-center lg:text-left">
-            <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6">
+            <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-6xl font-bold mb-4 sm:mb-6">
               Best Digital Marketing Institute <span className="text-yellow-400">In Delhi NCR</span>
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg lg:text-lg mb-8 sm:mb-10 lg:ml-5">
-              India's no.1 Ai/Digital Marketing Institution
+             India’s No.1 AI & Digital Marketing Institution — Get Industry-Recognized Certification by Amazon & Flipkart
             </p>
+            
 
 
 
@@ -201,10 +202,6 @@ const Hero = () => {
             <span>Download Brochure</span>
           </a>
         </div>
-
-        <p className="text-xs text-center mt-6 opacity-90">
-          By continuing, you agree to our <span className="underline">T&amp;C</span>.
-        </p>
       </section>
 
     </>
