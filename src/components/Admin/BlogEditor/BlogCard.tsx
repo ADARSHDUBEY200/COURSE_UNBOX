@@ -31,12 +31,27 @@ type Blog = {
 
 };
 
-
+const categories = [
+  "All Blogs",
+  "Digital Marketing",
+  "Data Science",
+  "IT & Software",
+  "Development",
+];
 
 export default function BlogCard({ onEdit }: { onEdit: any }) {
 
     const [Blogs, setBlogs] = useState<Blog[]>([]);
     const [loading, setloading] = useState(false);
+    const [currBlogs, setCurrBlogs] = useState<Blog[]>([]);
+    const [activeCategory, setActiveCategory] = useState("All Blogs");
+    const [selectedAuthor, setSelectedAuthor]  = useState("");
+    const [showAuthorDropdown, setShowAuthorDropdown] = useState(false);
+    const [authors, setAuthors] = useState<string[]>([]);
+
+
+
+
 
     const fetchTableData = async () => {
 
@@ -56,6 +71,8 @@ export default function BlogCard({ onEdit }: { onEdit: any }) {
         }
     };
 
+    
+
 
     useEffect(() => {
 
@@ -63,6 +80,30 @@ export default function BlogCard({ onEdit }: { onEdit: any }) {
 
 
     }, []);
+
+
+    useEffect(()=>{
+
+        const allAuthors =  [...new Set(Blogs.map((blog)=>blog.author))];
+        setAuthors(allAuthors);
+
+        const filterBlogs = Blogs.filter((blog)=>{
+            if(selectedAuthor){
+                return blog.author===selectedAuthor;
+            }
+            if(activeCategory ==='All Blogs'){
+                return true;
+            }
+
+            return activeCategory === blog.domain;
+        });
+
+        setCurrBlogs(filterBlogs);
+     
+
+    },[Blogs, activeCategory,selectedAuthor])
+
+    
 
 
     const handleDelete = async (id: string) => {
@@ -90,8 +131,8 @@ export default function BlogCard({ onEdit }: { onEdit: any }) {
 
         <section className="w-full max-w-7xl mx-auto px-4 py-14">
 
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
-                <div className="flex items-center gap-4">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-around gap-2 mb-2 ">
+               
                     <div>
                         <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
                             Manage Blogs
@@ -100,22 +141,72 @@ export default function BlogCard({ onEdit }: { onEdit: any }) {
                             Premium, industry blogs and best blogs
                         </p>
                     </div>
-                </div>
 
-                <div className="flex items-center gap-2 text-sm font-medium text-gray-500">
+                    <div className="flex flex-wrap items-center gap-3 ">
+                        {/* Categories */}
+                        {categories.map((cat) => (
+                            <button
+                            key={cat}
+                            onClick={() => {
+                                setActiveCategory(cat);
+                                setSelectedAuthor("");
+                            }}
+                            className={`px-4 py-2 rounded-full text-sm font-medium transition shadow-sm cursor-pointer
+                                ${
+                                activeCategory === cat
+                                    ? "bg-blue-600 text-white"
+                                    : "bg-slate-100 text-slate-700 hover:bg-blue-100"
+                                }
+                            `}
+                            >
+                            {cat}
+                            </button>
+                        ))}
+
+                        {/* Author Dropdown */}
+                        <div className="relative">
+                            <button
+                            onClick={() => setShowAuthorDropdown(!showAuthorDropdown)}
+                            className="px-4 py-2 rounded-full bg-slate-100 text-slate-700 hover:bg-blue-100 text-sm font-medium flex items-center gap-1 cursor-pointer shadow-lg"
+                            >
+                            By   {selectedAuthor ? ` ${selectedAuthor} `   : "Author"}  
+                            <span className={`text-xs transition-transform duration-300 shadow-lg ${showAuthorDropdown ? 'rotate-0' : '-rotate-180'}`}>▼</span>
+                            </button>
+
+                            {showAuthorDropdown && (
+                            <div className="absolute left-0 mt-2 w-44 bg-white shadow-lg rounded-xl border border-blue-300 z-20 cursor-pointer ">
+                                {authors.map((author) => (
+                                <button
+                                    key={author}
+                                    onClick={() => {
+                                    setSelectedAuthor(author);
+                                    setShowAuthorDropdown(false);
+                                    setActiveCategory("All Blogs");
+                                    }}
+                                    className="w-full text-left px-4 py-2 text-sm hover:bg-blue-50 cursor-pointer shadow-lg"
+                                >
+                                    {author}
+                                </button>
+                                ))}
+                            </div>
+                            )}
+                        </div>
+                   </div>
+            </div>
+
+             <div className="flex justify-end items-center gap-2 text-sm font-medium text-gray-500 px-10 py-6">
                     <Layers size={18} />
 
                     <span>
 
-                        Total Courses: <span className="text-gray-900">{Blogs.length}</span>
+                        Total Blogs: <span className="text-gray-900">{currBlogs.length}</span>
 
                     </span>
                 </div>
-            </div>
 
 
             <div className="flex flex-wrap gap-10 md:gap-4">
-                {Blogs.map((blog) => (
+                {currBlogs.map((blog) => (
                     <div
                         key={blog.id}
                         className="group relative overflow-hidden rounded-2xl bg-white shadow-[0_30px_90px_rgba(0,0,0,0.12)] border border-gray-100 hover:shadow-[0_40px_120px_rgba(0,0,0,0.18)] transition-all duration-300 w-[22vw]"

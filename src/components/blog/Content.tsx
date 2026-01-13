@@ -107,7 +107,7 @@ const Content = () => {
     });
     
     setTotalBlogs( Math.ceil((filterBlogs.length) / 12))
-    console.log(filterBlogs)
+
     
     setCurrBlogs(filterBlogs.slice((start-1),end));
   },[blogs,page, activeCategory, selectedAuthor])
@@ -124,7 +124,7 @@ const Content = () => {
 
       <div className="mx-auto w-full px-6">
         {/* BreadCrumb */}
-        <nav className="text-sm text-gray-400 mb-6 pl-20  bg-white max-w-sm -mt-9">
+        <nav className="text-sm text-gray-400 mb-6 pl-5 md:pl-8 lg:pl-10 xl:pl-20 bg-white max-w-sm -mt-9">
             <Link href="/" className="hover:text-blue-500 transition">
             Home
             </Link>
@@ -135,7 +135,7 @@ const Content = () => {
         </nav>
 
         {/* Filters */}
-        <div className="flex flex-wrap items-center gap-3 pl-20 mb-8">
+        <div className="flex flex-wrap items-center gap-3 pl-3 sm:pl-5 md:pl-8 lg:pl-10 xl:pl-20 mb-8">
           {/* Categories */}
           {categories.map((cat) => (
             <button
