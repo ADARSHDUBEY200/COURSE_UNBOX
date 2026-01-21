@@ -5,7 +5,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function CategoryOverview({ category }: any) {
   
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <div className="bg-[#eaf8fc] min-h-[30vh] p-10">
@@ -14,6 +14,7 @@ export default function CategoryOverview({ category }: any) {
 
         <div className="max-w-7xl mx-auto px-4 py-12 bg-[radial-gradient(#ffffff_1px,transparent_1px)">
           <h2 className="text-2xl md:text-4xl font-extrabold mb-4">
+            
             About the <span className="text-blue-600">{category.title}</span> Courses
 
           </h2>

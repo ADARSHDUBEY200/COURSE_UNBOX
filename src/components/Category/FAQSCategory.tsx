@@ -6,9 +6,11 @@ import Image from "next/image";
 
 
 export default function FAQs({category} : any) {
+
   const [openIndex, setOpenIndex] = useState<number | null>(-1);
 
   return (
+    
     <section className="w-full px-4 py-16">
       
       {/* Heading */}

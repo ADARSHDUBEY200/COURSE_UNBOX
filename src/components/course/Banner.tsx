@@ -88,6 +88,7 @@ const Banner = ({ courseSlug }: { courseSlug : string }) => {
 
     return (
         <section className="bg-white text-black py-6 border-b border-gray-200">
+
             <div
                 className="
                 max-w-7xl mx-auto
@@ -147,7 +148,9 @@ const Banner = ({ courseSlug }: { courseSlug : string }) => {
                 <h3 className="text-lg font-semibold">{course?.language}</h3>
                 <p className="text-gray-600 text-sm">Language</p>
                 </div>
+                
             </div>
+
         </section>
     )
 }

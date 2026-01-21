@@ -35,6 +35,21 @@ export async function generateMetadata(
 
 }
 
+const getCourseData = async (slug : string) => {
+
+  const {data , error } = await supabase.from("Courses").select("*").eq("slug", slug).single();
+
+  if(error){
+
+    console.log("There is some error occurred in the Course Page : ");
+    console.log(error);
+
+  };
+
+  return data;
+
+}
+
 
 export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
 
@@ -55,15 +70,19 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
   }
 
+  const courseData = await getCourseData(slug)
+
   return (
+
     <>
+
       <Navbar />
       <div className="w-full min-h-screen text-white">
-        <Hero courseSlug={slug} />
+        <Hero courseData={courseData} />
         <Banner courseSlug={slug} />
         <Enquiry courseSlug={slug} />
         <Module courseSlug={slug} />
-        <CourseContent courseSlug={slug} />
+        <CourseContent courseData={courseData} />
         <Mentors />
         <Testimonials courseSlug={slug} />
         <CertificationBanner />

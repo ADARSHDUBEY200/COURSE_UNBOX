@@ -28,6 +28,7 @@ const CategoryCTA = () => {
                               "
                 >
                     {/* Image Section */}
+                    
                     <div className="relative w-full lg:w-1/2 flex justify-center">
                         <img
                             src="/images/Home/DemoClass.png"
