@@ -612,9 +612,9 @@ const EditCourse = ({ collapsed, course }: { collapsed: boolean; course: Course 
                     required
                   >
                     <option value="">Select Mode</option>
-                    <option value="Online">English</option>
-                    <option value="Offline">Hindi</option>
-                    <option value="Hybrid">Other</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Hybrid">Hybrid</option>
                   </select>
                 </div>
               </div>

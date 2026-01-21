@@ -1,9 +1,8 @@
 "use client";
 
-import { supabase } from "@/lib/supabse/supabaseConfig";
 import { ChevronDown, CircleQuestionMark } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 type Course = {
 
@@ -32,67 +31,44 @@ type Course = {
     ranking: string,
     course: string
   }[],
-  modules: Record<
-    string,
-    {
+  modules: {
+    [categoryName: string]: {
       module: string;
       title: string;
       lectures: string[];
-    }[]
-  >,
+    }[];
+  }[];
 
   FAQ: {
     question: string;
     answer: string
   }[];
+
+  meta: {
+    title: string,
+    description: string
+  },
+
+  slug: string,
+
+  alt: string,
+
   image: string;
-  
+
 }
 
-function Faq({courseSlug} : {courseSlug : string}) {
+function Faq({ courseData: course }: { courseData: Course }) {
 
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-  const [content, setContent] = useState<Course | null>(null);
-  
-    const getBlogData = async () => {
-  
-      const { data, error } = await supabase
-        .from("Courses")
-        .select("*")
-        .eq("slug", courseSlug)
-        .single();
-  
-      if (error) {
-  
-        console.error(error);
-  
-      }
-  
-      console.log("THE DATA IS : ");
-      console.log(data);
-  
-      setContent(data);
-  
-    }
-  
-  
-  
-    useEffect(() => {
-  
-      getBlogData();
-  
-    }, []);
-  
-
   return (
     <>
-    
+
       <section className="w-full bg-[#dceefa] py-12">
 
         <div className="w-full text-center mb-5">
           <h2 className="relative inline-block font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-16 text-black">
-           FAQs : Frequently Asked Questions
+            FAQs : Frequently Asked Questions
             <svg
               className="absolute left-0 -bottom-12 w-full"
               viewBox="0 0 300 20"
@@ -117,7 +93,7 @@ function Faq({courseSlug} : {courseSlug : string}) {
 
           <div className="w-full md:w-[60%] mx-auto md:px-4 px-8">
             <div className="flex flex-col gap-4">
-              {content?.FAQ.map((data, index) => {
+              {course.FAQ.map((data, index) => {
                 const isOpen = currentIndex === index;
                 // xl:px-5 xl:py-4 
                 return (
