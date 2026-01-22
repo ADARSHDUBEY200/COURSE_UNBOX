@@ -6,6 +6,7 @@ import CountUp from "./CountUp";
 import { useState }  from "react";
 import emailjs from "@emailjs/browser";
 
+import Link from "next/link";
 
 
 
@@ -65,6 +66,7 @@ export default function CategoryHero({ categories }: any) {
       const [fullName, setFullName] = useState("");
       const [phone, setPhone] = useState("");
       const [email, setEmail] = useState("");
+     
 
 
       const handleSubmit = (e:React.FormEvent)=>{
@@ -109,7 +111,7 @@ export default function CategoryHero({ categories }: any) {
         {/* LEFT CONTENT */}
         <div className="text-left lg:text-left">
           <div className="flex justify-start gap-2 text-sm text-white/80 mb-5">
-            <Home size={18} />
+             <Link href="/" className="cursor-pointer"><Home size={18} /></Link>
             <span>/ Data Science & Analytics</span>
           </div>
 

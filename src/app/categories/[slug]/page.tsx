@@ -40,9 +40,7 @@ export default async function page({params}: {params : Promise<{slug:string}>}){
             slug: "web-development",
             description: "Learn frontend & backend development...",
             banner: "/images/categories/web-dev.webp",
-            themeColor: "#2563EB"
-         }
-       ]
+            themeColor: "#2563EB"}]
 
        
     const courses =  [{

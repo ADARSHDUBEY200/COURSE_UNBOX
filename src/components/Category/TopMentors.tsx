@@ -2,6 +2,42 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 export default function TopMentors() {
+  const mentors = [
+  
+  {
+    id: "9a71f18d-922c-4c32-a136-5c554f9b5227",
+    name: "Jugal Chauhan",
+    profession: "Digital Marketing Trainer",
+    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/WhatsApp%20Image%202026-01-12%20at%2016.18.24.jpeg",
+    description:
+      "Founder of Course Unbox with 12+ years of experience in digital marketing.",
+  },
+  {
+    id: "82e7a02b-0cc7-45d2-afc9-265aed53bcda",
+    name: "Punit Jindal",
+    profession: "Digital Marketing Trainer",
+    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/WhatsApp%20Image%202026-01-07%20at%203.20.13%20PM.jpeg",
+    description:
+      "Punit Jindal, widely known as Zorbathezen, is a renowned digital creator, entrepreneur, and former CEO of AAFT.",
+  },
+  {
+    id: "a02b5ba6-5cdc-42c2-a18d-a68b2cb0741d",
+    name: "Saumya Rajan",
+    profession: "Associate Director",
+    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/Saumya.webp",
+    description:
+      "Seasoned digital marketing expert with experience at Google, Cognizant, and WNS.",
+  },
+  {
+    id: "92d7a4fe-a49d-47d2-a6e5-00484687488c",
+    name: "Kuldeep Kumar",
+    profession: "Digital Marketer",
+    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/Kuldeep%20sir.jpg",
+    description:
+      "AI-integrated digital marketing consultant with 14+ years of experience.",
+  },
+];
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
       
@@ -17,33 +53,18 @@ export default function TopMentors() {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        {/* Card 1 */}
-        <MentorCard
-          name="Prof. Sudeb Das Gupta"
-          role="Professor at IIT Roorkee"
-          image="/images/Student/UnboxProfile.png"
-          description="Dr. Sudeb Das Gupta is currently working as a Professor at IIT Roorkee. He has completed his PhD from Banaras Hindu University in Electronics Engineering and has more than 20 years of teaching experience."
-        />
-
-        {/* Card 2 */}
-        <MentorCard
-          name="Prof. Balasubramanian R"
-          role="Professor & HOD at IIT Roorkee"
-          image="/images/Student/UnboxProfile.png"
-          description="Dr. Balasubramanian is a Professor & HOD of the Computer Science Department at IIT Roorkee. He completed his PhD from IIT Madras and brings over 20 years of academic experience."
-        />
-
-        {/* Card 3 */}
-        <MentorCard
-          name="Prof. Narendra S. Chaudhari"
-          role="Professor at IIT Indore"
-          image="/images/Student/UnboxProfile.png"
-          description="Dr. Narendra Chaudhari is a Professor of Computer Science and Engineering at IIT Indore, specializing in network security, mobile computing, and machine learning."
-          
-        />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 cursor-pointer">
+        {mentors.slice(1, 4).map((mentor) => (
+          <MentorCard
+            key={mentor.id}
+            name={mentor.name}
+            role={mentor.profession}
+            image={mentor.Image}
+            description={mentor.description}
+          />
+        ))}
       </div>
+
     </section>
   );
 }

@@ -33,7 +33,7 @@ const faqs = [
 ];
 
 export default function FAQs() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(-1);
 
   return (
     <section className="w-full px-4 py-16">
@@ -43,12 +43,10 @@ export default function FAQs() {
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
           Frequently Asked <span className="text-blue-600">Questions</span>
         </h2>
-        <p className="mt-3 text-gray-600">
-          Everything you need to know before joining the masterclass
-        </p>
+        
 
         <svg
-              className="absolute left-90 -bottom-7 sm:top-16 w-3xl hidden lg:block"
+              className="absolute left-90 -bottom-7 sm:top-8 w-3xl hidden lg:block"
               viewBox="0 0 300 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +54,7 @@ export default function FAQs() {
               <path
                 d="M5 15 C 60 5, 240 5, 295 15"
                 stroke="#2BB0FF"
-                strokeWidth="1.5"
+                strokeWidth="1.9"
                 strokeLinecap="round"
               />
             </svg>
