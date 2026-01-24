@@ -88,7 +88,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
         <TopCompanies />
         <Faq courseData={courseData} />
         <LetsConnect />
-      </div>
+   
       <Footer />
 
     </>
