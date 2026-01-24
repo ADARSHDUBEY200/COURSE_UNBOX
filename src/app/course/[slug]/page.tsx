@@ -34,11 +34,11 @@ export async function generateMetadata(
 
 }
 
-const getCourseData = async (slug : string) => {
+const getCourseData = async (slug: string) => {
 
-  const {data , error } = await supabase.from("Courses").select("*").eq("slug", slug).single();
+  const { data, error } = await supabase.from("Courses").select("*").eq("slug", slug).single();
 
-  if(error){
+  if (error) {
 
     console.log("There is some error occurred in the Course Page : ");
     console.log(error);
@@ -64,22 +64,92 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
 
   if (!course || error) {
-    
+
     notFound();
 
   }
 
   const courseData = await getCourseData(slug)
 
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+
+    "name": courseData.title,
+    "description": courseData.description,
+
+    "provider": {
+      "@type": "Organization",
+      "name": "Course Unbox",
+      "url": "https://courseunbox.com"
+    },
+
+    "url": `https://courseunbox.com/course/${courseData.slug}`
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://courseunbox.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://courseunbox.com/course"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": courseData.title
+      }
+    ]
+  };
+
+
+  const faqSchema =
+    courseData.faqs?.length > 0
+      ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": courseData.faqs.map((faq: any) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      }
+      : null;
+
+
+
+
   return (
 
     <>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            [courseSchema, breadcrumbSchema, faqSchema].filter(Boolean)
+          )
+        }}
+      />
+
 
       <Navbar />
       <div className="w-full min-h-screen text-white">
         <Hero courseData={courseData} />
         <Banner courseData={courseData} />
-        <Enquiry courseData={courseData}/>
+        <Enquiry courseData={courseData} />
         <Module courseData={courseData} />
         <CourseContent courseData={courseData} />
         <Mentors />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
+
   {
     question: "Who can attend this masterclass?",
     answer:
@@ -29,6 +30,7 @@ const faqs = [
     answer:
       "Yes, participants who attend the full session will receive a certificate of participation.",
   },
+  
 ];
 
 export default function FAQs() {

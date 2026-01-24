@@ -31,8 +31,73 @@ export default function DigitalMarketingDiploma() {
         document.body.removeChild(link);
     };
 
+
+    const landingPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+
+        "name": "AI Based Digital Marketing Diploma Program in Delhi NCR",
+        "description":
+            "Join the AI-based Digital Marketing Diploma Program by Course Unbox. Learn SEO, Ads, AI tools, analytics, and get placement support.",
+        "url": "https://courseunbox.com/digital-marketing-course-offers",
+
+        "inLanguage": "en-IN",
+
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Course Unbox",
+            "url": "https://courseunbox.com"
+        }
+    };
+
+    const courseSchema = {
+
+        "@context": "https://schema.org",
+        "@type": "Course",
+
+        "name": "AI Based Digital Marketing Diploma Program",
+        "description":
+            "A comprehensive AI-based digital marketing diploma covering SEO, Google Ads, Meta Ads, AI tools, analytics, freelancing, and placement support.",
+
+        "provider": {
+            "@type": "Organization",
+            "name": "Course Unbox",
+            "url": "https://courseunbox.com"
+        },
+
+        "educationalCredentialAwarded": "Diploma in Digital Marketing",
+
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": [
+                "Online",
+                "Offline"
+            ],
+            "duration": "P6M"
+        },
+
+        "url": "https://courseunbox.com/digital-marketing-course-offers"
+
+    };
+
+
+
     return (
         <>
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify([
+                        
+                        landingPageSchema,
+                        courseSchema
+
+                    ])
+                }}
+            />
+
+
             <PopUpForm isOpen={isOpen} onCancel={() => setIsOpen(false)} onConfirm={() => { setIsOpen(false); setCanDownload(true); triggerBrochureDownload() }} />
 
             <main className="bg-gradient-to-b from-[#0B1C3F] to-[#102B6A] text-white">
