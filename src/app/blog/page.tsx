@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const getBlogData = async() => { 
 
-    const {data , error} = await supabase.from("Blogs").select("*"); 
+    const {data , error} = await supabase.from("Blog").select("*"); 
 
     if(error){
         console.log("This is the error I have get in the Blog Archive Page : ");
