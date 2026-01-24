@@ -1,4 +1,5 @@
 import { CheckCircle, Star } from "lucide-react";
+import Link from "next/link"
 
 type Course = {
 
