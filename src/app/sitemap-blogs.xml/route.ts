@@ -6,7 +6,7 @@ export const revalidate = 3600;
 export async function GET() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/Blog?select=slug,created_at`,
+      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/Blogs?select=slug,created_at`,
       {
         headers: {
           apikey: process.env.NEXT_PUBLIC_SUPABASE_KEY!,
