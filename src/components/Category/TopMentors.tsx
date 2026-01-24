@@ -2,43 +2,9 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 export default function TopMentors() {
-  const mentors = [
-  
-  {
-    id: "9a71f18d-922c-4c32-a136-5c554f9b5227",
-    name: "Jugal Chauhan",
-    profession: "Digital Marketing Trainer",
-    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/WhatsApp%20Image%202026-01-12%20at%2016.18.24.jpeg",
-    description:
-      "Founder of Course Unbox with 12+ years of experience in digital marketing.",
-  },
-  {
-    id: "82e7a02b-0cc7-45d2-afc9-265aed53bcda",
-    name: "Punit Jindal",
-    profession: "Digital Marketing Trainer",
-    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/WhatsApp%20Image%202026-01-07%20at%203.20.13%20PM.jpeg",
-    description:
-      "Punit Jindal, widely known as Zorbathezen, is a renowned digital creator, entrepreneur, and former CEO of AAFT.",
-  },
-  {
-    id: "a02b5ba6-5cdc-42c2-a18d-a68b2cb0741d",
-    name: "Saumya Rajan",
-    profession: "Associate Director",
-    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/Saumya.webp",
-    description:
-      "Seasoned digital marketing expert with experience at Google, Cognizant, and WNS.",
-  },
-  {
-    id: "92d7a4fe-a49d-47d2-a6e5-00484687488c",
-    name: "Kuldeep Kumar",
-    profession: "Digital Marketer",
-    Image: "https://pdgzqzyhgeowizefaoxs.supabase.co/storage/v1/object/public/AppImages/Kuldeep%20sir.jpg",
-    description:
-      "AI-integrated digital marketing consultant with 14+ years of experience.",
-  },
-];
 
   return (
+
     <section className="max-w-7xl mx-auto px-4 py-16">
       
       {/* Heading */}
@@ -66,6 +32,8 @@ export default function TopMentors() {
       </div>
 
     </section>
+
+    
   );
 }
 

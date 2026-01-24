@@ -5,11 +5,9 @@ const StillConfusedSection = () => {
 
   return (
     
-    
     <section className="w-full bg-[#cfdcc8] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 items-center gap-10">
         
-       
         <div>
           <h2 className="text-3xl md:text-4xl font-semibold text-[#1f2937]">
             Still Confused?
@@ -30,8 +28,6 @@ const StillConfusedSection = () => {
           </Link>
         </div>
 
-        
-
         <div className="relative flex justify-center md:justify-end">
           <Image
             src="/images/Course/Confused.jpg"
@@ -43,8 +39,6 @@ const StillConfusedSection = () => {
           />
         </div>
       </div>
-
-    
 
       <div className="absolute top-6 right-20 w-20 h-20 bg-[#fde7b2] rounded-full opacity-80" />
       <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#8aa876] rounded-full opacity-70" />

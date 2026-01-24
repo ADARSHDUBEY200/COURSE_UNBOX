@@ -31,7 +31,6 @@ export default function page(){
         <CertificationBanner/>
         <StudentTestimonials/>
         <WhyChooseUs/>
-        
         <AllCoursesFAQs/>
         <FinalCTA/>
         <Footer/>

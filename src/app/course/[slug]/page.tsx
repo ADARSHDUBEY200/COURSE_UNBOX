@@ -5,7 +5,6 @@ import Enquiry from "@/components/course/Enquiry";
 import Footer from "@/components/Home/Footer";
 import Navbar from "@/components/Home/Navbar";
 import Module from "@/components/course/Module";
-import StillConfusedSection from "@/components/course/getConnected";
 import CertificationBanner from "@/components/Home/CertificationBanner";
 import TopCompanies from "@/components/Home/TopCompanies";
 import LetsConnect from "@/components/Home/LetsConnect";
@@ -35,6 +34,21 @@ export async function generateMetadata(
 
 }
 
+const getCourseData = async (slug : string) => {
+
+  const {data , error } = await supabase.from("Courses").select("*").eq("slug", slug).single();
+
+  if(error){
+
+    console.log("There is some error occurred in the Course Page : ");
+    console.log(error);
+
+  };
+
+  return data;
+
+}
+
 
 export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
 
@@ -55,19 +69,24 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
   }
 
+  const courseData = await getCourseData(slug)
+
   return (
+
     <>
-        <Navbar />
-        <Hero courseSlug={slug} />
-        <Banner courseSlug={slug} />
-        <Enquiry courseSlug={slug} />
-        <Module courseSlug={slug} />
-        <CourseContent courseSlug={slug} />
+
+      <Navbar />
+      <div className="w-full min-h-screen text-white">
+        <Hero courseData={courseData} />
+        <Banner courseData={courseData} />
+        <Enquiry courseData={courseData}/>
+        <Module courseData={courseData} />
+        <CourseContent courseData={courseData} />
         <Mentors />
-        <Testimonials courseSlug={slug} />
+        <Testimonials courseData={courseData} />
         <CertificationBanner />
         <TopCompanies />
-        <Faq courseSlug={slug} />
+        <Faq courseData={courseData} />
         <LetsConnect />
    
       <Footer />

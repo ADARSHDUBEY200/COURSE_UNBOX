@@ -1,8 +1,3 @@
-"use client"
-
-import { supabase } from '@/lib/supabse/supabaseConfig';
-import React, { useEffect, useState } from 'react'
-
 type Course = {
 
     id: string;
@@ -57,37 +52,12 @@ type Course = {
 
 }
 
-const Banner = ({ courseSlug }: { courseSlug : string }) => {
-    const [course, setCourse] = useState<Course | null>(null);
-
-    const getData = async () => {
-
-        const { data, error } = await supabase.from("Courses").select("*").eq("slug", courseSlug).single();
-
-        if (error) {
-
-            console.log("The error coming in the Banner Section of the : ");
-            console.log(error);
-
-        }
-
-
-        console.log("THE DATA IS FOR THE PARTICULAR ID IS : ");
-        console.log(data);
-        setCourse(data);
-
-    }
-
-
-    useEffect(() => {
-
-        getData();
-
-    }, []);
-
+const Banner = ({ courseData : course }: { courseData  : Course }) => {
+    
 
     return (
         <section className="bg-white text-black py-6 border-b border-gray-200">
+
             <div
                 className="
                 max-w-7xl mx-auto
@@ -147,7 +117,9 @@ const Banner = ({ courseSlug }: { courseSlug : string }) => {
                 <h3 className="text-lg font-semibold">{course?.language}</h3>
                 <p className="text-gray-600 text-sm">Language</p>
                 </div>
+                
             </div>
+
         </section>
     )
 }
