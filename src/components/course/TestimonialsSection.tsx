@@ -1,52 +1,62 @@
-"use client"
-
 import Image from "next/image";
 import { Linkedin, TrendingUp, Star } from "lucide-react";
-import { supabase } from "@/lib/supabse/supabaseConfig";
-import { useEffect, useState } from "react";
 
-type testimonials = {
+type Course = {
 
-    name: string;
-    role: string;
-    company: string;
+    id: string;
     title: string;
     description: string;
-    ranking: number;
-    course: string;
+    startDate: string;
+    Duration: number;
+    language: string;
+    domain: string;
+    Delivery_Mode: string;
+    low: number,
+    high: number,
+    price: number,
+    content: {
+        title: string;
+        subtitle: string;
+    }[];
+    Testimonials:
+    {
+        name: string,
+        role: string,
+        company: string,
+        title: string,
+        description: string,
+        ranking: string,
+        course: string
+    }[],
+    modules: {
+        [categoryName: string]: {
+            module: string;
+            title: string;
+            lectures: string[];
+        }[];
+    }[];
+
+    FAQ: {
+        question: string;
+        answer: string
+    }[];
+
+    meta: {
+        title: string,
+        description: string
+    },
+
+    slug: string,
+
+    alt: string,
+
+    image: string;
 
 }
 
-export default function Testimonials({ courseSlug }: { courseSlug : string }) {
+export default function Testimonials({ courseData: course }: { courseData: Course }) {
 
-    const [Testimonials, setTestimonials] = useState<testimonials[]>([]);
-
-    const getTestimonialsData = async () => {
-
-        const { data, error } = await supabase.from("Courses").select("Testimonials").eq("slug", courseSlug).single();
-
-        if (error) {
-
-            console.log("THERE IS SOME OF THE ERROR OCUUR IN THE COURSE TESTIMONIALS :");
-            console.log(error);
-            
-        }
-
-        console.log("THE TESTIMONAILS DATA COMEMON THE FORNTEND SIDE IS : ");
-        console.log(data);
-
-        setTestimonials(data?.Testimonials);
-    }
-
-
-
-    useEffect(() => {
-
-        getTestimonialsData();
-
-    }, []);
-
-
+    
     return (
 
         <section className="bg-[#F7FBFF] py-16">
@@ -56,7 +66,7 @@ export default function Testimonials({ courseSlug }: { courseSlug : string }) {
                 </h2>
 
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {Testimonials?.map((testimonial, index) => (
+                    {course.Testimonials.map((testimonial, index) => (
                         <div
                             key={index}
                             className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex 
@@ -94,7 +104,7 @@ export default function Testimonials({ courseSlug }: { courseSlug : string }) {
 
                             <div className="flex items-center gap-3">
                                 <Image
-                                    src="/images/Student/UnboxProfile.png" 
+                                    src="/images/Student/UnboxProfile.png"
                                     alt="Avtar Image"
                                     width={44}
                                     height={44}

@@ -7,64 +7,97 @@ import CourseHelpCTA from '@/components/Category/CourseHelpCTA'
 import TopMentors from '@/components/Category/TopMentors'
 import FAQs from '@/components/Category/FAQSCategory'
 import CategoryOverview from '@/components/Category/CategoryOverview'
+import { supabase } from '@/lib/supabse/supabaseConfig'
+import { notFound } from 'next/navigation'
 
-interface CategoryCTAProps {
- 
-   _id: number;
-    name: string;
-    slug: string;
-    description: string;
-    banner: string;
-    themeColor:string;
- 
+async function getCategory(slug: string) {
+    const { data, error } = await supabase.from("Category").select("*").eq("slug", slug).single();
+
+    if (error) {
+
+        console.log("There is some of the error that we have got : ");
+        console.log(error);
+
+    }
+
+    return data;
 }
 
 
-async function getCategory(slug:string) {
-    const res = await fetch('/');
-
-    return res.json();
-}
-
-async function getCourse(slug:string) {
-    const res = await fetch('/');
-    return res.json();
-}
 
 
-export default async function page({params}: {params : Promise<{slug:string}>}){
-    const {slug} = await params;
-    const category : CategoryCTAProps[]  =[{
-            _id : 9,
-            name: "Web Development",
-            slug: "web-development",
-            description: "Learn frontend & backend development...",
-            banner: "/images/categories/web-dev.webp",
-            themeColor: "#2563EB"}]
+export default async function page({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const category = await getCategory(slug);
 
-       
-    const courses =  [{
-            _id: 8,
-            title: "Full Stack Web Development",
-            slug: "full-stack-web-dev",
-            categorySlug: "web-development",
-            level: "Beginner",
-            duration: "6 Months",
-            price: 4999
-            }
+
+    if (category == null) {
+        notFound();
+    }
+
+    const categoryPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+
+        "name": `${category.name} Courses`,
+        "description": category.description,
+
+        "url": `https://courseunbox.com/category/${category.slug}`,
+
+        "inLanguage": "en-IN",
+
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Course Unbox",
+            "url": "https://courseunbox.com"
+        }
+    };
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://courseunbox.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Categories",
+                "item": category.name
+            },
         ]
-     return (
-      <>
-      <Navbar/>
-      <CategoryHero category={category} />
-      <CourseList courses={courses} />
-      <CourseHelpCTA/>
-      <TopMentors/>
-      <CategoryOverview/>
-      <FAQs/>
-      <CategoryCTA  />
-      <Footer/>
-      
-    </>
-  );
+
+    };
+
+
+
+    return (
+
+        <>
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(
+                        [categoryPageSchema, breadcrumbSchema]
+                    )
+                }}
+            />
+
+            <Navbar />
+            <CategoryHero category={category} />
+            <CourseList />
+            <CourseHelpCTA />
+            <TopMentors />
+            <CategoryOverview category={category} />
+            <FAQs category={category} />
+            <CategoryCTA />
+            <Footer />
+
+        </>
+    );
 }

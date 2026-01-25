@@ -1,8 +1,7 @@
 "use client";
 
-import React, { FormEvent, useEffect, useState } from "react";
+import React, {useState } from "react";
 import Link from "next/link";
-import { supabase } from "@/lib/supabse/supabaseConfig";
 import emailjs from "@emailjs/browser";
 
 type Course = {
@@ -60,38 +59,12 @@ type Course = {
 }
 
 
-const Enquiry = ({ courseSlug }: { courseSlug : string }) => {
+const Enquiry = ({ courseData : course }: { courseData  : Course }) => {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
-
-  console.log("THE COURSE ID IS :")
-  console.log(courseSlug);
-
-  const [course, setCourse] = useState<Course | null>(null);
-
-  console.log(course?.content);
-
-  const getData = async () => {
-
-    const { data, error } = await supabase.from("Courses").select("*").eq("slug", courseSlug).single();
-
-    if (error) {
-
-      console.log("The error coming in the Enquiry Section of the : ");
-      console.log(error);
-
-    }
-
-
-    console.log("THE DATA IS FOR THE PARTICULAR ID IS : ");
-    console.log(data);
-    setCourse(data);
-
-  }
 
   const handleSubmit = (e:React.FormEvent)=>{
       e.preventDefault();
@@ -127,15 +100,6 @@ const Enquiry = ({ courseSlug }: { courseSlug : string }) => {
   }
 
   
-
-
-  useEffect(() => {
-
-    getData();
-
-  }, []);
-
-
 
   return (
     <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-pink-500 text-white">

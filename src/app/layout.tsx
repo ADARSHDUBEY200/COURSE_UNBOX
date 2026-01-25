@@ -2,24 +2,10 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
-
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
 });
-
-
-
 
 export const metadata: Metadata = {
   title: "Course Unbox | Learn Digital Marketing, Tech & Career-Focused Courses Online",
@@ -33,8 +19,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
+
   return (
     <html lang="en">
+
       <body
         className={`${roboto.className}  antialiased`}
       >

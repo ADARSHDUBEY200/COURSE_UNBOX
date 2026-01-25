@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Lock, ChevronRight } from "lucide-react";
-import { supabase } from "@/lib/supabse/supabaseConfig";
 
 type Course = {
 
@@ -63,48 +62,11 @@ type ModuleType = {
     lectures: string[];
 };
 
-export default function Module({ courseSlug }: { courseSlug: string }) {
+export default function Module({ courseData : course }: { courseData : Course }) {
 
-    const [course, setCourse] = useState<Course | null>(null);
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const [activeModule, setActiveModule] = useState(0);
-    console.log("THE COURSE COMING IS : ");
-    console.log(course);
-
-
-    const getData = async () => {
-        const { data, error } = await supabase
-            .from("Courses")
-            .select("*")
-            .eq("slug", courseSlug)
-            .single();
-
-        if (error) {
-
-            console.log("THE GOT IN THE MODULE SECTION IS : ");
-            console.log(error);
-
-        }
-
-        console.log("THE DATA OF THE MODULE SECTION IS : ")
-        console.log(data);
-
-        console.log("THE Modules is : ");
-
-        console.log(data.modules);
-
-
-        setCourse(data);
-        setActiveTabIndex(0);
-
-
-    };
-
-    useEffect(() => {
-        getData();
-    }, []);
-
-
+   
 
     const activeCategoryObj =
         course?.modules[activeTabIndex];

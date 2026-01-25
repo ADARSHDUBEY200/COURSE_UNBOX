@@ -8,13 +8,11 @@ import BlogCategories from "@/components/blog/BlogCategories";
 import FinalCTASection from "@/components/blog/FinalCTASection";
 import LeftContent from "@/components/blog/LeftContent";
 import { supabase } from "@/lib/supabse/supabaseConfig";
-import Link from "next/link";
 
 
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> }
-) {
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
 
   const { slug } = await params;
 
@@ -33,7 +31,7 @@ export async function generateMetadata(
 }
 
 
-const getBlogData = async (BlogId : string) => {
+const getBlogData = async (BlogId: string) => {
   const { data, error } = await supabase
     .from("Blog")
     .select("*")
@@ -48,7 +46,7 @@ const getBlogData = async (BlogId : string) => {
 
   return data;
 
-  
+
 }
 
 
@@ -74,10 +72,78 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   const Blogs = await getBlogData(slug);
 
+  const articleSchema = {
+
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": Blogs.title,
+    "description": Blogs.meta?.description,
+    "image": Blogs.image,
+    "author": {
+      "@type": "Person",
+      "name": Blogs.author || "Course Unbox Editorial Team"
+    },
+
+    "publisher": {
+      "@type": "Organization",
+      "name": "Course Unbox",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://courseunbox.com/favicon.ico"
+      }
+    },
+
+    "dateModified": Blogs.created_at,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://courseunbox.com/blog/${Blogs.slug}`
+    },
+
+    "url": `https://courseunbox.com/blog/${Blogs.slug}`
+
+  };
+
+  const breadcrumbSchema = {
+
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://courseunbox.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://courseunbox.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": Blogs.domain }
+    ]
+
+  };
+
+  const faqSchema =
+    Blogs.faqs?.length > 0
+      ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": Blogs.faqs.map((faq: any) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      }
+      : null;
+
 
   return (
 
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            [articleSchema, breadcrumbSchema, faqSchema].filter(Boolean)
+          )
+        }}
+      />
+
       <Navbar />
 
       <div className="w-full min-h-screen bg-slate-50"  >
@@ -86,7 +152,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         <div className="max-w-7xl mx-auto px-4">
 
           <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-10" >
-            
+
 
             <LeftContent Blogs={Blogs} />
 
@@ -108,10 +174,10 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </div>
 
 
-        <BlogFAQ Blogs = {Blogs}/>
+        <BlogFAQ Blogs={Blogs} />
 
 
-        <RelatedBlog slug={slug}/>
+        <RelatedBlog slug={slug} />
 
 
         <FinalCTASection />

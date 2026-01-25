@@ -1,9 +1,6 @@
-"use client"
-
-import { useEffect, useState } from 'react'
 import { CheckCircle, Star } from "lucide-react";
-import { supabase } from '@/lib/supabse/supabaseConfig';
-import Link from 'next/link';
+import Link from "next/link"
+
 type Course = {
 
     id: string;
@@ -58,38 +55,10 @@ type Course = {
 
 }
 
-const Hero = ({ courseSlug }: { courseSlug : string }) => {
+
+
+const Hero = ({ courseData : course }: { courseData : Course }) => {
     
-    const [course, setCourse] = useState<Course | null>(null);
-
-
-    const getData = async () => {
-
-        const { data, error } = await supabase.from("Courses").select("*").eq("slug", courseSlug).single();
-
-        if (error) {
-
-            console.log("The error coming in the Hero Section of the : ");
-            console.log(error);
-
-        }
-
-
-        console.log("THE DATA IS FOR THE PARTICULAR ID IS : ");
-        console.log(data);
-        setCourse(data);
-
-    }
-
-    useEffect(() => {
-
-        getData();
-
-    }, []);
-
-    console.log(course);
-
-
     return (
 
 
