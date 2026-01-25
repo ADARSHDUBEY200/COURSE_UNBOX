@@ -137,12 +137,6 @@ const Navbar = () => {
     }, []);
 
 
-
-
-  
- 
-
-
   return (
     <>
     <PopUpForm isOpen={isOpen} onCancel={()=>setIsOpen(false)} onConfirm={()=>setIsOpen(false)}/>
@@ -204,7 +198,7 @@ const Navbar = () => {
   
         {/* Student Button */}
         <Link
-        href={'/register'}
+        href={'/student'}
         className="
           relative inline-flex items-center justify-center
           px-5 py-2.5
