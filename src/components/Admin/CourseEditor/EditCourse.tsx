@@ -42,14 +42,13 @@ type Course = {
     ranking: string,
     course: string
   }[],
-  modules: Record<
-    string,
-    {
+  modules: {
+    [categoryName: string]: {
       module: string;
       title: string;
       lectures: string[];
-    }[]
-  >,
+    }[];
+  }[];
 
   FAQ: {
     question: string;
@@ -1030,7 +1029,7 @@ const EditCourse = ({ collapsed, course }: { collapsed: boolean; course: Course 
 
 
           <div>
-            
+
             {/* content */}
 
             <div className="h-[80vh] border p-5 rounded-3xl mb-7">

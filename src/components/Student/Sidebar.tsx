@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 
 const menu = [
+  { name: "Explore Courses", href: "/student/allcourses", icon: Home },
   { name: "Dashboard", href: "/student", icon: Home },
   { name: "Profile", href: "/student/profile", icon: User },
   { name: "My Courses", href: "/student/courses", icon: BookOpen },
@@ -89,10 +90,9 @@ export default function Sidebar() {
                 className={`
                   flex items-center gap-3 px-4 py-3 rounded-lg
                   transition
-                  ${
-                    isActive
-                      ? "bg-[#025378] text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                  ${isActive
+                    ? "bg-[#025378] text-white"
+                    : "text-gray-700 hover:bg-gray-100"
                   }
                 `}
               >

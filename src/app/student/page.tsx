@@ -54,6 +54,7 @@ export default function StudentDashboard() {
     };
 
     loadStudent();
+    
   }, [router]);
 
   if (loading) {

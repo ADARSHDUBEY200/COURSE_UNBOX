@@ -14,6 +14,8 @@ import Faq from "@/components/course/CourseFAQ";
 import { supabase } from "@/lib/supabse/supabaseConfig";
 import Mentors from "@/components/Home/Mentors";
 
+
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ) {
@@ -31,6 +33,59 @@ export async function generateMetadata(
     description: data?.meta?.description ?? "",
   };
 
+
+}
+
+type Course = {
+
+  id: string;
+  title: string;
+  description: string;
+  startDate: string;
+  Duration: number;
+  language: string;
+  domain: string;
+  Delivery_Mode: string;
+  low: number,
+  high: number,
+  price: number,
+  content: {
+    title: string;
+    subtitle: string;
+  }[];
+  Testimonials:
+  {
+    name: string,
+    role: string,
+    company: string,
+    title: string,
+    description: string,
+    ranking: string,
+    course: string
+  }[],
+  modules: {
+    [categoryName: string]: {
+      module: string;
+      title: string;
+      lectures: string[];
+    }[];
+  }[];
+
+  FAQ: {
+    question: string;
+    answer: string
+  }[];
+
+  meta: {
+    title: string,
+    description: string
+  },
+
+  slug: string,
+
+  alt: string,
+
+  image: string;
 
 }
 
@@ -69,14 +124,14 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
   }
 
-  const courseData = await getCourseData(slug)
+  const courseData: Course = await getCourseData(slug)
 
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
 
     "name": courseData.title,
-    "description": courseData.description,
+    "description": courseData.meta.description,
 
     "provider": {
       "@type": "Organization",
@@ -113,11 +168,11 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
 
   const faqSchema =
-    courseData.faqs?.length > 0
+    courseData.FAQ?.length > 0
       ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": courseData.faqs.map((faq: any) => ({
+        "mainEntity": courseData.FAQ.map((faq: any) => ({
           "@type": "Question",
           "name": faq.question,
           "acceptedAnswer": {

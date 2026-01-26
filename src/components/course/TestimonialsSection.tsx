@@ -56,7 +56,7 @@ type Course = {
 
 export default function Testimonials({ courseData: course }: { courseData: Course }) {
 
-    
+
     return (
 
         <section className="bg-[#F7FBFF] py-16">

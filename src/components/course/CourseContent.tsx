@@ -31,27 +31,36 @@ type Course = {
     ranking: string,
     course: string
   }[],
-  modules: Record<
-    string,
-    {
+  modules: {
+    [categoryName: string]: {
       module: string;
       title: string;
       lectures: string[];
-    }[]
-  >,
+    }[];
+  }[];
 
   FAQ: {
     question: string;
     answer: string
   }[];
+
+  meta: {
+    title: string,
+    description: string
+  },
+
+  slug: string,
+
+  alt: string,
+
   image: string;
 
 }
 
 
-export default function CategoryOverview({ courseData : course }: { courseData : Course }) {
+export default function CategoryOverview({ courseData: course }: { courseData: Course }) {
   const [expanded, setExpanded] = useState(false);
-  
+
 
   return (
     <section className="max-w-7xl mx-auto px-6 rounded-xl border-gray-200 shadow-xl bg-linear-to-tr from-blue-100 via-blue-50 to-white my-20">
@@ -67,7 +76,7 @@ export default function CategoryOverview({ courseData : course }: { courseData :
 
 
         <div className="text-gray-700 leading-relaxed text-base md:text-lg ">
-          
+
 
 
           {expanded && (
@@ -97,7 +106,7 @@ export default function CategoryOverview({ courseData : course }: { courseData :
             <ChevronDown size={18} />
           )}
         </button>
-        
+
       </div>
 
     </section>

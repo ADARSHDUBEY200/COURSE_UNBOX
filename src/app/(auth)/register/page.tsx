@@ -50,6 +50,7 @@ export default function RegisterPage() {
     const user = data.user;
 
     // If email confirmation is enabled
+
     if (!user) {
       alert("Please verify your email to continue.");
       setLoading(false);
@@ -73,6 +74,7 @@ export default function RegisterPage() {
 
     setLoading(false);
     router.replace("/student");
+    
   };
   
   return (

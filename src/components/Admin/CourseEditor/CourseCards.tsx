@@ -32,14 +32,13 @@ type Course = {
         ranking: string,
         course: string
     }[],
-    modules: Record<
-        string,
-        {
+    modules: {
+        [categoryName: string]: {
             module: string;
             title: string;
             lectures: string[];
-        }[]
-    >,
+        }[];
+    }[];
 
     FAQ: {
         question: string;
@@ -60,11 +59,11 @@ type Course = {
 }
 
 const categories = [
-  "All Courses",
-  "Digital Marketing",
-  "Data Science",
-  "IT & Software",
-  "Development",
+    "All Courses",
+    "Digital Marketing",
+    "Data Science",
+    "IT & Software",
+    "Development",
 ];
 
 
@@ -73,8 +72,8 @@ export default function CourseCards({ onEdit }: { onEdit: any }) {
     const [courses, setCourses] = useState<Course[]>([]);
     const [currCourses, setCurrCourses] = useState<Course[]>([]);
     const [activeCategory, setActiveCategory] = useState("All Courses");
-    
-    
+
+
 
     const fetchTableData = async () => {
 
@@ -102,11 +101,11 @@ export default function CourseCards({ onEdit }: { onEdit: any }) {
 
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        const filterCourses = courses.filter((course)=>{
-            
-            if(activeCategory ==='All Courses'){
+        const filterCourses = courses.filter((course) => {
+
+            if (activeCategory === 'All Courses') {
                 return true;
             }
 
@@ -114,9 +113,9 @@ export default function CourseCards({ onEdit }: { onEdit: any }) {
         });
 
         setCurrCourses(filterCourses);
-        
 
-},[courses, activeCategory]);
+
+    }, [courses, activeCategory]);
 
 
 
@@ -133,7 +132,7 @@ export default function CourseCards({ onEdit }: { onEdit: any }) {
         const notify = () => {
 
             toast("Data is Deleted");
-            
+
         };
 
         notify();
@@ -150,54 +149,53 @@ export default function CourseCards({ onEdit }: { onEdit: any }) {
         <section className="w-full max-w-7xl mx-auto px-4 py-14">
 
             <div className="flex flex-col md:flex-row md:items-center md:justify-around mb-2">
-                    <div>
-                        <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
-                            Manage Courses
-                        </h2>
-                        <p className="text-gray-500 mt-1">
-                            Premium, industry-ready courses curated for growth
-                        </p>
-                    </div>
+                <div>
+                    <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+                        Manage Courses
+                    </h2>
+                    <p className="text-gray-500 mt-1">
+                        Premium, industry-ready courses curated for growth
+                    </p>
+                </div>
 
 
-                
-                    <div className="flex flex-wrap items-center gap-3 ">
-                        {/* Categories */}
-                        {categories.map((cat) => (
-                            <button
+
+                <div className="flex flex-wrap items-center gap-3 ">
+                    {/* Categories */}
+                    {categories.map((cat) => (
+                        <button
                             key={cat}
                             onClick={() => {
                                 setActiveCategory(cat);
-                               
+
                             }}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition shadow-sm cursor-pointer
-                                ${
-                                activeCategory === cat
+                                ${activeCategory === cat
                                     ? "bg-blue-600 text-white"
                                     : "bg-slate-100 text-slate-700 hover:bg-blue-100"
                                 }
                             `}
-                            >
+                        >
                             {cat}
-                            </button>
-                        ))}
+                        </button>
+                    ))}
 
-                        
-                   </div>
+
                 </div>
+            </div>
 
-                
 
-                <div className="flex justify-end items-center gap-2 text-sm font-medium text-gray-500 px-20 py-6">
-                    <Layers size={18} />
 
-                    <span>
+            <div className="flex justify-end items-center gap-2 text-sm font-medium text-gray-500 px-20 py-6">
+                <Layers size={18} />
 
-                        Total Courses: <span className="text-gray-900">{currCourses.length}</span>
+                <span>
 
-                    </span>
-                </div>
-            
+                    Total Courses: <span className="text-gray-900">{currCourses.length}</span>
+
+                </span>
+            </div>
+
 
 
             <div className="flex flex-wrap gap-10 md:gap-4">
@@ -257,8 +255,8 @@ export default function CourseCards({ onEdit }: { onEdit: any }) {
 
             </div>
 
-            <ToastContainer/>
-            
+            <ToastContainer />
+
         </section>
 
     );

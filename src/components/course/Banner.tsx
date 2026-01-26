@@ -25,14 +25,13 @@ type Course = {
         ranking: string,
         course: string
     }[],
-    modules: Record<
-        string,
-        {
+    modules: {
+        [categoryName: string]: {
             module: string;
             title: string;
             lectures: string[];
-        }[]
-    >,
+        }[];
+    }[];
 
     FAQ: {
         question: string;
@@ -52,8 +51,8 @@ type Course = {
 
 }
 
-const Banner = ({ courseData : course }: { courseData  : Course }) => {
-    
+const Banner = ({ courseData: course }: { courseData: Course }) => {
+
 
     return (
         <section className="bg-white text-black py-6 border-b border-gray-200">
@@ -68,56 +67,56 @@ const Banner = ({ courseData : course }: { courseData  : Course }) => {
                 md:gap-0
                 "
             >
-               
+
                 <div className="min-w-[220px] lg:min-w-0 py-4 text-center
                 border border-gray-300
                 lg:border-0 lg:border-r
                 rounded-xl lg:rounded-none
                 hover:bg-gray-50 transition">
-                <h3 className="text-lg font-semibold">Job Assistance</h3>
-                <p className="text-gray-600 text-sm">For Pro Plan</p>
+                    <h3 className="text-lg font-semibold">Job Assistance</h3>
+                    <p className="text-gray-600 text-sm">For Pro Plan</p>
                 </div>
 
-               
+
                 <div className="min-w-[220px] lg:min-w-0 py-4 text-center
                 border border-gray-300
                 lg:border-0 lg:border-r
                 rounded-xl lg:rounded-none
                 hover:bg-gray-50 transition">
-                <h3 className="text-lg font-semibold">{course?.startDate}</h3>
-                <p className="text-gray-600 text-sm">Date of Commencement</p>
+                    <h3 className="text-lg font-semibold">{course?.startDate}</h3>
+                    <p className="text-gray-600 text-sm">Date of Commencement</p>
                 </div>
 
-                
+
                 <div className="min-w-[220px] lg:min-w-0 py-4 text-center
                 border border-gray-300
                 lg:border-0 lg:border-r
                 rounded-xl lg:rounded-none
                 hover:bg-gray-50 transition">
-                <h3 className="text-lg font-semibold">{course?.Duration} Months</h3>
-                <p className="text-gray-600 text-sm">Duration</p>
+                    <h3 className="text-lg font-semibold">{course?.Duration} Months</h3>
+                    <p className="text-gray-600 text-sm">Duration</p>
                 </div>
 
-             
+
                 <div className="min-w-[220px] lg:min-w-0 py-4 text-center
                 border border-gray-300
                 lg:border-0 lg:border-r
                 rounded-xl lg:rounded-none
                 hover:bg-gray-50 transition">
-                <h3 className="text-lg font-semibold">Live</h3>
-                <p className="text-gray-600 text-sm">{course?.Delivery_Mode}</p>
+                    <h3 className="text-lg font-semibold">Live</h3>
+                    <p className="text-gray-600 text-sm">{course?.Delivery_Mode}</p>
                 </div>
 
-               
+
                 <div className="min-w-[220px] lg:min-w-0 py-4 text-center
                 border border-gray-300
                 lg:border-0
                 rounded-xl lg:rounded-none
                 hover:bg-gray-50 transition">
-                <h3 className="text-lg font-semibold">{course?.language}</h3>
-                <p className="text-gray-600 text-sm">Language</p>
+                    <h3 className="text-lg font-semibold">{course?.language}</h3>
+                    <p className="text-gray-600 text-sm">Language</p>
                 </div>
-                
+
             </div>
 
         </section>

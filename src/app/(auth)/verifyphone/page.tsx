@@ -104,9 +104,11 @@ export default function PhoneVerification() {
         phone_verified: true,
       })
       .eq("id", user.id);
+      
 
     alert("Phone verified successfully!");
     router.replace("/student");
+
   };
 
   return (

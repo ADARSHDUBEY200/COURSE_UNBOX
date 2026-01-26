@@ -32,14 +32,13 @@ type Course = {
     ranking: string,
     course: string
   }[],
-  modules: Record<
-    string,
-    {
+  modules: {
+    [categoryName: string]: {
       module: string;
       title: string;
       lectures: string[];
-    }[]
-  >,
+    }[];
+  }[];
 
   FAQ: {
     question: string;
@@ -74,7 +73,7 @@ const CourseTable = ({ onEdit }: { onEdit: any }) => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [currCourses, setCurrCourses] = useState<Course[]>([]);
   const [activeCategory, setActiveCategory] = useState("All Courses");
-      
+
 
   const fetchTableData = async () => {
 
@@ -125,24 +124,24 @@ const CourseTable = ({ onEdit }: { onEdit: any }) => {
 
     fetchTableData();
 
-   }, []);
+  }, []);
 
-   useEffect(()=>{
-   
-           const filterCourses = courses.filter((course)=>{
-               
-               if(activeCategory ==='All Courses'){
-                   return true;
-               }
-   
-               return activeCategory === course.domain;
-           });
-   
-           setCurrCourses(filterCourses);
-           
-   
-   },[courses, activeCategory]);
-    
+  useEffect(() => {
+
+    const filterCourses = courses.filter((course) => {
+
+      if (activeCategory === 'All Courses') {
+        return true;
+      }
+
+      return activeCategory === course.domain;
+    });
+
+    setCurrCourses(filterCourses);
+
+
+  }, [courses, activeCategory]);
+
   return (
 
     <>
@@ -167,40 +166,39 @@ const CourseTable = ({ onEdit }: { onEdit: any }) => {
             </div>
 
             <div className="flex flex-wrap items-center gap-3 ">
-                        {/* Categories */}
-                        {categories.map((cat) => (
-                            <button
-                            key={cat}
-                            onClick={() => {
-                                setActiveCategory(cat);
-                               
-                            }}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition shadow-sm cursor-pointer
-                                ${
-                                activeCategory === cat
-                                    ? "bg-blue-600 text-white"
-                                    : "bg-slate-100 text-slate-700 hover:bg-blue-100"
-                                }
-                            `}
-                            >
-                            {cat}
-                            </button>
-                        ))}
+              {/* Categories */}
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCategory(cat);
 
-                        
+                  }}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition shadow-sm cursor-pointer
+                                ${activeCategory === cat
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-100 text-slate-700 hover:bg-blue-100"
+                    }
+                            `}
+                >
+                  {cat}
+                </button>
+              ))}
+
+
             </div>
 
           </div>
 
           <div className="flex justify-end items-center gap-2 text-sm font-medium text-gray-500 px-20 py-6">
-                    <Layers size={18} />
+            <Layers size={18} />
 
-                    <span>
+            <span>
 
-                        Total Courses: <span className="text-gray-900">{currCourses.length}</span>
+              Total Courses: <span className="text-gray-900">{currCourses.length}</span>
 
-                    </span>
-            </div>
+            </span>
+          </div>
 
           {/* Table */}
           <div className="overflow-x-auto">
