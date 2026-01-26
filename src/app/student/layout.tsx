@@ -2,7 +2,6 @@
 import Sidebar from "@/components/Student/Sidebar";
 import Topbar from "@/components/Student/Topbar";
 
-
 export default async function StudentLayout({children,}: {children: React.ReactNode;}) {
     
 
