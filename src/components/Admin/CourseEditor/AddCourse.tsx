@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "suneditor/dist/css/suneditor.min.css";
+import AddVideo from "./AddVideo";
 
 const Editor = dynamic(
     () => import("@monaco-editor/react"),
@@ -15,11 +16,24 @@ const SunEditor = dynamic(() => import("suneditor-react"), {
     ssr: false,
 });
 
+type VideoModule = {
+    id: string
+    moduleName: string,
+    videos: {
+        id: string,
+        title: string,
+        video: string
+    }[]
+}
+
 
 const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
     const [imageURL, setImageURL] = useState<string>("");
     const [loading, setloading] = useState(false);
+    const [videoModule , setVideoModule] = useState<VideoModule[]>([])
+    console.log("The data of the Video Module is inside the Add Course is : ");
+    console.log(videoModule);
     const [meta, setMeta] = useState({
 
         metaTitle: "",
@@ -29,7 +43,9 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
 
     const [editorContent, setEditorContent] = useState("");
 
-    const [editorValue, setEditorValue] = useState<string>(`[
+    const [editorValue, setEditorValue] = useState<string>(`
+[
+        
   {
     "HTML & CSS Fundamentals": [
       {
@@ -55,7 +71,9 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
         ]
       }
     ]
-    }]`);
+  }
+
+]`);
 
     const [parsedMessage, setParsedMessage] = useState<{
         status: boolean | null;
@@ -146,7 +164,10 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
     });
 
 
-
+    const handleVideoModule = (module : VideoModule[]) => {
+        setVideoModule(module);
+        console.log("THE handleVideoModule function is also called inside the Add Course : ");
+    }
 
 
     const handleChange = (
@@ -290,6 +311,7 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
             high: formData.high,
             alt: formData.alt,
             slug: slug,
+            videoModule : videoModule,
             meta: {
                 title: meta.metaTitle,
                 description: meta.metaDescription
@@ -370,7 +392,9 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
         const file = event.target.files?.[0];
 
         if (!file) {
+
             return;
+
         };
 
         const fileName = `${Date.now()}-${file.name}`;
@@ -1071,6 +1095,11 @@ const AddCourse = ({ collapsed }: { collapsed: boolean }) => {
                         </div>
 
                     </div>
+
+                    {
+                        
+                        formData.Delivery_Mode == "Online" ? <AddVideo handleVideoModule={handleVideoModule}/> : <></>
+                    }
 
                     <div className="w-[95%] mx-auto border rounded-2xl h-[75vh]">
                         <p className="text-2xl text-black font-bold text-center mb-4">Testimonials Section</p>

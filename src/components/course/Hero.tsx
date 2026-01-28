@@ -1,5 +1,7 @@
+import { supabase } from "@/lib/supabse/supabaseConfig";
 import { CheckCircle, Star } from "lucide-react";
 import Link from "next/link"
+import BuyButton from "./BuyButton";
 
 type Course = {
 
@@ -58,6 +60,14 @@ type Course = {
 
 const Hero = ({ courseData: course }: { courseData: Course }) => {
 
+    const handleBuy = async () => {
+        console.log("This is the current Logged in user");
+
+        const {data , error } = await supabase.auth.getUser();
+
+        console.log(data);
+    }
+
     return (
 
 
@@ -69,9 +79,8 @@ const Hero = ({ courseData: course }: { courseData: Course }) => {
 
                 <div className="w-full text-white md:px-10">
 
-
                     {/* Top Badges */}
-
+                    
                     <nav aria-label="Breadcrumb" className="text-sm text-gray-300   max-w-sm -mt-1 pb-5  sm:-mt-7 sm:pb-2.5">
                         <Link href="/" className="hover:text-blue-500 transition cursor-pointer">
                             Home
@@ -183,13 +192,20 @@ const Hero = ({ courseData: course }: { courseData: Course }) => {
                                 </p>
                             </div>
                         </div>
+
+
                     </div>
+
+
+                    {
+                        course.Delivery_Mode == "Online" ? (<BuyButton courseData = {course}/>) : <></>
+                    }
 
 
 
                     {/* Hiring Partners */}
 
-                    <div className="mt-10">
+                    <div className="mt-5">
                         <p className="text-lg font-semibold mb-4">
                             Our learners get placed at
                         </p>

@@ -2,7 +2,6 @@
 import Sidebar from "@/components/Student/Sidebar";
 import Topbar from "@/components/Student/Topbar";
 
-
 export default async function StudentLayout({children,}: {children: React.ReactNode;}) {
     
 
@@ -13,7 +12,9 @@ export default async function StudentLayout({children,}: {children: React.ReactN
       <Sidebar />
    
       {/* Right Section */}
+      
       <div className="flex-1 flex flex-col">
+
         {/* Top Bar */}
         <Topbar />
 

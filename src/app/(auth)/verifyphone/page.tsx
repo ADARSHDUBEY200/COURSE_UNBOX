@@ -12,23 +12,31 @@ export default function PhoneVerification() {
 
   const router = useRouter();
 
+  
+
   const normalizePhone = (input: string) => {
     return "+91" + input.replace(/\D/g, "").slice(-10);
   };
 
   useEffect(() => {
-    const checkSession = async () => {
+    const checkAuth = async () => {
       const {
-        data: { session },
-      } = await supabase.auth.getSession();
+        data: { user },
+      } = await supabase.auth.getUser();
 
-      if (!session) {
+      if (!user) {
         router.replace("/login");
+        return;
+      }
+
+      if (!user.email_confirmed_at) {
+        router.replace("/verify-email");
       }
     };
+    checkAuth();
+  },[]);
 
-    checkSession();
-  }, [router]);
+  
   const sendOtp = async () => {
     if (!phone) {
       alert("Enter phone number");
@@ -38,9 +46,10 @@ export default function PhoneVerification() {
     const normalizedPhone = normalizePhone(phone);
     setLoading(true);
 
-    const { error } = await supabase.auth.updateUser({
+    const { data, error } = await supabase.auth.updateUser({
       phone: normalizedPhone,
     });
+    
 
     setLoading(false);
 

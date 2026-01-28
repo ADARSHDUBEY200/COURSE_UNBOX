@@ -1,134 +1,108 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ResultSettings() {
-  const [showResult, setShowResult] = useState(true);
-  const [emailNotify, setEmailNotify] = useState(true);
-  const [resultFormat, setResultFormat] = useState("grades");
+  const launchDate = new Date("2026-06-01T00:00:00").getTime();
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+
+  function getTimeLeft() {
+    const now = new Date().getTime();
+    const diff = launchDate - now;
+
+    if (diff <= 0) return null;
+
+    return {
+      Days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      Hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      Minutes: Math.floor((diff / (1000 * 60)) % 60),
+      Seconds: Math.floor((diff / 1000) % 60),
+    };
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeLeft());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 py-10">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-gray-100 px-6">
+      <div className="relative w-full max-w-2xl rounded-3xl bg-white/80 backdrop-blur-xl shadow-[0_40px_120px_rgba(0,0,0,0.08)] p-10 text-center">
 
-        {/* Header */}
-        <div className="mb-10 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white shadow-lg">
-          <h1 className="text-3xl font-semibold">
-            Result Settings
+        {/* Background glow */}
+        <div className="absolute -top-32 -left-32 h-96 w-96 bg-indigo-200/40 rounded-full blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 h-96 w-96 bg-pink-200/40 rounded-full blur-3xl" />
+
+        <div className="relative z-10">
+          {/* Brand */}
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              CourseUnbox
+            </span>
           </h1>
-          <p className="text-sm text-blue-100 mt-1">
-            Customize how your academic results appear and notify you.
+
+          <p className="mt-4 text-gray-600 text-lg">
+            We’re launching something
+            <span className="font-semibold text-indigo-600"> beautiful</span>,
+            <span className="font-semibold text-pink-600"> powerful</span>, and
+            <span className="font-semibold text-purple-600"> practical</span>.
           </p>
-        </div>
 
-        {/* Settings Cards */}
-        <div className="grid gap-6">
-
-          {/* Visibility */}
-          <div className="bg-white/80 backdrop-blur rounded-2xl border border-blue-100 p-6 shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-medium text-gray-800">
-                  Result Visibility
-                </h3>
-                <p className="text-sm text-gray-500">
-                  Control visibility of results in dashboard
-                </p>
-              </div>
-
-              <button
-                onClick={() => setShowResult(!showResult)}
-                className={`w-14 h-7 flex items-center rounded-full px-1 transition ${
-                  showResult ? "bg-blue-600" : "bg-gray-300"
-                }`}
-              >
-                <span
-                  className={`w-5 h-5 bg-white rounded-full shadow transform transition ${
-                    showResult ? "translate-x-7" : ""
-                  }`}
-                />
-              </button>
-            </div>
-          </div>
-
-          {/* Result Format */}
-          <div className="bg-white/80 backdrop-blur rounded-2xl border border-blue-100 p-6 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-800 mb-1">
-              Result Display Format
-            </h3>
-            <p className="text-sm text-gray-500 mb-4">
-              Choose how your performance is shown
-            </p>
-
-            <div className="flex gap-4">
-              {["grades", "percentage", "cgpa"].map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setResultFormat(type)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition border ${
-                    resultFormat === type
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "bg-white text-gray-600 border-gray-200 hover:border-blue-400"
-                  }`}
+          {/* Countdown */}
+          {timeLeft && (
+            <div className="mt-10 grid grid-cols-4 gap-4">
+              {Object.entries(timeLeft).map(([label, value], i) => (
+                <div
+                  key={label}
+                  className={`rounded-2xl bg-white shadow-lg py-4 border-t-4 ${i === 0
+                    ? "border-indigo-500"
+                    : i === 1
+                      ? "border-purple-500"
+                      : i === 2
+                        ? "border-pink-500"
+                        : "border-blue-500"
+                    }`}
                 >
-                  {type.toUpperCase()}
-                </button>
+                  <div className="text-3xl font-bold text-gray-900">
+                    {value}
+                  </div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-gray-500">
+                    {label}
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
+          )}
 
-          {/* Notifications */}
-          <div className="bg-white/80 backdrop-blur rounded-2xl border border-blue-100 p-6 shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-medium text-gray-800">
-                  Result Notifications
-                </h3>
-                <p className="text-sm text-gray-500">
-                  Get email alerts when results are published
-                </p>
-              </div>
+          {/* Notify */}
+          <div className="mt-12">
+            <p className="text-sm text-gray-500 mb-4">
+              Get early access & launch updates
+            </p>
 
+            <form className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="you@example.com"
+                className="flex-1 rounded-xl border border-gray-200 px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                required
+              />
               <button
-                onClick={() => setEmailNotify(!emailNotify)}
-                className={`w-14 h-7 flex items-center rounded-full px-1 transition ${
-                  emailNotify ? "bg-blue-600" : "bg-gray-300"
-                }`}
+                className="rounded-xl bg-gradient-to-r from-indigo-600 to-pink-600 text-white px-6 py-3 font-semibold shadow-lg hover:scale-[1.02] transition"
               >
-                <span
-                  className={`w-5 h-5 bg-white rounded-full shadow transform transition ${
-                    emailNotify ? "translate-x-7" : ""
-                  }`}
-                />
+                Notify Me 🚀
               </button>
-            </div>
+            </form>
           </div>
 
-          {/* Downloads */}
-          <div className="bg-white/80 backdrop-blur rounded-2xl border border-blue-100 p-6 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-800 mb-3">
-              Download Results
-            </h3>
-
-            <div className="flex gap-4">
-              <button className="flex-1 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-medium text-blue-700 hover:bg-blue-100 transition">
-                Download PDF
-              </button>
-              <button className="flex-1 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-medium text-blue-700 hover:bg-blue-100 transition">
-                Download Excel
-              </button>
-            </div>
-          </div>
-
-          {/* Save */}
-          <div className="flex justify-end">
-            <button className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-3 text-white font-medium shadow hover:opacity-90 transition">
-              Save Settings
-            </button>
-          </div>
-
+          {/* Footer */}
+          <p className="mt-10 text-xs text-gray-400">
+            © {new Date().getFullYear()} CourseUnbox. Crafted with ❤️
+          </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

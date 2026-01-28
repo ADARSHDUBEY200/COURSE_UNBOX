@@ -18,7 +18,9 @@ type formType = {
 export default function RegisterPage() {
   const router = useRouter();
   const [form, setForm] = useState<formType>({ name:"", email:"", password:"", confirmPassword:""});
-  const [loading, setLoading] = useState(false)
+   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   
   const handleChange = (e : React.ChangeEvent<HTMLInputElement>)=>{
     const {name, value} = e.target;
@@ -28,53 +30,66 @@ export default function RegisterPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    if (form.password !== form.confirmPassword) {
+    setError(null);
+    if (!form.name || !form.email || !form.password || !form.confirmPassword) {
+      setError("All fields are required");
+      return;
+    }
+    if(form.password !== form.confirmPassword) {
       alert("Passwords do not match");
       setLoading(false);
       return;
     }
+    setLoading(true);
+
+    
 
     const { data, error } = await supabase.auth.signUp({
       email: form.email,
       password: form.password,
+      options : {
+         data : {
+            name : form.name
+         },
+         emailRedirectTo: `${window.location.origin}/verifyemail`,
+      }
     });
 
-    if (error) {
-      alert(error.message);
-      setLoading(false);
+     setLoading(false);
+
+   if (error) {
+      setError(error.message);
       return;
     }
 
-    const user = data.user;
+    setSuccess(true);
 
-    // If email confirmation is enabled
+    // const user = data.user;
 
-    if (!user) {
-      alert("Please verify your email to continue.");
-      setLoading(false);
-      router.replace("/login");
-      return;
-    }
+    // // If email confirmation is enabled
+    // if (!user) {
+    //   alert("Please verify your email to continue.");
+    //   setLoading(false);
+    //   router.replace("/login");
+    //   return;
+    // }
 
-    const { error: profileError } = await supabase
-      .from("Student")
-      .insert({
-        id: user.id,
-        name: form.name,
-        email: form.email,
-      });
+    // const { error: profileError } = await supabase
+    //   .from("Student")
+    //   .insert({
+    //     id: user.id,
+    //     name: form.name,
+    //     email: form.email,
+    //   });
 
-    if (profileError) {
-      alert("Profile creation failed");
-      setLoading(false);
-      return;
-    }
+    // if (profileError) {
+    //   alert("Profile creation failed");
+    //   setLoading(false);
+    //   return;
+    // }
 
-    setLoading(false);
-    router.replace("/student");
-    
+    // setLoading(false);
+    // router.replace("/student");
   };
   
   return (
@@ -110,6 +125,11 @@ export default function RegisterPage() {
           </div>
 
           {/* REGISTER FORM */}
+          {success ? (
+          <div className="mt-6 rounded-xl bg-green-50 p-4 text-sm text-green-700">
+            Please check your email to verify your account.
+          </div>
+        ) :
           <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -147,14 +167,18 @@ export default function RegisterPage() {
               placeholder="Confirm Password"
               className="w-full border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+              {error && (
+              <p className="text-sm text-red-600">{error}</p>
+            )}
 
             <button
               type="submit"
               className="w-full bg-blue-900 cursor-pointer text-white rounded-lg py-3 text-sm font-semibold hover:bg-blue-700 transition"
             >
-              Create Account
+              {loading ? "Creating account..." : "Sign Up"}
             </button>
           </form>
+}
 
           {/* FOOTER */}
           <p className="text-sm text-gray-500 mt-6 text-center cursor-pointer">

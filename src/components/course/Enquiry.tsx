@@ -176,14 +176,14 @@ const Enquiry = ({ courseData: course }: { courseData: Course }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
                 value={firstName}
-                onChange={(e) => setFirstName(e.target.name)}
+                onChange={(e) => setFirstName(e.target.value)}
                 type="text"
                 placeholder="First Name"
                 className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-blue-500"
               />
               <input
                 value={lastName}
-                onChange={(e) => setLastName(e.target.name)}
+                onChange={(e) => setLastName(e.target.value)}
                 type="text"
                 placeholder="Last Name"
                 className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-blue-500"

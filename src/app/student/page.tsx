@@ -23,20 +23,27 @@ export default function StudentDashboard() {
   useEffect(() => {
     const loadStudent = async () => {
       const {
-        data: { session },
-      } = await supabase.auth.getSession();
+        data: { user },
+      } = await supabase.auth.getUser();
 
      
 
-      if (!session) {
+      if (!user) {
+        await supabase.auth.signOut();
         router.replace("/login");
+        return;
+      }
+
+      // 2Email verification gate
+      if (!user.email_confirmed_at) {
+        router.replace("/verifyemail");
         return;
       }
 
       const { data, error } = await supabase
         .from("Student")
         .select("*")
-        .eq("id", session.user.id)
+        .eq("id", user.id)
         .single();
 
       if (error || !data) {
@@ -44,13 +51,14 @@ export default function StudentDashboard() {
         return;
       }
 
-      
-
-      setStudentData(data);
-      setLoading(false);
-      if(!data.phone_verified){
+       if(!data.phone_verified){
          router.replace('/verifyphone');
       }
+
+      setStudentData(data);
+
+      setLoading(false);
+     
     };
 
     loadStudent();

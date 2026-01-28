@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -29,6 +30,12 @@ export default function RootLayout({
         className={`${roboto.className}  antialiased`}
       >
         {children}
+
+         <Script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          strategy="afterInteractive"
+        />
+        
       </body>
     </html>
   );
